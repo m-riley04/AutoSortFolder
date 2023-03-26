@@ -1,0 +1,19 @@
+End User License Agreement
+-------------------------------------
+
+Please be sure to read this in it's 
+entirety and understand the risks. 
+By using this software, you accept
+the following terms and parameters:
+
+1. You are free to share this program
+with anyone you'd like IF you give
+proper credit to the author(s)
+(https://github.com/m-riley04)
+
+2. You accept that AutoSortFolder is 
+not responsible for any possible damage
+or errors that may occur while the 
+software is operating. There is no
+warranty, and there is no guarantee of
+success for every use case.
