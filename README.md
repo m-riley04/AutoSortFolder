@@ -5,10 +5,13 @@ This is a program that I created entirely in Python during my free time that can
 UPDATE (1/10/2024): Hello! It's been almost a year and a half or two since I touched this repository. That being said, I am planning on re-writing AutoSortFolder from scratch! This will be in either Python or C++, which has yet to be determined. For now, I will be updating the README to be much, much nicer.
 
 # Table of Contents
-* Disclaimer
-* Features
-* Installation
-* Building and Testing
+* [Disclaimer](#Disclaimer)
+* [Features](#Features)
+* [Installation](#Installation)
+* [Usage](#Usage)
+  * [First-Time Installing](#First-Time-Installing)
+  * [Controlling Sorting](#Controlling-Sorting)
+* [Building and Testing](#Building-and-Testing)
 
 # Disclaimer
 note: While I have taken a lot of my time making sure files are safe during sorting, I am NOT responsible for possible errors/corruption/overwriting that may occur.
@@ -34,6 +37,7 @@ note: While I have taken a lot of my time making sure files are safe during sort
 5. Place "AutoSortFolder" in the folder you'd like to sort
 
 # Usage
+
 ## First-Time Starting
 1. Place "AutoSortFolder.exe" in the folder you'd like to sort
 2. Run the program
