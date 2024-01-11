@@ -29,6 +29,10 @@ note: While I have taken a lot of my time making sure files are safe during sort
 - Run-in-background capabilities
 - Quick tray icon control panel
 
+# Planned Features
+- More sorting methods
+- More robust GUI, possible a "manager" of sorts
+
 # Installation
 1. Go to the [releases page](https://github.com/m-riley04/AutoSortFolder/releases) on the GitHub
 2. Find the latest release
