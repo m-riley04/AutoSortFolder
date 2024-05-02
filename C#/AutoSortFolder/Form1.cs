@@ -273,17 +273,26 @@ namespace AutoSortFolder
             this.method = method;
         }
 
+        /// <summary>
+        /// Activates the anchor's sorting method
+        /// </summary>
         public void Activate()
         {
             this.status = AnchorStatus.ACTIVE;
             this.Sort();
         }
 
+        /// <summary>
+        /// Deactivates the anchor's sorting method
+        /// </summary>
         public void Deactivate()
         {
             this.status = AnchorStatus.IDLE;
         }
 
+        /// <summary>
+        /// Sorts the anchor based on the set sorting method
+        /// </summary>
         public void Sort()
         {
             // Check if the anchor directory exists
