@@ -111,12 +111,7 @@ namespace AutoSortFolder
         {
             app.currentAnchor.Deactivate();
 
-            // Update UI
-            label_status.Text = app.currentAnchor.status.ToString();
-            button_start.Enabled = true;
-            button_stop.Enabled = false;
-            button_unsort.Enabled = true;
-            combobox_sortingMethod.Enabled = true;
+            UpdateUI();
         }
 
         private void button_selectFolder_Click(object sender, EventArgs e)
