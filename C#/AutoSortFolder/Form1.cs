@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Timers;
 using System.IO;
 using System.Drawing.Drawing2D;
+using System.Text.Json;
 
 namespace AutoSortFolder
 {
@@ -79,9 +80,20 @@ namespace AutoSortFolder
     public class App
     {
         public Anchor currentAnchor;
+        public Anchor[] anchors;
+        public string anchorSavePath = Directory.GetCurrentDirectory() + "\\" + "anchors.json";
         public App()
         {
-            currentAnchor = new Anchor();
+            if (!File.Exists(anchorSavePath))
+            {
+                currentAnchor = new Anchor();
+                anchors.Append(currentAnchor);
+                return;
+            }
+
+            LoadAnchors();
+        }
+
         public void SaveAnchors()
         {
             File.WriteAllText(anchorSavePath, JsonSerializer.Serialize(anchors));
