@@ -158,6 +158,7 @@ namespace AutoSortFolder
             filePaths = Directory.GetFiles(this.directory);
             folderPaths = Directory.GetDirectories(this.directory);
 
+            // Select the sorting method
             switch (this.method)
             {
                 case SortingMethod.NONE:
@@ -306,6 +307,7 @@ namespace AutoSortFolder
             // Get current files
             folderPaths = Directory.GetDirectories(this.directory);
 
+            // Iterate through every folder
             foreach (string folderPath in this.folderPaths)
             {
                 if (!Directory.Exists(folderPath)) throw new DirectoryNotFoundException();
