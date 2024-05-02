@@ -162,6 +162,18 @@ namespace AutoSortFolder
 
             this.UpdateUI();
         }
+
+        private void button_remove_Click(object sender, EventArgs e)
+        {
+            int index = listbox_anchors.SelectedIndex;
+            if (index != -1)
+            {
+                app.anchors.RemoveAt(index);
+            }
+
+            PopulateAnchors();
+            UpdateUI();
+        }
         }
     }
 
