@@ -181,6 +181,31 @@ namespace AutoSortFolder
             }
         }
 
+        public void Unsort()
+        {
+            if (!Directory.Exists(this.directory)) throw new DirectoryNotFoundException();
+
+            // Get current files
+            folderPaths = Directory.GetDirectories(this.directory);
+
+            foreach (string folderPath in this.folderPaths)
+            {
+                if (!Directory.Exists(folderPath)) throw new DirectoryNotFoundException();
+
+                // Iterate through all files within the current folder
+                foreach (string filePath in Directory.GetFiles(folderPath))
+                {
+                    string fileName = Path.GetFileName(filePath);
+
+                    // Move the file out of the current folder to the
+                    Console.WriteLine("From " + filePath + " to " + this.directory + "\\" + fileName);
+                    File.Move(filePath, this.directory + "\\" + fileName);
+                }
+
+                // Delete the directory
+                Directory.Delete(folderPath);
+            }
+
         }
     }
 }
