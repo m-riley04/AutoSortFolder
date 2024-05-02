@@ -41,6 +41,14 @@ namespace AutoSortFolder
             button_stop.Enabled = true;
             button_unsort.Enabled = false;
             combobox_sortingMethod.Enabled = false;
+        private void PopulateAnchors()
+        {
+            listbox_anchors.Items.Clear();
+            foreach (Anchor anchor in app.anchors)
+            {
+                listbox_anchors.Items.Add((listbox_anchors.Items.Count + 1) + ") " + anchor.directory);
+            }
+        }
         }
 
         private void button_stop_Click(object sender, EventArgs e)
