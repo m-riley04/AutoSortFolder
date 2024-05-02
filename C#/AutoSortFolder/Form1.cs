@@ -145,6 +145,13 @@ namespace AutoSortFolder
         {
             app.SaveAnchors();
         }
+
+        private void button_load_Click(object sender, EventArgs e)
+        {
+            app.LoadAnchors();
+            PopulateAnchors();
+            UpdateUI();
+        }
         }
     }
 
