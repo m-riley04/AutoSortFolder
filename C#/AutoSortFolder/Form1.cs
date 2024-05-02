@@ -117,6 +117,12 @@ namespace AutoSortFolder
             this.status = AnchorStatus.IDLE;
             this.method = method;
         }
+
+        public void Activate()
+        {
+            this.status = AnchorStatus.ACTIVE;
+            this.Sort();
+        }
         }
     }
 }
