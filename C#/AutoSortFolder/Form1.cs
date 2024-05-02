@@ -159,9 +159,31 @@ namespace AutoSortFolder
 
             switch (this.method)
             {
+                case SortingMethod.NONE:
+                    throw new Exception("No sorting method selected");
+
                 case SortingMethod.EXTENSION:
                     this.SortByExtension();
                     break;
+
+                case SortingMethod.ALPHABETICAL:
+                    this.SortByAlphabet();
+                    break;
+
+                case SortingMethod.DATE_CREATED:
+                    this.SortByDateCreated();
+                    break;
+
+                case SortingMethod.DATE_MODIFIED:
+                    this.SortByDateModified();
+                    break;
+
+                case SortingMethod.DATE_ACCESSED:
+                    this.SortByDateAccessed();
+                    break;
+
+                default:
+                    throw new Exception("No sorting method selected");
             }
         }
 
