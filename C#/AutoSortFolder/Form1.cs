@@ -62,10 +62,32 @@ namespace AutoSortFolder
             // Update listbox
         }
 
+        private void ResetUI()
+        {
+            // Update Labels
+            label_status.Text = "NONE";
+
+            // Update Buttons
             button_start.Enabled = false;
-            button_stop.Enabled = true;
+            button_stop.Enabled = false;
             button_unsort.Enabled = false;
+            button_selectFolder.Enabled = false;
+
+            // Update dropdowns
             combobox_sortingMethod.Enabled = false;
+            combobox_sortingMethod.SelectedIndex = 0;
+
+            // Update fields
+            textbox_folderDirectory.Text = "";
+
+            // List
+            listbox_anchors.Items.Clear();
+            foreach (Anchor anchor in app.anchors)
+            {
+                if (anchor != null) listbox_anchors.Items.Add((listbox_anchors.Items.Count + 1) + ") " + anchor.directory);
+            }
+        }
+
         private void PopulateAnchors()
         {
             listbox_anchors.Items.Clear();
