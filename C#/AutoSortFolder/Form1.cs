@@ -194,29 +194,44 @@ namespace AutoSortFolder
     public class App
     {
         public Anchor currentAnchor;
-        public Anchor[] anchors;
+        public List<Anchor> anchors = new List<Anchor>();
         public string anchorSavePath = Directory.GetCurrentDirectory() + "\\" + "anchors.json";
         public App()
         {
             if (!File.Exists(anchorSavePath))
             {
-                currentAnchor = new Anchor();
-                anchors.Append(currentAnchor);
+                // Create blank anchor
+                this.currentAnchor = new Anchor();
+                this.anchors.Add(this.currentAnchor);
+
+                // Save the new anchor
+                this.SaveAnchors();
                 return;
             }
 
-            LoadAnchors();
+            this.LoadAnchors();
         }
 
         public void SaveAnchors()
         {
-            File.WriteAllText(anchorSavePath, JsonSerializer.Serialize(anchors));
+            var options = new JsonSerializerOptions()
+            {
+                IncludeFields = true,
+            };
+
+            File.WriteAllText(anchorSavePath, JsonSerializer.Serialize(anchors, options));
         }
 
-        public void LoadAnchors()
+        public string LoadAnchors()
         {
-            string jsonString = File.ReadAllText(anchorSavePath);
-            this.anchors = JsonSerializer.Deserialize<Anchor[]>(jsonString);
+            var options = new JsonSerializerOptions()
+            {
+                IncludeFields = true,
+            };
+
+            string jsonString = File.ReadAllText(this.anchorSavePath);
+            this.anchors = JsonSerializer.Deserialize<List<Anchor>>(jsonString, options);
+            return jsonString;
         }
 
         public void ActivateCurrentAnchor()
@@ -260,7 +275,7 @@ namespace AutoSortFolder
         public Anchor()
         {
             this.id = 0;
-            this.directory = "";
+            this.directory = "...";
             this.status = AnchorStatus.IDLE;
             this.method = SortingMethod.NONE;
         }
@@ -299,8 +314,8 @@ namespace AutoSortFolder
             if (!Directory.Exists(this.directory)) throw new DirectoryNotFoundException();
 
             // Get current files
-            filePaths = Directory.GetFiles(this.directory);
-            folderPaths = Directory.GetDirectories(this.directory);
+            this.filePaths = Directory.GetFiles(this.directory);
+            this.folderPaths = Directory.GetDirectories(this.directory);
 
             // Select the sorting method
             switch (this.method)
