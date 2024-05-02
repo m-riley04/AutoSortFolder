@@ -33,13 +33,25 @@ namespace AutoSortFolder
         private void button_start_Click(object sender, EventArgs e)
         {
             app.currentAnchor.Activate();
+
+            // Update UI
             label_status.Text = app.currentAnchor.status.ToString();
+            button_start.Enabled = false;
+            button_stop.Enabled = true;
+            button_unsort.Enabled = false;
+            combobox_sortingMethod.Enabled = false;
         }
 
         private void button_stop_Click(object sender, EventArgs e)
         {
             app.currentAnchor.Deactivate();
+
+            // Update UI
             label_status.Text = app.currentAnchor.status.ToString();
+            button_start.Enabled = true;
+            button_stop.Enabled = false;
+            button_unsort.Enabled = true;
+            combobox_sortingMethod.Enabled = true;
         }
 
         private void button_selectFolder_Click(object sender, EventArgs e)
