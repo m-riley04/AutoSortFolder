@@ -31,12 +31,37 @@ namespace AutoSortFolder
             
         }
 
-        private void button_start_Click(object sender, EventArgs e)
+        private void UpdateUI()
         {
-            app.currentAnchor.Activate();
+            if (app.currentAnchor == null)
+            {
+                ResetUI();
+                return;
+            }
 
-            // Update UI
+            bool isIdle = app.currentAnchor.status == AnchorStatus.IDLE;
+            bool isActive = app.currentAnchor.status == AnchorStatus.ACTIVE;
+
+            // Update Labels
             label_status.Text = app.currentAnchor.status.ToString();
+            
+            // Update Buttons
+            button_start.Enabled = isIdle;
+            button_stop.Enabled = isActive;
+            button_unsort.Enabled = isIdle;
+            button_selectFolder.Enabled = isIdle;
+            button_select.Enabled = (listbox_anchors.SelectedIndex != -1 && listbox_anchors.SelectedIndex != app.anchors.IndexOf(app.currentAnchor));
+
+            // Update dropdowns
+            combobox_sortingMethod.Enabled = isIdle;
+            combobox_sortingMethod.SelectedIndex = (int)app.currentAnchor.method;
+
+            // Update fields
+            textbox_folderDirectory.Text = app.currentAnchor.directory;
+
+            // Update listbox
+        }
+
             button_start.Enabled = false;
             button_stop.Enabled = true;
             button_unsort.Enabled = false;
