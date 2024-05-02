@@ -35,6 +35,7 @@
             this.label_status = new System.Windows.Forms.Label();
             this.button_start = new System.Windows.Forms.Button();
             this.button_stop = new System.Windows.Forms.Button();
+            this.button_unsort = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textbox_folderDirectory
@@ -74,7 +75,7 @@
             // 
             // button_start
             // 
-            this.button_start.Location = new System.Drawing.Point(30, 178);
+            this.button_start.Location = new System.Drawing.Point(30, 79);
             this.button_start.Name = "button_start";
             this.button_start.Size = new System.Drawing.Size(59, 23);
             this.button_start.TabIndex = 5;
@@ -84,7 +85,7 @@
             // 
             // button_stop
             // 
-            this.button_stop.Location = new System.Drawing.Point(95, 178);
+            this.button_stop.Location = new System.Drawing.Point(95, 79);
             this.button_stop.Name = "button_stop";
             this.button_stop.Size = new System.Drawing.Size(59, 23);
             this.button_stop.TabIndex = 6;
@@ -92,12 +93,23 @@
             this.button_stop.UseVisualStyleBackColor = true;
             this.button_stop.Click += new System.EventHandler(this.button_stop_Click);
             // 
+            // button_unsort
+            // 
+            this.button_unsort.Location = new System.Drawing.Point(160, 79);
+            this.button_unsort.Name = "button_unsort";
+            this.button_unsort.Size = new System.Drawing.Size(59, 23);
+            this.button_unsort.TabIndex = 7;
+            this.button_unsort.Text = "Unsort";
+            this.button_unsort.UseVisualStyleBackColor = true;
+            this.button_unsort.Click += new System.EventHandler(this.button_unsort_Click);
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 542);
+            this.Controls.Add(this.button_unsort);
             this.Controls.Add(this.button_stop);
             this.Controls.Add(this.button_start);
             this.Controls.Add(this.label_status);
@@ -121,6 +133,7 @@
         private System.Windows.Forms.Label label_status;
         private System.Windows.Forms.Button button_start;
         private System.Windows.Forms.Button button_stop;
+        private System.Windows.Forms.Button button_unsort;
     }
 }
 
