@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Timers;
+using System.IO;
+using System.Drawing.Drawing2D;
 
 namespace AutoSortFolder
 {
@@ -17,12 +20,14 @@ namespace AutoSortFolder
         public Window()
         {
             InitializeComponent();
+
+            // Create the app
+            app = new App();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Create the app
-            app = new App();
+            
         }
 
         private void button_start_Click(object sender, EventArgs e)
@@ -52,6 +57,17 @@ namespace AutoSortFolder
         {
             currentAnchor = new Anchor();
         }
+
+        public void ActivateCurrentAnchor()
+        {
+            currentAnchor.Activate();
+        }
+
+        public void DeactivateCurrentAnchor()
+        {
+            currentAnchor.Deactivate();
+        }
+    }
     }
 
     public class Anchor
