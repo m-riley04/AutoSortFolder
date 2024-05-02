@@ -123,6 +123,11 @@ namespace AutoSortFolder
             this.status = AnchorStatus.ACTIVE;
             this.Sort();
         }
+
+        public void Deactivate()
+        {
+            this.status = AnchorStatus.IDLE;
+        }
         }
     }
 }
