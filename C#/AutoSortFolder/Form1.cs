@@ -32,12 +32,14 @@ namespace AutoSortFolder
 
         private void button_start_Click(object sender, EventArgs e)
         {
-            
+            app.currentAnchor.Activate();
+            label_status.Text = app.currentAnchor.status.ToString();
         }
 
         private void button_stop_Click(object sender, EventArgs e)
         {
-
+            app.currentAnchor.Deactivate();
+            label_status.Text = app.currentAnchor.status.ToString();
         }
 
         private void button_selectFolder_Click(object sender, EventArgs e)
@@ -47,6 +49,11 @@ namespace AutoSortFolder
                 app.currentAnchor.directory = folderBrowserDialog.SelectedPath;
                 textbox_folderDirectory.Text = folderBrowserDialog.SelectedPath;
             }
+        }
+
+        private void button_unsort_Click(object sender, EventArgs e)
+        {
+            app.currentAnchor.Unsort();
         }
     }
 
