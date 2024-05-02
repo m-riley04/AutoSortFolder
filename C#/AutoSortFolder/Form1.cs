@@ -222,6 +222,25 @@ namespace AutoSortFolder
                 File.Move(filePath, folderDirectory + "\\" + fileName);
             }
         }
+
+        private void SortByAlphabet()
+        {
+            // Iterate through all files
+            foreach (string filePath in this.filePaths)
+            {
+                string fileName = Path.GetFileName(filePath);
+                char c = fileName[0];
+                string folderDirectory = this.directory + "\\" + c;
+
+                // Check if the directory already exists
+                if (!Directory.Exists(folderDirectory)) Directory.CreateDirectory(folderDirectory);
+
+                // TODO - Check if the file already exists in the destination folder
+
+                // Move the file to the folder
+                File.Move(filePath, folderDirectory + "\\" + fileName);
+            }
+        }
                 File.Move(filePath, folderDirectory + "\\" + fileName);
             }
         }
