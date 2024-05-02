@@ -68,6 +68,21 @@ namespace AutoSortFolder
             currentAnchor.Deactivate();
         }
     }
+
+    public enum AnchorStatus
+    {
+        IDLE,
+        ACTIVE,
+        ERROR
+    }
+
+    public enum SortingMethod
+    {
+        NONE,
+        EXTENSION,
+        ALPHABETICAL,
+        DATE_CREATED,
+        DATE_UPDATED
     }
 
     public class Anchor
