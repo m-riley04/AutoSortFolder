@@ -128,6 +128,22 @@ namespace AutoSortFolder
         {
             this.status = AnchorStatus.IDLE;
         }
+
+        public void Sort()
+        {
+            // Check if the anchor directory exists
+            if (!Directory.Exists(this.directory)) throw new DirectoryNotFoundException();
+
+            // Get current files
+            filePaths = Directory.GetFiles(this.directory);
+
+            switch (this.method)
+            {
+                case SortingMethod.EXTENSION:
+                    this.SortByExtension();
+                    break;
+            }
+        }
         }
     }
 }
