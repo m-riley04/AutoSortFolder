@@ -82,6 +82,10 @@ namespace AutoSortFolder
         public App()
         {
             currentAnchor = new Anchor();
+        public void SaveAnchors()
+        {
+            File.WriteAllText(anchorSavePath, JsonSerializer.Serialize(anchors));
+        }
         }
 
         public void ActivateCurrentAnchor()
