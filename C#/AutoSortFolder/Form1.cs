@@ -24,6 +24,9 @@ namespace AutoSortFolder
 
             // Create the app
             app = new App();
+
+            PopulateAnchors();
+            UpdateUI();
         }
 
         private void Form1_Load(object sender, EventArgs e)
