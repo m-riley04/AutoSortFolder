@@ -127,7 +127,7 @@ namespace AutoSortFolder
             this.id = 0;
             this.directory = "";
             this.status = AnchorStatus.IDLE;
-            this.method = SortingMethod.EXTENSION;
+            this.method = SortingMethod.NONE;
         }
 
         public Anchor(int id, string directory, SortingMethod method)
