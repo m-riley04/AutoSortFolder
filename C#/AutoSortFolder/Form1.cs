@@ -174,6 +174,20 @@ namespace AutoSortFolder
             PopulateAnchors();
             UpdateUI();
         }
+
+        private void listbox_anchors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = listbox_anchors.SelectedIndex;
+            if (index != -1 && index != app.anchors.IndexOf(app.currentAnchor)) button_select.Enabled = true;
+            else button_select.Enabled = false;
+        }
+
+        private void button_select_Click(object sender, EventArgs e)
+        {
+            if (listbox_anchors.SelectedIndex != -1) app.currentAnchor = app.anchors[listbox_anchors.SelectedIndex];
+            PopulateAnchors();
+            UpdateUI();
+
         }
     }
 
