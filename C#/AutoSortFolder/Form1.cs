@@ -219,7 +219,9 @@ namespace AutoSortFolder
                 // TODO - Check if the file already exists in the destination folder
 
                 // Move the file to the folder
-                Console.WriteLine("From " + filePath + " to " + folderDirectory + "\\" + fileName);
+                File.Move(filePath, folderDirectory + "\\" + fileName);
+            }
+        }
                 File.Move(filePath, folderDirectory + "\\" + fileName);
             }
         }
