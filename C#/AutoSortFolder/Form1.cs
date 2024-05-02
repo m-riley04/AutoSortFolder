@@ -108,7 +108,8 @@ namespace AutoSortFolder
         EXTENSION,
         ALPHABETICAL,
         DATE_CREATED,
-        DATE_UPDATED
+        DATE_MODIFIED,
+        DATE_ACCESSED
     }
 
     public class Anchor
