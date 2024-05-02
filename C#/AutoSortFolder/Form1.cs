@@ -152,6 +152,16 @@ namespace AutoSortFolder
             PopulateAnchors();
             UpdateUI();
         }
+
+        private void button_add_Click(object sender, EventArgs e)
+        {
+            Anchor newAnchor = new Anchor(listbox_anchors.Items.Count + 1, "...", SortingMethod.NONE);
+            app.anchors.Add(newAnchor);
+            app.currentAnchor = newAnchor;
+            listbox_anchors.Items.Add((listbox_anchors.Items.Count+1) + ") " + newAnchor.directory);
+
+            this.UpdateUI();
+        }
         }
     }
 
