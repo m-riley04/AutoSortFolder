@@ -187,7 +187,6 @@ namespace AutoSortFolder
             if (listbox_anchors.SelectedIndex != -1) app.currentAnchor = app.anchors[listbox_anchors.SelectedIndex];
             PopulateAnchors();
             UpdateUI();
-
         }
     }
 
