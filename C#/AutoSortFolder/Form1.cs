@@ -56,6 +56,8 @@ namespace AutoSortFolder
 
         private void button_selectFolder_Click(object sender, EventArgs e)
         {
+            if (app.currentAnchor.status != AnchorStatus.IDLE) throw new Exception("Cannot change anchor point folder while sorting is in progress");
+
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 app.currentAnchor.directory = folderBrowserDialog.SelectedPath;
