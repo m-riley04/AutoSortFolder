@@ -96,17 +96,27 @@ namespace AutoSortFolder
     {
         public int id;
         public string directory;
+        public AnchorStatus status;
+        public SortingMethod method;
+
+        private string[] filePaths;
+        private string[] folderPaths;
 
         public Anchor()
         {
-            id = 0;
-            directory = "";
+            this.id = 0;
+            this.directory = "";
+            this.status = AnchorStatus.IDLE;
+            this.method = SortingMethod.EXTENSION;
         }
 
-        public Anchor(int id, string directory)
+        public Anchor(int id, string directory, SortingMethod method)
         {
             this.id = id;
             this.directory = directory;
+            this.status = AnchorStatus.IDLE;
+            this.method = method;
+        }
         }
     }
 }
