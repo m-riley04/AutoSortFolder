@@ -138,7 +138,9 @@ namespace AutoSortFolder
 
         private void combobox_sortingMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
-            app.currentAnchor.method = (SortingMethod)combobox_sortingMethod.SelectedIndex;
+            if (app.currentAnchor != null) app.currentAnchor.method = (SortingMethod)combobox_sortingMethod.SelectedIndex;
+        }
+
         private void button_save_Click(object sender, EventArgs e)
         {
             app.SaveAnchors();
