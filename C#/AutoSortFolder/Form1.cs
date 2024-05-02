@@ -49,6 +49,12 @@ namespace AutoSortFolder
                 listbox_anchors.Items.Add((listbox_anchors.Items.Count + 1) + ") " + anchor.directory);
             }
         }
+
+        private void button_start_Click(object sender, EventArgs e)
+        {
+            app.currentAnchor.Activate();
+
+            UpdateUI();
         }
 
         private void button_stop_Click(object sender, EventArgs e)
