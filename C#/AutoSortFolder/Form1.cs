@@ -260,6 +260,25 @@ namespace AutoSortFolder
                 File.Move(filePath, folderDirectory + "\\" + fileName);
             }
         }
+
+        private void SortByDateModified()
+        {
+            // Iterate through all files
+            foreach (string filePath in this.filePaths)
+            {
+                string fileName = Path.GetFileName(filePath);
+                DateTime date = File.GetLastWriteTime(filePath);
+                string folderDirectory = this.directory + "\\" + date.Date.ToString();
+
+                // Check if the directory already exists
+                if (!Directory.Exists(folderDirectory)) Directory.CreateDirectory(folderDirectory);
+
+                // TODO - Check if the file already exists in the destination folder
+
+                // Move the file to the folder
+                File.Move(filePath, folderDirectory + "\\" + fileName);
+            }
+        }
                 File.Move(filePath, folderDirectory + "\\" + fileName);
             }
         }
