@@ -69,6 +69,11 @@ namespace AutoSortFolder
         {
             app.currentAnchor.Unsort();
         }
+
+        private void combobox_sortingMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            app.currentAnchor.method = (SortingMethod)combobox_sortingMethod.SelectedIndex;
+        }
     }
 
     public class App
