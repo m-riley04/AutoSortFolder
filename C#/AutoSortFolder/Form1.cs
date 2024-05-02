@@ -144,6 +144,43 @@ namespace AutoSortFolder
                     break;
             }
         }
+
+        private void SortByExtension()
+        {
+            // Initialize category
+            string extensionCategory = "other";
+            string folderDirectory = this.directory + "\\" + extensionCategory;
+
+            // Iterate through all files
+            foreach (string filePath in this.filePaths)
+            {
+                string fileName = Path.GetFileName(filePath);
+                string fileExtension = Path.GetExtension(filePath);
+
+                // Iterate through and get the category
+                foreach (KeyValuePair<string, string[]> item in FileExtensions.Extensions)
+                {
+                    if (item.Value.Contains(fileExtension))
+                    {
+                        extensionCategory = item.Key;
+
+                        // Check if the category folder isn't created
+                        folderDirectory = this.directory + "\\" + extensionCategory;
+                        if (!Directory.Exists(folderDirectory)) Directory.CreateDirectory(folderDirectory);
+
+                        // Break out of the loop
+                        break;
+                    }
+                }
+
+                // TODO - Check if the file already exists in the destination folder
+
+                // Move the file to the folder
+                Console.WriteLine("From " + filePath + " to " + folderDirectory + "\\" + fileName);
+                File.Move(filePath, folderDirectory + "\\" + fileName);
+            }
+        }
+
         }
     }
 }
