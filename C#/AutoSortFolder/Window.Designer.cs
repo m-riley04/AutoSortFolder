@@ -174,7 +174,7 @@
             // 
             // button_save
             // 
-            this.button_save.Location = new System.Drawing.Point(245, 196);
+            this.button_save.Location = new System.Drawing.Point(199, 196);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(59, 23);
             this.button_save.TabIndex = 8;
@@ -184,7 +184,7 @@
             // 
             // button_load
             // 
-            this.button_load.Location = new System.Drawing.Point(245, 225);
+            this.button_load.Location = new System.Drawing.Point(199, 225);
             this.button_load.Name = "button_load";
             this.button_load.Size = new System.Drawing.Size(59, 23);
             this.button_load.TabIndex = 11;
@@ -197,13 +197,13 @@
             this.listbox_anchors.FormattingEnabled = true;
             this.listbox_anchors.Location = new System.Drawing.Point(3, 23);
             this.listbox_anchors.Name = "listbox_anchors";
-            this.listbox_anchors.Size = new System.Drawing.Size(236, 225);
+            this.listbox_anchors.Size = new System.Drawing.Size(190, 225);
             this.listbox_anchors.TabIndex = 12;
             this.listbox_anchors.SelectedIndexChanged += new System.EventHandler(this.listboxAnchors_SelectedIndexChanged);
             // 
             // button_add
             // 
-            this.button_add.Location = new System.Drawing.Point(245, 23);
+            this.button_add.Location = new System.Drawing.Point(199, 23);
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(59, 23);
             this.button_add.TabIndex = 13;
@@ -213,7 +213,7 @@
             // 
             // button_remove
             // 
-            this.button_remove.Location = new System.Drawing.Point(245, 52);
+            this.button_remove.Location = new System.Drawing.Point(199, 52);
             this.button_remove.Name = "button_remove";
             this.button_remove.Size = new System.Drawing.Size(59, 23);
             this.button_remove.TabIndex = 14;
@@ -223,7 +223,7 @@
             // 
             // button_select
             // 
-            this.button_select.Location = new System.Drawing.Point(245, 81);
+            this.button_select.Location = new System.Drawing.Point(199, 81);
             this.button_select.Name = "button_select";
             this.button_select.Size = new System.Drawing.Size(59, 23);
             this.button_select.TabIndex = 15;
@@ -242,7 +242,7 @@
             this.panel3.Controls.Add(this.button_remove);
             this.panel3.Location = new System.Drawing.Point(12, 12);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(309, 251);
+            this.panel3.Size = new System.Drawing.Size(263, 251);
             this.panel3.TabIndex = 16;
             // 
             // label3
