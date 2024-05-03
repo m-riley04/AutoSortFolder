@@ -85,7 +85,7 @@
             this.button_selectFolder.TabIndex = 3;
             this.button_selectFolder.Text = "Select Folder";
             this.button_selectFolder.UseVisualStyleBackColor = true;
-            this.button_selectFolder.Click += new System.EventHandler(this.button_selectFolder_Click);
+            this.button_selectFolder.Click += new System.EventHandler(this.buttonSelectFolder_Click);
             // 
             // label_status
             // 
@@ -104,7 +104,7 @@
             this.button_start.TabIndex = 5;
             this.button_start.Text = "Start";
             this.button_start.UseVisualStyleBackColor = true;
-            this.button_start.Click += new System.EventHandler(this.button_start_Click);
+            this.button_start.Click += new System.EventHandler(this.buttonStart_Click);
             // 
             // button_stop
             // 
@@ -115,7 +115,7 @@
             this.button_stop.TabIndex = 6;
             this.button_stop.Text = "Stop";
             this.button_stop.UseVisualStyleBackColor = true;
-            this.button_stop.Click += new System.EventHandler(this.button_stop_Click);
+            this.button_stop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
             // button_unsort
             // 
@@ -125,7 +125,7 @@
             this.button_unsort.TabIndex = 7;
             this.button_unsort.Text = "Unsort";
             this.button_unsort.UseVisualStyleBackColor = true;
-            this.button_unsort.Click += new System.EventHandler(this.button_unsort_Click);
+            this.button_unsort.Click += new System.EventHandler(this.buttonUnsort_Click);
             // 
             // panel1
             // 
@@ -161,7 +161,7 @@
             this.combobox_sortingMethod.Name = "combobox_sortingMethod";
             this.combobox_sortingMethod.Size = new System.Drawing.Size(315, 21);
             this.combobox_sortingMethod.TabIndex = 10;
-            this.combobox_sortingMethod.SelectedIndexChanged += new System.EventHandler(this.combobox_sortingMethod_SelectedIndexChanged);
+            this.combobox_sortingMethod.SelectedIndexChanged += new System.EventHandler(this.dropdownSortingMethod_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -180,7 +180,7 @@
             this.button_save.TabIndex = 8;
             this.button_save.Text = "Save";
             this.button_save.UseVisualStyleBackColor = true;
-            this.button_save.Click += new System.EventHandler(this.button_save_Click);
+            this.button_save.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // button_load
             // 
@@ -190,7 +190,7 @@
             this.button_load.TabIndex = 11;
             this.button_load.Text = "Load";
             this.button_load.UseVisualStyleBackColor = true;
-            this.button_load.Click += new System.EventHandler(this.button_load_Click);
+            this.button_load.Click += new System.EventHandler(this.buttonLoad_Click);
             // 
             // listbox_anchors
             // 
@@ -199,7 +199,7 @@
             this.listbox_anchors.Name = "listbox_anchors";
             this.listbox_anchors.Size = new System.Drawing.Size(236, 225);
             this.listbox_anchors.TabIndex = 12;
-            this.listbox_anchors.SelectedIndexChanged += new System.EventHandler(this.listbox_anchors_SelectedIndexChanged);
+            this.listbox_anchors.SelectedIndexChanged += new System.EventHandler(this.listboxAnchors_SelectedIndexChanged);
             // 
             // button_add
             // 
@@ -209,7 +209,7 @@
             this.button_add.TabIndex = 13;
             this.button_add.Text = "Add";
             this.button_add.UseVisualStyleBackColor = true;
-            this.button_add.Click += new System.EventHandler(this.button_add_Click);
+            this.button_add.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // button_remove
             // 
@@ -219,7 +219,7 @@
             this.button_remove.TabIndex = 14;
             this.button_remove.Text = "Remove";
             this.button_remove.UseVisualStyleBackColor = true;
-            this.button_remove.Click += new System.EventHandler(this.button_remove_Click);
+            this.button_remove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // button_select
             // 
@@ -229,7 +229,7 @@
             this.button_select.TabIndex = 15;
             this.button_select.Text = "Select";
             this.button_select.UseVisualStyleBackColor = true;
-            this.button_select.Click += new System.EventHandler(this.button_select_Click);
+            this.button_select.Click += new System.EventHandler(this.buttonSelect_Click);
             // 
             // panel3
             // 

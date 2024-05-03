@@ -98,7 +98,7 @@ namespace AutoSortFolder
             }
         }
 
-        private void button_start_Click(object sender, EventArgs e)
+        private void buttonStart_Click(object sender, EventArgs e)
         {
             try
             {
@@ -116,7 +116,7 @@ namespace AutoSortFolder
             UpdateUI();
         }
 
-        private void button_stop_Click(object sender, EventArgs e)
+        private void buttonStop_Click(object sender, EventArgs e)
         {
             try
             {
@@ -134,7 +134,7 @@ namespace AutoSortFolder
             UpdateUI();
         }
 
-        private void button_selectFolder_Click(object sender, EventArgs e)
+        private void buttonSelectFolder_Click(object sender, EventArgs e)
         {
             try
             {
@@ -157,7 +157,7 @@ namespace AutoSortFolder
             }
         }
 
-        private void button_unsort_Click(object sender, EventArgs e)
+        private void buttonUnsort_Click(object sender, EventArgs e)
         {
             try
             {
@@ -169,28 +169,25 @@ namespace AutoSortFolder
 
         }
 
-        private void combobox_sortingMethod_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (app.currentAnchor != null) app.currentAnchor.method = (SortingMethod)combobox_sortingMethod.SelectedIndex;
-        }
-
-        private void button_save_Click(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, EventArgs e)
         {
             try
             {
                 app.SaveAnchors();
-            } catch (Exception err)
+            }
+            catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Error");
             }
         }
 
-        private void button_load_Click(object sender, EventArgs e)
+        private void buttonLoad_Click(object sender, EventArgs e)
         {
             try
             {
                 app.LoadAnchors();
-            } catch (Exception err)
+            }
+            catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Error");
             }
@@ -199,7 +196,7 @@ namespace AutoSortFolder
             UpdateUI();
         }
 
-        private void button_add_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
             try
             {
@@ -207,7 +204,8 @@ namespace AutoSortFolder
                 app.anchors.Add(newAnchor);
                 app.currentAnchor = newAnchor;
                 listbox_anchors.Items.Add((listbox_anchors.Items.Count + 1) + ") " + newAnchor.directory);
-            } catch (Exception err)
+            }
+            catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Error");
             }
@@ -215,7 +213,7 @@ namespace AutoSortFolder
             this.UpdateUI();
         }
 
-        private void button_remove_Click(object sender, EventArgs e)
+        private void buttonRemove_Click(object sender, EventArgs e)
         {
             try
             {
@@ -224,7 +222,8 @@ namespace AutoSortFolder
                 {
                     app.anchors.RemoveAt(index);
                 }
-            } catch (Exception err)
+            }
+            catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Error");
             }
@@ -233,7 +232,26 @@ namespace AutoSortFolder
             UpdateUI();
         }
 
-        private void listbox_anchors_SelectedIndexChanged(object sender, EventArgs e)
+        private void buttonSelect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listbox_anchors.SelectedIndex != -1) app.currentAnchor = app.anchors[listbox_anchors.SelectedIndex];
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
+            PopulateAnchors();
+            UpdateUI();
+        }
+
+        private void dropdownSortingMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (app.currentAnchor != null) app.currentAnchor.method = (SortingMethod)combobox_sortingMethod.SelectedIndex;
+        }
+
+        private void listboxAnchors_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -244,19 +262,6 @@ namespace AutoSortFolder
             {
                 MessageBox.Show(err.Message, "Error");
             }
-        }
-
-        private void button_select_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (listbox_anchors.SelectedIndex != -1) app.currentAnchor = app.anchors[listbox_anchors.SelectedIndex];
-            } catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Error");
-            }
-            PopulateAnchors();
-            UpdateUI();
         }
 
         private void sorterWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -292,7 +297,7 @@ namespace AutoSortFolder
             }
             else if (e.Error != null)
             {
-                MessageBox.Show("Error: " + e.Error.Message);
+                MessageBox.Show(e.Error.Message, "Sorting Error");
             }
             else
             {
