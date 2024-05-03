@@ -161,7 +161,10 @@ namespace AutoSortFolder
         {
             try
             {
-                app.currentAnchor.Unsort();
+                app.currentAnchor.Unsort(progress =>
+                {
+                    
+                });
             } catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Error");
