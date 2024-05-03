@@ -140,7 +140,7 @@ namespace AutoSortFolder
         /// </summary>
         /// <param name="sourceFilePath"></param>
         /// <param name="destFilePath"></param>
-        private static void MoveSafe(string sourceFilePath, string destFilePath)
+        public static void MoveSafe(string sourceFilePath, string destFilePath)
         {
             try
             {
@@ -149,11 +149,16 @@ namespace AutoSortFolder
             {
                 // Add a number to the end if theres a duplicate file
                 int count = 0;
+                string fileName = Path.GetFileNameWithoutExtension(destFilePath);
+                string fileExtension = Path.GetExtension(destFilePath);
+                string destDirPath = destFilePath.Substring(0, destFilePath.Length-(fileName + fileExtension).Length);
                 string dupeFilePath;
+
+                // Attempt to find new name
                 while (true)
                 {
-                    dupeFilePath = destFilePath;
-                    dupeFilePath += "(" + count + ")";
+                    dupeFilePath = destDirPath;
+                    dupeFilePath += fileName + "(" + count + ")" + fileExtension;
 
                     // Check if the new dupe path doesn't exist
                     if (!File.Exists(dupeFilePath)) {
@@ -167,7 +172,7 @@ namespace AutoSortFolder
                 File.Copy(sourceFilePath, dupeFilePath, false);
             } finally
             {
-                File.Delete(sourceFilePath);
+                File.Delete(sourceFilePath); // Delete the original
             }
         }
     }
