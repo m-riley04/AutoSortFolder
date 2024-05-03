@@ -39,7 +39,6 @@ namespace AutoSortFolder
         public void Activate()
         {
             this.status = AnchorStatus.ACTIVE;
-            this.Sort();
         }
 
         /// <summary>
@@ -53,7 +52,7 @@ namespace AutoSortFolder
         /// <summary>
         /// Sorts the anchor based on the set sorting method
         /// </summary>
-        public void Sort()
+        public void Sort(Action<int> progressReporter)
         {
             // Check if the anchor directory exists
             if (!Directory.Exists(this.directory)) throw new DirectoryNotFoundException();
@@ -62,145 +61,46 @@ namespace AutoSortFolder
             this.filePaths = Directory.GetFiles(this.directory);
             this.folderPaths = Directory.GetDirectories(this.directory);
 
-            // Select the sorting method
-            switch (this.method)
-            {
-                case SortingMethod.NONE:
-                    throw new Exception("No sorting method selected");
+            // File progress reporter
+            int totalFiles = this.filePaths.Length;
+            int processedFiles = 0;
 
-                case SortingMethod.EXTENSION:
-                    this.SortByExtension();
-                    break;
-
-                case SortingMethod.ALPHABETICAL:
-                    this.SortByAlphabet();
-                    break;
-
-                case SortingMethod.DATE_CREATED:
-                    this.SortByDateCreated();
-                    break;
-
-                case SortingMethod.DATE_MODIFIED:
-                    this.SortByDateModified();
-                    break;
-
-                case SortingMethod.DATE_ACCESSED:
-                    this.SortByDateAccessed();
-                    break;
-
-                default:
-                    throw new Exception("No sorting method selected");
-            }
-        }
-
-        private void SortByExtension()
-        {
-            // Initialize category
-            string extensionCategory = "other";
-            string folderDirectory = this.directory + "\\" + extensionCategory;
-
-            // Iterate through all files
+            // Go through each file
             foreach (string filePath in this.filePaths)
             {
-                string fileName = Path.GetFileName(filePath);
-                string fileExtension = Path.GetExtension(filePath);
-
-                // Iterate through and get the category
-                foreach (KeyValuePair<string, string[]> item in FileExtensions.Extensions)
+                // Select the sorting method
+                switch (this.method)
                 {
-                    if (item.Value.Contains(fileExtension))
-                    {
-                        extensionCategory = item.Key;
+                    case SortingMethod.NONE:
+                        throw new Exception("No sorting method selected");
 
-                        // Check if the category folder isn't created
-                        folderDirectory = this.directory + "\\" + extensionCategory;
-                        if (!Directory.Exists(folderDirectory)) Directory.CreateDirectory(folderDirectory);
-
-                        // Break out of the loop
+                    case SortingMethod.EXTENSION:
+                        FileSorter.SortByExtension(filePath, this.directory);
                         break;
-                    }
+
+                    case SortingMethod.ALPHABETICAL:
+                        FileSorter.SortByAlphabet(filePath, this.directory);
+                        break;
+
+                    case SortingMethod.DATE_CREATED:
+                        FileSorter.SortByDate(filePath, this.directory, FileSorter.DateSortCategory.CREATED);
+                        break;
+
+                    case SortingMethod.DATE_MODIFIED:
+                        FileSorter.SortByDate(filePath, this.directory, FileSorter.DateSortCategory.MODIFIED);
+                        break;
+
+                    case SortingMethod.DATE_ACCESSED:
+                        FileSorter.SortByDate(filePath, this.directory, FileSorter.DateSortCategory.ACCESSED);
+                        break;
+
+                    default:
+                        throw new Exception("No sorting method selected");
                 }
 
-                // TODO - Check if the file already exists in the destination folder
-
-                // Move the file to the folder
-                File.Move(filePath, folderDirectory + "\\" + fileName);
-            }
-        }
-
-        private void SortByAlphabet()
-        {
-            // Iterate through all files
-            foreach (string filePath in this.filePaths)
-            {
-                string fileName = Path.GetFileName(filePath);
-                char c = fileName[0];
-                string folderDirectory = this.directory + "\\" + c;
-
-                // Check if the directory already exists
-                if (!Directory.Exists(folderDirectory)) Directory.CreateDirectory(folderDirectory);
-
-                // TODO - Check if the file already exists in the destination folder
-
-                // Move the file to the folder
-                File.Move(filePath, folderDirectory + "\\" + fileName);
-            }
-        }
-
-        private void SortByDateCreated()
-        {
-            // Iterate through all files
-            foreach (string filePath in this.filePaths)
-            {
-                string fileName = Path.GetFileName(filePath);
-                DateTime date = File.GetCreationTime(filePath);
-                string folderDirectory = this.directory + "\\" + date.Date.ToString();
-
-                // Check if the directory already exists
-                if (!Directory.Exists(folderDirectory)) Directory.CreateDirectory(folderDirectory);
-
-                // TODO - Check if the file already exists in the destination folder
-
-                // Move the file to the folder
-                File.Move(filePath, folderDirectory + "\\" + fileName);
-            }
-        }
-
-        private void SortByDateModified()
-        {
-            // Iterate through all files
-            foreach (string filePath in this.filePaths)
-            {
-                string fileName = Path.GetFileName(filePath);
-                DateTime date = File.GetLastWriteTime(filePath);
-                string folderDirectory = this.directory + "\\" + date.Date.ToString();
-
-                // Check if the directory already exists
-                if (!Directory.Exists(folderDirectory)) Directory.CreateDirectory(folderDirectory);
-
-                // TODO - Check if the file already exists in the destination folder
-
-                // Move the file to the folder
-                File.Move(filePath, folderDirectory + "\\" + fileName);
-            }
-        }
-
-        private void SortByDateAccessed()
-        {
-            // Iterate through all files
-            foreach (string filePath in this.filePaths)
-            {
-                string fileName = Path.GetFileName(filePath);
-                DateTime date = File.GetLastAccessTime(filePath);
-                string folderDirectory = this.directory + "\\" + date.Date.ToString();
-
-                // Check if the directory already exists
-                if (!Directory.Exists(folderDirectory)) Directory.CreateDirectory(folderDirectory);
-
-                // TODO - Check if the file already exists in the destination folder
-
-                // Move the file to the folder
-                File.Move(filePath, folderDirectory + "\\" + fileName);
+                // Increment the number of processed files
+                processedFiles++;
+                progressReporter((processedFiles * 100) / totalFiles);
             }
         }
 
