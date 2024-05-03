@@ -77,6 +77,12 @@
   <ItemGroup>
     <Compile Include="Anchor.cs" />
     <Compile Include="App.cs" />
+    <Compile Include="ErrorPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorPopup.Designer.cs">
+      <DependentUpon>ErrorPopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileExtensions.cs" />
     <Compile Include="Window.cs">
       <SubType>Form</SubType>
@@ -86,6 +92,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ErrorPopup.resx">
+      <DependentUpon>ErrorPopup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
     </EmbeddedResource>
