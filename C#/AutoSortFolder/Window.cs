@@ -21,7 +21,10 @@ namespace AutoSortFolder
         public Window()
         {
             InitializeComponent();
+        }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
             // Create the app
             app = new App();
 
