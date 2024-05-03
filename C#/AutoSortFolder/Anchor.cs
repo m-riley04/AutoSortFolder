@@ -96,14 +96,22 @@ namespace AutoSortFolder
                 processedFiles++;
                 progressReporter((processedFiles * 100) / totalFiles);
             }
+
+            // Get the current folders in the directories
+            this.folderPaths = Directory.GetDirectories(this.directory);
         }
 
-        public void Unsort()
+        public void Unsort(Action<int> progressReporter)
         {
+            // Check if the anchor directory exists
             if (!Directory.Exists(this.directory)) throw new DirectoryNotFoundException();
 
             // Get current files
             folderPaths = Directory.GetDirectories(this.directory);
+
+            // File progress reporter
+            int totalFolders = this.folderPaths.Length;
+            int processedFiles = 0;
 
             // Iterate through every folder
             foreach (string folderPath in this.folderPaths)
@@ -116,12 +124,15 @@ namespace AutoSortFolder
                     string fileName = Path.GetFileName(filePath);
 
                     // Move the file out of the current folder to the
-                    Console.WriteLine("From " + filePath + " to " + this.directory + "\\" + fileName);
-                    File.Move(filePath, this.directory + "\\" + fileName);
+                    FileSorter.MoveSafe(filePath, this.directory + "\\" + fileName);
                 }
 
                 // Delete the directory
                 Directory.Delete(folderPath);
+
+                // Increment the number of processed folders
+                processedFiles++;
+                progressReporter((processedFiles * 100) / totalFolders);
             }
 
         }
