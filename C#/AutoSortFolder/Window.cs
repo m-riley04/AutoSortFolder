@@ -102,7 +102,13 @@ namespace AutoSortFolder
 
         private void button_start_Click(object sender, EventArgs e)
         {
-            app.currentAnchor.Activate();
+            try
+            {
+                app.currentAnchor.Activate();
+            } catch (Exception err)
+            {
+                var popup = new ErrorPopup(err.Message);
+            }
 
             UpdateUI();
         }
