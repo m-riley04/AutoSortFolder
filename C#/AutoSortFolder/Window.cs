@@ -102,7 +102,12 @@ namespace AutoSortFolder
         {
             try
             {
-                app.currentAnchor.Activate();
+                if (!sorterWorker.IsBusy)
+                {
+                    // Start the asynchronous operation.
+                    sorterWorker.RunWorkerAsync();
+                    app.ActivateCurrentAnchor();
+                }
             } catch (Exception err)
             {
                 var popup = new ErrorPopup(err.Message);
@@ -113,22 +118,40 @@ namespace AutoSortFolder
 
         private void button_stop_Click(object sender, EventArgs e)
         {
-            app.currentAnchor.Deactivate();
+            try
+            {
+                if (sorterWorker.WorkerSupportsCancellation)
+                {
+                    // Cancel the asynchronous operation.
+                    sorterWorker.CancelAsync();
+                    app.DeactivateCurrentAnchor();
+                }
+            } catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
 
             UpdateUI();
         }
 
         private void button_selectFolder_Click(object sender, EventArgs e)
         {
-            // Check if the anchor is set
-            if (app.currentAnchor == null)
+            try
             {
-                app.currentAnchor = app.anchors[0];
-            }
+                // Check if the anchor is set
+                if (app.currentAnchor == null)
+                {
+                    app.currentAnchor = app.anchors[0];
+                }
 
-            if (app.currentAnchor.status != AnchorStatus.IDLE) throw new Exception("Cannot change anchor point folder while sorting is in progress");
+                if (app.currentAnchor.status != AnchorStatus.IDLE) throw new Exception("Cannot change anchor point folder while sorting is in progress");
 
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    app.currentAnchor.directory = folderBrowserDialog.SelectedPath;
+                    UpdateUI();
+                }
+            } catch (Exception err)
             {
                 app.currentAnchor.directory = folderBrowserDialog.SelectedPath;
                 UpdateUI();
@@ -194,4 +217,45 @@ namespace AutoSortFolder
         }
     }
 
+        private void sorterWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+
+            while (!worker.CancellationPending)
+            {
+                app.currentAnchor.Sort(
+                    progress =>
+                    {
+                        worker.ReportProgress(progress);
+                    });
+                System.Threading.Thread.Sleep(1000);
+            }
+
+            if (worker.CancellationPending)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void sorterWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBarSorting.Value = e.ProgressPercentage;
+        }
+
+        private void sorterWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled == true)
+            {
+                MessageBox.Show("Sorting was canceled!");
+            }
+            else if (e.Error != null)
+            {
+                MessageBox.Show("Error: " + e.Error.Message);
+            }
+            else
+            {
+                MessageBox.Show("Sorting is complete.");
+            }
+        }
+    }
 }
