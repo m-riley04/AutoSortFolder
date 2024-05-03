@@ -33,17 +33,11 @@ namespace AutoSortFolder
             this.method = method;
         }
 
-        /// <summary>
-        /// Activates the anchor's sorting method
-        /// </summary>
         public void Activate()
         {
             this.status = AnchorStatus.ACTIVE;
         }
 
-        /// <summary>
-        /// Deactivates the anchor's sorting method
-        /// </summary>
         public void Deactivate()
         {
             this.status = AnchorStatus.IDLE;
