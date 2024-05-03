@@ -101,6 +101,11 @@ namespace AutoSortFolder
             this.folderPaths = Directory.GetDirectories(this.directory);
         }
 
+        /// <summary>
+        /// Unsorts a main directory by moving all files out of each subdirectory
+        /// </summary>
+        /// <param name="progressReporter"></param>
+        /// <exception cref="DirectoryNotFoundException"></exception>
         public void Unsort(Action<int> progressReporter)
         {
             // Check if the anchor directory exists
