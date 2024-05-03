@@ -49,8 +49,11 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.progressBarSorting = new System.Windows.Forms.ProgressBar();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.sorterWorker = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -253,6 +256,8 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.progressBarSorting);
+            this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.label2);
@@ -265,14 +270,21 @@
             this.panel4.Size = new System.Drawing.Size(466, 251);
             this.panel4.TabIndex = 17;
             // 
-            // label4
+            // progressBarSorting
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 5);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 13);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Current Anchor Point";
+            this.progressBarSorting.Location = new System.Drawing.Point(14, 220);
+            this.progressBarSorting.Name = "progressBarSorting";
+            this.progressBarSorting.Size = new System.Drawing.Size(96, 23);
+            this.progressBarSorting.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(11, 201);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Progress";
             // 
             // label5
             // 
@@ -283,6 +295,23 @@
             this.label5.TabIndex = 19;
             this.label5.Text = "Status";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(5, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Current Anchor Point";
+            // 
+            // sorterWorker
+            // 
+            this.sorterWorker.WorkerReportsProgress = true;
+            this.sorterWorker.WorkerSupportsCancellation = true;
+            this.sorterWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.sorterWorker_DoWork);
+            this.sorterWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.sorterWorker_ProgressChanged);
+            this.sorterWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.sorterWorker_RunWorkerCompleted);
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,7 +320,9 @@
             this.ClientSize = new System.Drawing.Size(800, 270);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Window";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "AutoSortFolder";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
@@ -330,6 +361,9 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.ComponentModel.BackgroundWorker sorterWorker;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ProgressBar progressBarSorting;
     }
 }
 
