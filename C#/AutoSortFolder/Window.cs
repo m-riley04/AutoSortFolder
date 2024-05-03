@@ -110,7 +110,7 @@ namespace AutoSortFolder
                 }
             } catch (Exception err)
             {
-                var popup = new ErrorPopup(err.Message);
+                MessageBox.Show(err.Message, "Error");
             }
 
             UpdateUI();
@@ -153,14 +153,20 @@ namespace AutoSortFolder
                 }
             } catch (Exception err)
             {
-                app.currentAnchor.directory = folderBrowserDialog.SelectedPath;
-                UpdateUI();
+                MessageBox.Show(err.Message, "Error");
             }
         }
 
         private void button_unsort_Click(object sender, EventArgs e)
         {
-            app.currentAnchor.Unsort();
+            try
+            {
+                app.currentAnchor.Unsort();
+            } catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
+
         }
 
         private void combobox_sortingMethod_SelectedIndexChanged(object sender, EventArgs e)
@@ -170,32 +176,57 @@ namespace AutoSortFolder
 
         private void button_save_Click(object sender, EventArgs e)
         {
-            app.SaveAnchors();
+            try
+            {
+                app.SaveAnchors();
+            } catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
         }
 
         private void button_load_Click(object sender, EventArgs e)
         {
-            app.LoadAnchors();
+            try
+            {
+                app.LoadAnchors();
+            } catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
+
             PopulateAnchors();
             UpdateUI();
         }
 
         private void button_add_Click(object sender, EventArgs e)
         {
-            Anchor newAnchor = new Anchor(listbox_anchors.Items.Count + 1, "...", SortingMethod.NONE);
-            app.anchors.Add(newAnchor);
-            app.currentAnchor = newAnchor;
-            listbox_anchors.Items.Add((listbox_anchors.Items.Count+1) + ") " + newAnchor.directory);
+            try
+            {
+                Anchor newAnchor = new Anchor(listbox_anchors.Items.Count + 1, "...", SortingMethod.NONE);
+                app.anchors.Add(newAnchor);
+                app.currentAnchor = newAnchor;
+                listbox_anchors.Items.Add((listbox_anchors.Items.Count + 1) + ") " + newAnchor.directory);
+            } catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
 
             this.UpdateUI();
         }
 
         private void button_remove_Click(object sender, EventArgs e)
         {
-            int index = listbox_anchors.SelectedIndex;
-            if (index != -1)
+            try
             {
-                app.anchors.RemoveAt(index);
+                int index = listbox_anchors.SelectedIndex;
+                if (index != -1)
+                {
+                    app.anchors.RemoveAt(index);
+                }
+            } catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
             }
 
             PopulateAnchors();
@@ -204,18 +235,29 @@ namespace AutoSortFolder
 
         private void listbox_anchors_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = listbox_anchors.SelectedIndex;
-            if (index != -1 && index != app.anchors.IndexOf(app.currentAnchor)) button_select.Enabled = true;
-            else button_select.Enabled = false;
+            try
+            {
+                int index = listbox_anchors.SelectedIndex;
+                if (index != -1 && index != app.anchors.IndexOf(app.currentAnchor)) button_select.Enabled = true;
+                else button_select.Enabled = false;
+            } catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
         }
 
         private void button_select_Click(object sender, EventArgs e)
         {
-            if (listbox_anchors.SelectedIndex != -1) app.currentAnchor = app.anchors[listbox_anchors.SelectedIndex];
+            try
+            {
+                if (listbox_anchors.SelectedIndex != -1) app.currentAnchor = app.anchors[listbox_anchors.SelectedIndex];
+            } catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
             PopulateAnchors();
             UpdateUI();
         }
-    }
 
         private void sorterWorker_DoWork(object sender, DoWorkEventArgs e)
         {
