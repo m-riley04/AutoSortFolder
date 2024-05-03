@@ -84,6 +84,7 @@
       <DependentUpon>ErrorPopup.cs</DependentUpon>
     </Compile>
     <Compile Include="FileExtensions.cs" />
+    <Compile Include="FileSorter.cs" />
     <Compile Include="Window.cs">
       <SubType>Form</SubType>
     </Compile>
