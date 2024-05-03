@@ -66,7 +66,7 @@ namespace AutoSortFolder
                 switch (this.method)
                 {
                     case SortingMethod.NONE:
-                        throw new Exception("No sorting method selected");
+                        throw new ArgumentNullException("No sorting method selected");
 
                     case SortingMethod.EXTENSION:
                         FileSorter.SortByExtension(filePath, this.directory);
@@ -89,7 +89,7 @@ namespace AutoSortFolder
                         break;
 
                     default:
-                        throw new Exception("No sorting method selected");
+                        throw new ArgumentNullException("No sorting method selected");
                 }
 
                 // Increment the number of processed files
