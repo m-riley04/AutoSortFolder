@@ -32,11 +32,6 @@ namespace AutoSortFolder
             UpdateUI();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void UpdateUI()
         {
             if (app.currentAnchor == null)
