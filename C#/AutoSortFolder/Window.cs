@@ -246,6 +246,8 @@ namespace AutoSortFolder
                 MessageBox.Show(err.Message, "Error");
             }
 
+            PopulateCurrentAnchorTree();
+
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -323,6 +325,7 @@ namespace AutoSortFolder
             }
             PopulateAnchors();
             UpdateUI();
+            UpdateCurrentAnchorUI();
         }
 
         private void dropdownSortingMethod_SelectedIndexChanged(object sender, EventArgs e)
@@ -334,9 +337,11 @@ namespace AutoSortFolder
         {
             try
             {
-                int index = listbox_anchors.SelectedIndex;
-                if (index != -1 && index != app.anchors.IndexOf(app.currentAnchor)) button_select.Enabled = true;
-                else button_select.Enabled = false;
+                if (listbox_anchors.SelectedIndex != -1) app.currentAnchor = app.anchors[listbox_anchors.SelectedIndex];
+                UpdateCurrentAnchorUI();
+                //int index = listbox_anchors.SelectedIndex;
+                //if (index != -1 && index != app.anchors.IndexOf(app.currentAnchor)) button_select.Enabled = true;
+                //else button_select.Enabled = false;
             } catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Error");
