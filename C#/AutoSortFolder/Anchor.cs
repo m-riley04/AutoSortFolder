@@ -29,6 +29,7 @@ namespace AutoSortFolder
         public string directory;
         public AnchorStatus status;
         public SortingMethod method;
+        public bool sorted;
 
         private string[] filePaths;
         private string[] folderPaths;
@@ -39,6 +40,7 @@ namespace AutoSortFolder
             this.directory = "...";
             this.status = AnchorStatus.IDLE;
             this.method = SortingMethod.NONE;
+            this.sorted = false;
         }
 
         public Anchor(int id, string directory, SortingMethod method)
@@ -47,6 +49,7 @@ namespace AutoSortFolder
             this.directory = directory;
             this.status = AnchorStatus.IDLE;
             this.method = method;
+            this.sorted = false;
         }
 
         public void Activate()
@@ -62,10 +65,15 @@ namespace AutoSortFolder
         /// <summary>
         /// Sorts the anchor based on the set sorting method
         /// </summary>
+        /// <param name="progressReporter"></param>
+        /// <exception cref="DirectoryNotFoundException"></exception>
         public void Sort(Action<int> progressReporter)
         {
             // Check if the anchor directory exists
             if (!Directory.Exists(this.directory)) throw new DirectoryNotFoundException();
+
+            // Set sorted
+            this.sorted = false;
 
             // Get current files
             this.filePaths = Directory.GetFiles(this.directory);
@@ -112,6 +120,9 @@ namespace AutoSortFolder
                 processedFiles++;
                 progressReporter((processedFiles * 100) / totalFiles);
             }
+
+            // Set sorted
+            this.sorted = true;
 
             // Get the current folders in the directories
             this.folderPaths = Directory.GetDirectories(this.directory);
