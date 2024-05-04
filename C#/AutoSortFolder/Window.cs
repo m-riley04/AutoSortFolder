@@ -117,6 +117,7 @@ namespace AutoSortFolder
 
             bool isIdle = app.currentAnchor.status == AnchorStatus.IDLE;
             bool isActive = app.currentAnchor.status == AnchorStatus.ACTIVE;
+            bool isSorted = app.currentAnchor.sorted;
 
             // Update Labels
             label_status.Text = app.currentAnchor.status.ToString();
@@ -124,7 +125,7 @@ namespace AutoSortFolder
             // Update Buttons
             button_start.Enabled = isIdle;
             button_stop.Enabled = isActive;
-            button_unsort.Enabled = isIdle;
+            button_unsort.Enabled = isSorted;
             button_selectFolder.Enabled = isIdle;
             //button_select.Enabled = (listbox_anchors.SelectedIndex != -1 && listbox_anchors.SelectedIndex != app.anchors.IndexOf(app.currentAnchor));
 
@@ -238,13 +239,14 @@ namespace AutoSortFolder
             try
             {
                 app.currentAnchor.Unsort(progress => {});
+                app.currentAnchor.sorted = false;
             } catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Error");
             }
 
             PopulateCurrentAnchorTree();
-
+            UpdateCurrentAnchorUI();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -334,9 +336,6 @@ namespace AutoSortFolder
             {
                 if (listbox_anchors.SelectedIndex != -1) app.currentAnchor = app.anchors[listbox_anchors.SelectedIndex];
                 UpdateCurrentAnchorUI();
-                //int index = listbox_anchors.SelectedIndex;
-                //if (index != -1 && index != app.anchors.IndexOf(app.currentAnchor)) button_select.Enabled = true;
-                //else button_select.Enabled = false;
             } catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Error");
