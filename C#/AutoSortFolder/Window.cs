@@ -452,5 +452,50 @@ namespace AutoSortFolder
                 MessageBox.Show("Sorting is complete.");
             }
         }
+        #endregion
+
+        #region Menubar
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveAnchors();
+        }
+
+        private void loadAnchorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadAnchors();
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddAnchor();
+        }
+
+        private void removeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RemoveAnchor();
+        }
+
+        private void startToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StartAnchorSorting();
+        }
+
+        private void stopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StopAnchorSorting();
+        }
+
+        private void unsortToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UnsortAnchor();
+        }
+
+        private void gitHubRepositoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Open the GitHub repo for the app
+            string githubRepoURL = "https://github.com/m-riley04/AutoSortFolder";
+            OpenURLInBrowser(githubRepoURL);
+        }
+        #endregion
     }
 }
