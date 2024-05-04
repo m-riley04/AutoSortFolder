@@ -7,6 +7,22 @@ using System.Threading.Tasks;
 
 namespace AutoSortFolder
 {
+    public enum AnchorStatus
+    {
+        IDLE,
+        ACTIVE,
+        ERROR
+    }
+    public enum SortingMethod
+    {
+        NONE,
+        EXTENSION,
+        ALPHABETICAL,
+        DATE_CREATED,
+        DATE_MODIFIED,
+        DATE_ACCESSED
+    }
+
     public class Anchor
     {
         public int id;
