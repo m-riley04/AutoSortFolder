@@ -32,6 +32,31 @@ namespace AutoSortFolder
             UpdateUI();
         }
 
+        private void PopulateCurrentAnchorTree()
+        {
+            if (app.currentAnchor == null) return;
+
+            // Clear the current tree
+            treeCurrentAnchor.Nodes.Clear();
+
+
+            // Update nodes with current directory
+            try
+            {
+                treeCurrentAnchor.BeginUpdate();
+                treeCurrentAnchor.Nodes.AddRange(GetDirectoryNodes(app.currentAnchor.directory));
+            } catch (Exception ex)
+            {
+                Console.WriteLine("Error occurred during populating current anchor's directory tree: " + ex.Message);
+            } finally
+            {
+                treeCurrentAnchor.EndUpdate();
+            }
+
+            // Automatically open the tree
+            treeCurrentAnchor.ExpandAll();
+        }
+
         private void UpdateUI()
         {
             if (app.currentAnchor == null)
