@@ -2,6 +2,8 @@
 This is a program that I created entirely in Python during my free time that can take any unorganized folder and sort it with multiple sorting methods.
 
 # ==Development Update==
+UPDATE (5/4/2024): Hello again! I have begun writing version 2.0. It is a complete overhaul of the original program, now being written in C#. More updates are to come.
+
 UPDATE (1/10/2024): Hello! It's been almost a year and a half or two since I touched this repository. That being said, I am planning on re-writing AutoSortFolder from scratch! This will be in either Python or C++, which has yet to be determined. For now, I will be updating the README to be much, much nicer.
 
 # Table of Contents
