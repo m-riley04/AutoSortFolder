@@ -237,10 +237,7 @@ namespace AutoSortFolder
         {
             try
             {
-                app.currentAnchor.Unsort(progress =>
-                {
-                    
-                });
+                app.currentAnchor.Unsort(progress => {});
             } catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Error");
@@ -323,8 +320,6 @@ namespace AutoSortFolder
             {
                 MessageBox.Show(err.Message, "Error");
             }
-            PopulateAnchors();
-            UpdateUI();
             UpdateCurrentAnchorUI();
         }
 
