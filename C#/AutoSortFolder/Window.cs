@@ -104,18 +104,29 @@ namespace AutoSortFolder
                 return;
             }
 
+            UpdateCurrentAnchorUI();
+        }
+
+        private void UpdateCurrentAnchorUI()
+        {
+            if (app.currentAnchor == null)
+            {
+                //ResetUI();
+                return;
+            }
+
             bool isIdle = app.currentAnchor.status == AnchorStatus.IDLE;
             bool isActive = app.currentAnchor.status == AnchorStatus.ACTIVE;
 
             // Update Labels
             label_status.Text = app.currentAnchor.status.ToString();
-            
+
             // Update Buttons
             button_start.Enabled = isIdle;
             button_stop.Enabled = isActive;
             button_unsort.Enabled = isIdle;
             button_selectFolder.Enabled = isIdle;
-            button_select.Enabled = (listbox_anchors.SelectedIndex != -1 && listbox_anchors.SelectedIndex != app.anchors.IndexOf(app.currentAnchor));
+            //button_select.Enabled = (listbox_anchors.SelectedIndex != -1 && listbox_anchors.SelectedIndex != app.anchors.IndexOf(app.currentAnchor));
 
             // Update dropdowns
             combobox_sortingMethod.Enabled = isIdle;
@@ -124,9 +135,10 @@ namespace AutoSortFolder
             // Update fields
             textbox_folderDirectory.Text = app.currentAnchor.directory;
 
-            // Update listbox
-        }
+            // Update tree
+            PopulateCurrentAnchorTree();
 
+        }
         private void ResetUI()
         {
             // Update Labels
