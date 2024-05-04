@@ -58,6 +58,44 @@ namespace AutoSortFolder
             treeCurrentAnchor.ExpandAll();
         }
 
+        private TreeNode[] GetDirectoryNodes(string directory, bool includeRoot = true)
+        {
+            List<TreeNode> nodes = new List<TreeNode>();
+
+            if (includeRoot) nodes.Add(new TreeNode(Path.GetFileName(directory)));
+
+            // Populate with all directories
+            int i = 0;
+            foreach (string folderPath in Directory.GetDirectories(directory))
+            {
+                Console.WriteLine(folderPath);
+                string name = Path.GetFileName(folderPath);
+                if (includeRoot) nodes[0].Nodes.Add(name);
+                else nodes.Add(new TreeNode(name));
+
+                TreeNode subnode;
+
+                if (includeRoot) subnode = nodes[0].Nodes[i];
+                else subnode = nodes[i];
+
+                Console.WriteLine(folderPath);
+                // Recursively go through the sub-node
+                subnode.Nodes.AddRange(GetDirectoryNodes(folderPath, false));
+                i++;
+            }
+
+            // Populate with all files
+            foreach (string filePath in Directory.GetFiles(directory))
+            {
+                string name = Path.GetFileName(filePath);
+                if (includeRoot) nodes[0].Nodes.Add(name);
+                else nodes.Add(new TreeNode(name));
+            }
+
+            // Return the nodes array
+            return nodes.ToArray();
+        }
+
         private void UpdateUI()
         {
             if (app.currentAnchor == null)
