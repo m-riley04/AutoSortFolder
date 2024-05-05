@@ -121,6 +121,8 @@ namespace AutoSortFolder
             {
                 MessageBox.Show(err.Message, "Error");
             }
+
+            SaveAnchors();
         }
 
         private void UnsortAnchor()
@@ -137,6 +139,8 @@ namespace AutoSortFolder
 
             PopulateCurrentAnchorTree();
             UpdateCurrentAnchorUI();
+
+            SaveAnchors();
         }
 
         private void RemoveAnchor()
@@ -156,6 +160,8 @@ namespace AutoSortFolder
 
             PopulateAnchors();
             UpdateUI();
+
+            SaveAnchors();
         }
 
         private void AddAnchor()
@@ -172,7 +178,8 @@ namespace AutoSortFolder
                 MessageBox.Show(err.Message, "Error");
             }
 
-            this.UpdateUI();
+            UpdateUI();
+            SaveAnchors();
         }
         
         private void OpenURLInBrowser(string url)
