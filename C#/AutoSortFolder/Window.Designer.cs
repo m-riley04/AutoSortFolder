@@ -46,39 +46,51 @@
             this.button_add = new System.Windows.Forms.Button();
             this.button_remove = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.treeCurrentAnchor = new System.Windows.Forms.TreeView();
             this.progressBarSorting = new System.Windows.Forms.ProgressBar();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.sorterWorker = new System.ComponentModel.BackgroundWorker();
             this.label7 = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anchorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unsortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gitHubRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControlPages = new System.Windows.Forms.TabControl();
+            this.pageHome = new System.Windows.Forms.TabPage();
+            this.pageSettings = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkboxLiveSorting = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.menuStrip.SuspendLayout();
+            this.tabControlPages.SuspendLayout();
+            this.pageHome.SuspendLayout();
+            this.pageSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // textbox_folderDirectory
             // 
+            this.textbox_folderDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.textbox_folderDirectory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textbox_folderDirectory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.textbox_folderDirectory.Location = new System.Drawing.Point(80, 7);
             this.textbox_folderDirectory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textbox_folderDirectory.Name = "textbox_folderDirectory";
@@ -98,19 +110,22 @@
             // 
             // button_selectFolder
             // 
+            this.button_selectFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.button_selectFolder.FlatAppearance.BorderSize = 0;
+            this.button_selectFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_selectFolder.Location = new System.Drawing.Point(396, 6);
             this.button_selectFolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_selectFolder.Name = "button_selectFolder";
             this.button_selectFolder.Size = new System.Drawing.Size(120, 21);
             this.button_selectFolder.TabIndex = 3;
             this.button_selectFolder.Text = "Select Folder";
-            this.button_selectFolder.UseVisualStyleBackColor = true;
+            this.button_selectFolder.UseVisualStyleBackColor = false;
             this.button_selectFolder.Click += new System.EventHandler(this.buttonSelectFolder_Click);
             // 
             // label_status
             // 
             this.label_status.AutoSize = true;
-            this.label_status.Location = new System.Drawing.Point(13, 138);
+            this.label_status.Location = new System.Drawing.Point(129, 287);
             this.label_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_status.Name = "label_status";
             this.label_status.Size = new System.Drawing.Size(33, 12);
@@ -119,36 +134,45 @@
             // 
             // button_start
             // 
+            this.button_start.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.button_start.FlatAppearance.BorderSize = 0;
+            this.button_start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_start.Location = new System.Drawing.Point(4, 3);
             this.button_start.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_start.Name = "button_start";
             this.button_start.Size = new System.Drawing.Size(69, 21);
             this.button_start.TabIndex = 5;
             this.button_start.Text = "Start";
-            this.button_start.UseVisualStyleBackColor = true;
+            this.button_start.UseVisualStyleBackColor = false;
             this.button_start.Click += new System.EventHandler(this.buttonStart_Click);
             // 
             // button_stop
             // 
+            this.button_stop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
             this.button_stop.Enabled = false;
+            this.button_stop.FlatAppearance.BorderSize = 0;
+            this.button_stop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_stop.Location = new System.Drawing.Point(79, 3);
             this.button_stop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_stop.Name = "button_stop";
             this.button_stop.Size = new System.Drawing.Size(69, 21);
             this.button_stop.TabIndex = 6;
             this.button_stop.Text = "Stop";
-            this.button_stop.UseVisualStyleBackColor = true;
+            this.button_stop.UseVisualStyleBackColor = false;
             this.button_stop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
             // button_unsort
             // 
+            this.button_unsort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.button_unsort.FlatAppearance.BorderSize = 0;
+            this.button_unsort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_unsort.Location = new System.Drawing.Point(155, 3);
             this.button_unsort.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_unsort.Name = "button_unsort";
             this.button_unsort.Size = new System.Drawing.Size(69, 21);
             this.button_unsort.TabIndex = 7;
             this.button_unsort.Text = "Unsort";
-            this.button_unsort.UseVisualStyleBackColor = true;
+            this.button_unsort.UseVisualStyleBackColor = false;
             this.button_unsort.Click += new System.EventHandler(this.buttonUnsort_Click);
             // 
             // panel1
@@ -175,6 +199,9 @@
             // 
             // combobox_sortingMethod
             // 
+            this.combobox_sortingMethod.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.combobox_sortingMethod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combobox_sortingMethod.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.combobox_sortingMethod.FormattingEnabled = true;
             this.combobox_sortingMethod.Items.AddRange(new object[] {
             "None",
@@ -183,7 +210,7 @@
             "Date Created",
             "Date Modified",
             "Date Accessed"});
-            this.combobox_sortingMethod.Location = new System.Drawing.Point(13, 90);
+            this.combobox_sortingMethod.Location = new System.Drawing.Point(12, 90);
             this.combobox_sortingMethod.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.combobox_sortingMethod.Name = "combobox_sortingMethod";
             this.combobox_sortingMethod.Size = new System.Drawing.Size(160, 20);
@@ -202,97 +229,103 @@
             // 
             // button_save
             // 
+            this.button_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.button_save.FlatAppearance.BorderSize = 0;
+            this.button_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_save.Location = new System.Drawing.Point(232, 253);
             this.button_save.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_save.Name = "button_save";
             this.button_save.Size = new System.Drawing.Size(69, 21);
             this.button_save.TabIndex = 8;
             this.button_save.Text = "Save";
-            this.button_save.UseVisualStyleBackColor = true;
+            this.button_save.UseVisualStyleBackColor = false;
+            this.button_save.Visible = false;
             this.button_save.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // button_load
             // 
+            this.button_load.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.button_load.FlatAppearance.BorderSize = 0;
+            this.button_load.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_load.Location = new System.Drawing.Point(232, 280);
             this.button_load.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_load.Name = "button_load";
             this.button_load.Size = new System.Drawing.Size(69, 21);
             this.button_load.TabIndex = 11;
             this.button_load.Text = "Load";
-            this.button_load.UseVisualStyleBackColor = true;
+            this.button_load.UseVisualStyleBackColor = false;
+            this.button_load.Visible = false;
             this.button_load.Click += new System.EventHandler(this.buttonLoad_Click);
             // 
             // listbox_anchors
             // 
+            this.listbox_anchors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.listbox_anchors.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listbox_anchors.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.listbox_anchors.FormattingEnabled = true;
             this.listbox_anchors.ItemHeight = 12;
-            this.listbox_anchors.Location = new System.Drawing.Point(4, 21);
+            this.listbox_anchors.Location = new System.Drawing.Point(4, 9);
             this.listbox_anchors.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.listbox_anchors.Name = "listbox_anchors";
-            this.listbox_anchors.Size = new System.Drawing.Size(221, 280);
+            this.listbox_anchors.Size = new System.Drawing.Size(221, 288);
             this.listbox_anchors.TabIndex = 12;
             this.listbox_anchors.SelectedIndexChanged += new System.EventHandler(this.listboxAnchors_SelectedIndexChanged);
             // 
             // button_add
             // 
+            this.button_add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.button_add.FlatAppearance.BorderSize = 0;
+            this.button_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_add.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_add.Location = new System.Drawing.Point(232, 21);
+            this.button_add.Location = new System.Drawing.Point(232, 9);
             this.button_add.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(69, 21);
             this.button_add.TabIndex = 13;
             this.button_add.Text = "Add";
-            this.button_add.UseVisualStyleBackColor = true;
+            this.button_add.UseVisualStyleBackColor = false;
             this.button_add.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // button_remove
             // 
-            this.button_remove.Location = new System.Drawing.Point(232, 48);
+            this.button_remove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.button_remove.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.button_remove.FlatAppearance.BorderSize = 0;
+            this.button_remove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_remove.Location = new System.Drawing.Point(232, 36);
             this.button_remove.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_remove.Name = "button_remove";
             this.button_remove.Size = new System.Drawing.Size(69, 21);
             this.button_remove.TabIndex = 14;
             this.button_remove.Text = "Remove";
-            this.button_remove.UseVisualStyleBackColor = true;
+            this.button_remove.UseVisualStyleBackColor = false;
             this.button_remove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.button_add);
             this.panel3.Controls.Add(this.button_load);
             this.panel3.Controls.Add(this.button_save);
             this.panel3.Controls.Add(this.listbox_anchors);
             this.panel3.Controls.Add(this.button_remove);
-            this.panel3.Location = new System.Drawing.Point(14, 63);
+            this.panel3.Location = new System.Drawing.Point(4, 44);
             this.panel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(307, 312);
             this.panel3.TabIndex = 16;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 5);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 12);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "Anchor Points";
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.treeCurrentAnchor);
             this.panel4.Controls.Add(this.progressBarSorting);
-            this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.combobox_sortingMethod);
             this.panel4.Controls.Add(this.panel1);
             this.panel4.Controls.Add(this.panel2);
             this.panel4.Controls.Add(this.label_status);
-            this.panel4.Location = new System.Drawing.Point(376, 63);
+            this.panel4.Location = new System.Drawing.Point(371, 44);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(544, 312);
@@ -310,6 +343,8 @@
             // 
             // treeCurrentAnchor
             // 
+            this.treeCurrentAnchor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.treeCurrentAnchor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.treeCurrentAnchor.Indent = 15;
             this.treeCurrentAnchor.Location = new System.Drawing.Point(215, 90);
             this.treeCurrentAnchor.Name = "treeCurrentAnchor";
@@ -318,21 +353,12 @@
             // 
             // progressBarSorting
             // 
+            this.progressBarSorting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
             this.progressBarSorting.Location = new System.Drawing.Point(9, 283);
             this.progressBarSorting.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.progressBarSorting.Name = "progressBarSorting";
             this.progressBarSorting.Size = new System.Drawing.Size(112, 21);
             this.progressBarSorting.TabIndex = 21;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 122);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 12);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Status";
             // 
             // label4
             // 
@@ -356,7 +382,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("OCR A Extended", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(14, 24);
+            this.label7.Location = new System.Drawing.Point(4, 3);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(262, 35);
@@ -365,14 +391,17 @@
             // 
             // menuStrip
             // 
+            this.menuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.menuStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
             this.anchorToolStripMenuItem,
+            this.editToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(933, 24);
+            this.menuStrip.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.menuStrip.Size = new System.Drawing.Size(930, 24);
             this.menuStrip.TabIndex = 19;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -380,19 +409,19 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveToolStripMenuItem,
-            this.loadToolStripMenuItem});
+            this.loadToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.restartToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
             // saveToolStripMenuItem
             // 
+            this.saveToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.saveToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save anchors";
@@ -400,19 +429,19 @@
             // 
             // loadToolStripMenuItem
             // 
+            this.loadToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.loadToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.loadToolStripMenuItem.Text = "Load anchors";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadAnchorsToolStripMenuItem_Click);
             // 
-            // helpToolStripMenuItem
+            // editToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem,
-            this.gitHubRepositoryToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
+            this.editToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "Edit";
             // 
             // anchorToolStripMenuItem
             // 
@@ -423,31 +452,40 @@
             this.startToolStripMenuItem,
             this.stopToolStripMenuItem,
             this.unsortToolStripMenuItem});
+            this.anchorToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.anchorToolStripMenuItem.Name = "anchorToolStripMenuItem";
             this.anchorToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.anchorToolStripMenuItem.Text = "Anchor";
             // 
-            // removeToolStripMenuItem
-            // 
-            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.removeToolStripMenuItem.Text = "Remove";
-            this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
-            // 
             // addToolStripMenuItem
             // 
+            this.addToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.addToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
+            // removeToolStripMenuItem
+            // 
+            this.removeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.removeToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeToolStripMenuItem.Text = "Remove";
+            this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
+            // 
             // toolStripSeparator1
             // 
+            this.toolStripSeparator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // startToolStripMenuItem
             // 
+            this.startToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.startToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
             this.startToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.startToolStripMenuItem.Text = "Start Sorting";
@@ -455,6 +493,8 @@
             // 
             // stopToolStripMenuItem
             // 
+            this.stopToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.stopToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
             this.stopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.stopToolStripMenuItem.Text = "Stop Sorting";
@@ -462,51 +502,154 @@
             // 
             // unsortToolStripMenuItem
             // 
+            this.unsortToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.unsortToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.unsortToolStripMenuItem.Name = "unsortToolStripMenuItem";
             this.unsortToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.unsortToolStripMenuItem.Text = "Unsort";
             this.unsortToolStripMenuItem.Click += new System.EventHandler(this.unsortToolStripMenuItem_Click);
             // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem,
+            this.gitHubRepositoryToolStripMenuItem});
+            this.helpToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
             // aboutToolStripMenuItem
             // 
+            this.aboutToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.aboutToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // gitHubRepositoryToolStripMenuItem
             // 
+            this.gitHubRepositoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.gitHubRepositoryToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gitHubRepositoryToolStripMenuItem.Name = "gitHubRepositoryToolStripMenuItem";
             this.gitHubRepositoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gitHubRepositoryToolStripMenuItem.Text = "GitHub Repository";
             this.gitHubRepositoryToolStripMenuItem.Click += new System.EventHandler(this.gitHubRepositoryToolStripMenuItem_Click);
             // 
+            // tabControlPages
+            // 
+            this.tabControlPages.Controls.Add(this.pageHome);
+            this.tabControlPages.Controls.Add(this.pageSettings);
+            this.tabControlPages.Location = new System.Drawing.Point(0, 0);
+            this.tabControlPages.Name = "tabControlPages";
+            this.tabControlPages.SelectedIndex = 0;
+            this.tabControlPages.Size = new System.Drawing.Size(931, 395);
+            this.tabControlPages.TabIndex = 20;
+            this.tabControlPages.TabStop = false;
+            // 
+            // pageHome
+            // 
+            this.pageHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.pageHome.Controls.Add(this.panel3);
+            this.pageHome.Controls.Add(this.label7);
+            this.pageHome.Controls.Add(this.panel4);
+            this.pageHome.Location = new System.Drawing.Point(4, 21);
+            this.pageHome.Name = "pageHome";
+            this.pageHome.Padding = new System.Windows.Forms.Padding(3);
+            this.pageHome.Size = new System.Drawing.Size(923, 370);
+            this.pageHome.TabIndex = 0;
+            this.pageHome.Text = "tabPage1";
+            // 
+            // pageSettings
+            // 
+            this.pageSettings.Controls.Add(this.checkboxLiveSorting);
+            this.pageSettings.Controls.Add(this.label8);
+            this.pageSettings.Location = new System.Drawing.Point(4, 21);
+            this.pageSettings.Name = "pageSettings";
+            this.pageSettings.Padding = new System.Windows.Forms.Padding(3);
+            this.pageSettings.Size = new System.Drawing.Size(923, 370);
+            this.pageSettings.TabIndex = 1;
+            this.pageSettings.Text = "tabPage2";
+            this.pageSettings.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("OCR A Extended", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(4, 3);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(167, 35);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Settings";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.toolStripSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.exitToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // restartToolStripMenuItem
+            // 
+            this.restartToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.restartToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.restartToolStripMenuItem.Name = "restartToolStripMenuItem";
+            this.restartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.restartToolStripMenuItem.Text = "Restart";
+            this.restartToolStripMenuItem.Click += new System.EventHandler(this.restartToolStripMenuItem_Click);
+            // 
+            // checkboxLiveSorting
+            // 
+            this.checkboxLiveSorting.AutoSize = true;
+            this.checkboxLiveSorting.Location = new System.Drawing.Point(10, 52);
+            this.checkboxLiveSorting.Name = "checkboxLiveSorting";
+            this.checkboxLiveSorting.Size = new System.Drawing.Size(108, 16);
+            this.checkboxLiveSorting.TabIndex = 20;
+            this.checkboxLiveSorting.Text = "Live Sorting";
+            this.checkboxLiveSorting.UseVisualStyleBackColor = true;
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(933, 429);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.ClientSize = new System.Drawing.Size(930, 390);
             this.Controls.Add(this.menuStrip);
+            this.Controls.Add(this.tabControlPages);
             this.Font = new System.Drawing.Font("OCR A Extended", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MaximizeBox = false;
             this.Name = "Window";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ShowIcon = false;
             this.Text = "AutoSortFolder";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.tabControlPages.ResumeLayout(false);
+            this.pageHome.ResumeLayout(false);
+            this.pageHome.PerformLayout();
+            this.pageSettings.ResumeLayout(false);
+            this.pageSettings.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,9 +675,7 @@
         private System.Windows.Forms.Button button_add;
         private System.Windows.Forms.Button button_remove;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.ComponentModel.BackgroundWorker sorterWorker;
         private System.Windows.Forms.ProgressBar progressBarSorting;
@@ -556,6 +697,14 @@
         private System.Windows.Forms.ToolStripMenuItem unsortToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gitHubRepositoryToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabControlPages;
+        private System.Windows.Forms.TabPage pageHome;
+        private System.Windows.Forms.TabPage pageSettings;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restartToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkboxLiveSorting;
     }
 }
 
