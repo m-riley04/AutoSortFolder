@@ -315,7 +315,14 @@ namespace AutoSortFolder
             PopulateCurrentAnchorTree();
 
         }
-        
+
+        private void UpdateAnchorListUI()
+        {
+            if (app.currentAnchor == null) return;
+            bool isIdle = app.currentAnchor.status == AnchorStatus.IDLE;
+            listbox_anchors.Enabled = isIdle;
+        }
+
         private void ResetUI()
         {
             // Update Labels
