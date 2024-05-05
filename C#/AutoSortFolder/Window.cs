@@ -192,6 +192,11 @@ namespace AutoSortFolder
             this.Close();
         }
 
+        private void RestartProgram()
+        {
+            Application.Restart();
+        }
+
         #endregion
 
         #region UI Update Methods
