@@ -507,5 +507,11 @@ namespace AutoSortFolder
             OpenURLInBrowser(githubRepoURL);
         }
         #endregion
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExitProgram();
+        }
+
     }
 }
