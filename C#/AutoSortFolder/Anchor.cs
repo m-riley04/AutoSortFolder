@@ -37,19 +37,19 @@ namespace AutoSortFolder
         public Anchor()
         {
             this.id = 0;
-            this.directory = "...";
+            this.directory = "";
             this.status = AnchorStatus.IDLE;
             this.method = SortingMethod.NONE;
             this.sorted = false;
         }
 
-        public Anchor(int id, string directory, SortingMethod method)
+        public Anchor(int id, string directory, SortingMethod method, bool sorted)
         {
             this.id = id;
             this.directory = directory;
             this.status = AnchorStatus.IDLE;
             this.method = method;
-            this.sorted = false;
+            this.sorted = sorted;
         }
 
         public void Activate()
