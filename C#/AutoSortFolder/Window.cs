@@ -168,7 +168,7 @@ namespace AutoSortFolder
         {
             try
             {
-                Anchor newAnchor = new Anchor(listbox_anchors.Items.Count + 1, "...", SortingMethod.NONE);
+                Anchor newAnchor = new Anchor(listbox_anchors.Items.Count + 1, "", SortingMethod.NONE, false);
                 app.anchors.Add(newAnchor);
                 app.currentAnchor = newAnchor;
                 listbox_anchors.Items.Add((listbox_anchors.Items.Count + 1) + ") " + newAnchor.directory);
@@ -210,7 +210,11 @@ namespace AutoSortFolder
 
         private void PopulateCurrentAnchorTree()
         {
+            // Validate the current anchor
             if (app.currentAnchor == null) return;
+
+            // Validate the path
+            if (!Directory.Exists(app.currentAnchor.directory)) Console.WriteLine("Cannot populate current anchor tree, directory does not exist"); ;
 
             // Clear the current tree
             treeCurrentAnchor.Nodes.Clear();
@@ -280,6 +284,7 @@ namespace AutoSortFolder
             }
 
             UpdateCurrentAnchorUI();
+            UpdateAnchorListUI();
         }
 
         private void UpdateCurrentAnchorUI()
