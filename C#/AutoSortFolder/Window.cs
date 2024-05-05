@@ -513,5 +513,9 @@ namespace AutoSortFolder
             ExitProgram();
         }
 
+        private void restartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RestartProgram();
+        }
     }
 }
