@@ -73,7 +73,7 @@ namespace AutoSortFolder
                 IncludeFields = true,
             };
 
-            File.WriteAllText(anchorSavePath, JsonSerializer.Serialize(settings, options));
+            File.WriteAllText(settingsSavePath, JsonSerializer.Serialize(settings, options));
         }
 
         public string LoadSettings()
