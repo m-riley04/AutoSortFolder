@@ -57,7 +57,9 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.restartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anchorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,19 +67,19 @@
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unsortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gitHubRepositoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlPages = new System.Windows.Forms.TabControl();
             this.pageHome = new System.Windows.Forms.TabPage();
             this.pageSettings = new System.Windows.Forms.TabPage();
-            this.label8 = new System.Windows.Forms.Label();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.restartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkboxLiveSorting = new System.Windows.Forms.CheckBox();
-            this.checkboxAutoSave = new System.Windows.Forms.CheckBox();
             this.checkboxAutorun = new System.Windows.Forms.CheckBox();
+            this.checkboxAutoSave = new System.Windows.Forms.CheckBox();
+            this.checkboxLiveSorting = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.buttonResetToDefault = new System.Windows.Forms.Button();
+            this.buttonApply = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -132,7 +134,7 @@
             this.label_status.Name = "label_status";
             this.label_status.Size = new System.Drawing.Size(33, 12);
             this.label_status.TabIndex = 4;
-            this.label_status.Text = "idle";
+            this.label_status.Text = "IDLE";
             // 
             // button_start
             // 
@@ -406,7 +408,6 @@
             this.menuStrip.Size = new System.Drawing.Size(930, 24);
             this.menuStrip.TabIndex = 19;
             this.menuStrip.Text = "menuStrip1";
-            this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -426,7 +427,7 @@
             this.saveToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.saveToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.saveToolStripMenuItem.Text = "Save anchors";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -435,16 +436,34 @@
             this.loadToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.loadToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.loadToolStripMenuItem.Text = "Load anchors";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadAnchorsToolStripMenuItem_Click);
             // 
-            // editToolStripMenuItem
+            // toolStripSeparator2
             // 
-            this.editToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "Edit";
+            this.toolStripSeparator2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.toolStripSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(142, 6);
+            // 
+            // restartToolStripMenuItem
+            // 
+            this.restartToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.restartToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.restartToolStripMenuItem.Name = "restartToolStripMenuItem";
+            this.restartToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.restartToolStripMenuItem.Text = "Restart";
+            this.restartToolStripMenuItem.Click += new System.EventHandler(this.restartToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.exitToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // anchorToolStripMenuItem
             // 
@@ -465,7 +484,7 @@
             this.addToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.addToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
@@ -474,7 +493,7 @@
             this.removeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.removeToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
@@ -483,14 +502,14 @@
             this.toolStripSeparator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(136, 6);
             // 
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.startToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.startToolStripMenuItem.Text = "Start Sorting";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
@@ -499,7 +518,7 @@
             this.stopToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.stopToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.stopToolStripMenuItem.Text = "Stop Sorting";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
@@ -508,9 +527,16 @@
             this.unsortToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.unsortToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.unsortToolStripMenuItem.Name = "unsortToolStripMenuItem";
-            this.unsortToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.unsortToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.unsortToolStripMenuItem.Text = "Unsort";
             this.unsortToolStripMenuItem.Click += new System.EventHandler(this.unsortToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "Edit";
             // 
             // helpToolStripMenuItem
             // 
@@ -549,7 +575,6 @@
             this.tabControlPages.Size = new System.Drawing.Size(931, 395);
             this.tabControlPages.TabIndex = 20;
             this.tabControlPages.TabStop = false;
-            this.tabControlPages.SelectedIndexChanged += new System.EventHandler(this.tabControlPages_SelectedIndexChanged);
             // 
             // pageHome
             // 
@@ -567,6 +592,8 @@
             // pageSettings
             // 
             this.pageSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.pageSettings.Controls.Add(this.buttonApply);
+            this.pageSettings.Controls.Add(this.buttonResetToDefault);
             this.pageSettings.Controls.Add(this.checkboxAutorun);
             this.pageSettings.Controls.Add(this.checkboxAutoSave);
             this.pageSettings.Controls.Add(this.checkboxLiveSorting);
@@ -577,6 +604,36 @@
             this.pageSettings.Size = new System.Drawing.Size(923, 370);
             this.pageSettings.TabIndex = 1;
             this.pageSettings.Text = "tabPage2";
+            // 
+            // checkboxAutorun
+            // 
+            this.checkboxAutorun.AutoSize = true;
+            this.checkboxAutorun.Location = new System.Drawing.Point(10, 96);
+            this.checkboxAutorun.Name = "checkboxAutorun";
+            this.checkboxAutorun.Size = new System.Drawing.Size(136, 16);
+            this.checkboxAutorun.TabIndex = 22;
+            this.checkboxAutorun.Text = "Auto-Run On Boot";
+            this.checkboxAutorun.UseVisualStyleBackColor = true;
+            // 
+            // checkboxAutoSave
+            // 
+            this.checkboxAutoSave.AutoSize = true;
+            this.checkboxAutoSave.Location = new System.Drawing.Point(10, 74);
+            this.checkboxAutoSave.Name = "checkboxAutoSave";
+            this.checkboxAutoSave.Size = new System.Drawing.Size(101, 16);
+            this.checkboxAutoSave.TabIndex = 21;
+            this.checkboxAutoSave.Text = "Auto Saving";
+            this.checkboxAutoSave.UseVisualStyleBackColor = true;
+            // 
+            // checkboxLiveSorting
+            // 
+            this.checkboxLiveSorting.AutoSize = true;
+            this.checkboxLiveSorting.Location = new System.Drawing.Point(10, 52);
+            this.checkboxLiveSorting.Name = "checkboxLiveSorting";
+            this.checkboxLiveSorting.Size = new System.Drawing.Size(108, 16);
+            this.checkboxLiveSorting.TabIndex = 20;
+            this.checkboxLiveSorting.Text = "Live Sorting";
+            this.checkboxLiveSorting.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -589,60 +646,35 @@
             this.label8.TabIndex = 19;
             this.label8.Text = "Settings";
             // 
-            // toolStripSeparator2
+            // buttonResetToDefault
             // 
-            this.toolStripSeparator2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
-            this.toolStripSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.buttonResetToDefault.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.buttonResetToDefault.FlatAppearance.BorderSize = 0;
+            this.buttonResetToDefault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonResetToDefault.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonResetToDefault.Location = new System.Drawing.Point(86, 343);
+            this.buttonResetToDefault.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.buttonResetToDefault.Name = "buttonResetToDefault";
+            this.buttonResetToDefault.Size = new System.Drawing.Size(136, 21);
+            this.buttonResetToDefault.TabIndex = 23;
+            this.buttonResetToDefault.Text = "Reset to Default";
+            this.buttonResetToDefault.UseVisualStyleBackColor = false;
+            this.buttonResetToDefault.Click += new System.EventHandler(this.buttonResetToDefault_Click);
             // 
-            // exitToolStripMenuItem
+            // buttonApply
             // 
-            this.exitToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
-            this.exitToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // restartToolStripMenuItem
-            // 
-            this.restartToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
-            this.restartToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.restartToolStripMenuItem.Name = "restartToolStripMenuItem";
-            this.restartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.restartToolStripMenuItem.Text = "Restart";
-            this.restartToolStripMenuItem.Click += new System.EventHandler(this.restartToolStripMenuItem_Click);
-            // 
-            // checkboxLiveSorting
-            // 
-            this.checkboxLiveSorting.AutoSize = true;
-            this.checkboxLiveSorting.Location = new System.Drawing.Point(10, 52);
-            this.checkboxLiveSorting.Name = "checkboxLiveSorting";
-            this.checkboxLiveSorting.Size = new System.Drawing.Size(108, 16);
-            this.checkboxLiveSorting.TabIndex = 20;
-            this.checkboxLiveSorting.Text = "Live Sorting";
-            this.checkboxLiveSorting.UseVisualStyleBackColor = true;
-            // 
-            // checkboxAutoSave
-            // 
-            this.checkboxAutoSave.AutoSize = true;
-            this.checkboxAutoSave.Location = new System.Drawing.Point(10, 74);
-            this.checkboxAutoSave.Name = "checkboxAutoSave";
-            this.checkboxAutoSave.Size = new System.Drawing.Size(101, 16);
-            this.checkboxAutoSave.TabIndex = 21;
-            this.checkboxAutoSave.Text = "Auto Saving";
-            this.checkboxAutoSave.UseVisualStyleBackColor = true;
-            // 
-            // checkboxAutorun
-            // 
-            this.checkboxAutorun.AutoSize = true;
-            this.checkboxAutorun.Location = new System.Drawing.Point(10, 96);
-            this.checkboxAutorun.Name = "checkboxAutorun";
-            this.checkboxAutorun.Size = new System.Drawing.Size(136, 16);
-            this.checkboxAutorun.TabIndex = 22;
-            this.checkboxAutorun.Text = "Auto-Run On Boot";
-            this.checkboxAutorun.UseVisualStyleBackColor = true;
+            this.buttonApply.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.buttonApply.FlatAppearance.BorderSize = 0;
+            this.buttonApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonApply.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonApply.Location = new System.Drawing.Point(9, 343);
+            this.buttonApply.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.buttonApply.Name = "buttonApply";
+            this.buttonApply.Size = new System.Drawing.Size(69, 21);
+            this.buttonApply.TabIndex = 23;
+            this.buttonApply.Text = "Apply";
+            this.buttonApply.UseVisualStyleBackColor = false;
+            this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
             // 
             // Window
             // 
@@ -733,6 +765,8 @@
         private System.Windows.Forms.CheckBox checkboxLiveSorting;
         private System.Windows.Forms.CheckBox checkboxAutorun;
         private System.Windows.Forms.CheckBox checkboxAutoSave;
+        private System.Windows.Forms.Button buttonApply;
+        private System.Windows.Forms.Button buttonResetToDefault;
     }
 }
 
