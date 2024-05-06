@@ -227,7 +227,6 @@ namespace AutoSortFolder
             // Clear the current tree
             treeCurrentAnchor.Nodes.Clear();
 
-
             // Update nodes with current directory
             try
             {
@@ -297,11 +296,7 @@ namespace AutoSortFolder
 
         private void UpdateCurrentAnchorUI()
         {
-            if (app.currentAnchor == null)
-            {
-                //ResetUI();
-                return;
-            }
+            if (app.currentAnchor == null) return;
 
             bool isIdle = app.currentAnchor.status == AnchorStatus.IDLE;
             bool isActive = app.currentAnchor.status == AnchorStatus.ACTIVE;
@@ -533,7 +528,6 @@ namespace AutoSortFolder
             string githubRepoURL = "https://github.com/m-riley04/AutoSortFolder";
             OpenURLInBrowser(githubRepoURL);
         }
-        #endregion
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
