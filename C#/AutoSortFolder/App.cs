@@ -88,6 +88,11 @@ namespace AutoSortFolder
             return jsonString;
         }
 
+        public void ResetSettings()
+        {
+            this.settings = new Settings();
+        }
+
         public void ActivateCurrentAnchor()
         {
             currentAnchor.Activate();
