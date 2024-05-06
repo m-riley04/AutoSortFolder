@@ -334,6 +334,15 @@ namespace AutoSortFolder
 
         }
 
+        private void UpdateSettingsUI()
+        {
+            if (app.settings == null) return;
+
+            checkboxLiveSorting.Checked     = app.settings.liveSorting;
+            checkboxAutoSave.Checked        = app.settings.autoSave;
+            checkboxAutorun.Checked         = app.settings.autorun;
+        }
+
         private void UpdateAnchorListUI()
         {
             if (app.currentAnchor == null) return;
