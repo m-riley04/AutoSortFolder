@@ -63,12 +63,28 @@ namespace AutoSortFolder
 
         private void SaveSettings()
         {
-            app.SaveSettings();
+            try
+            {
+                app.SaveSettings();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
         }
 
         private void LoadSettings()
         {
-            app.LoadSettings();
+            try
+            {
+                app.LoadSettings();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
+
+            UpdateSettingsUI();
         }
 
         private void StartAnchorSorting()
