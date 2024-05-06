@@ -560,5 +560,14 @@ namespace AutoSortFolder
 
         #endregion
 
+        private void buttonApply_Click(object sender, EventArgs e)
+        {
+            SaveSettings();
+        }
+
+        private void buttonResetToDefault_Click(object sender, EventArgs e)
+        {
+            app.ResetSettings();
+        }
     }
 }
