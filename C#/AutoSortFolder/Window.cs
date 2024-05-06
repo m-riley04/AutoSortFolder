@@ -211,10 +211,18 @@ namespace AutoSortFolder
         private void PopulateCurrentAnchorTree()
         {
             // Validate the current anchor
-            if (app.currentAnchor == null) return;
+            if (app.currentAnchor == null)
+            {
+                Console.WriteLine("Cannot populate current anchor tree: current anchor is null");
+                return;
+            }
 
             // Validate the path
-            if (!Directory.Exists(app.currentAnchor.directory)) Console.WriteLine("Cannot populate current anchor tree, directory does not exist"); ;
+            if (!Directory.Exists(app.currentAnchor.directory))
+            {
+                Console.WriteLine("Cannot populate current anchor tree, directory does not exist");
+                return;
+            }
 
             // Clear the current tree
             treeCurrentAnchor.Nodes.Clear();
