@@ -31,6 +31,7 @@ namespace AutoSortFolder
 
             PopulateAnchors();
             UpdateUI();
+            UpdateSettingsUI();
         }
 
         #region High-Level Functionality Methods
@@ -318,6 +319,9 @@ namespace AutoSortFolder
 
             UpdateCurrentAnchorUI();
             UpdateAnchorListUI();
+
+            if (app.settings == null) return;
+            UpdateSettingsUI();
         }
 
         private void UpdateCurrentAnchorUI()
