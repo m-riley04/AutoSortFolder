@@ -481,12 +481,25 @@ namespace AutoSortFolder
             UpdateCurrentAnchorUI();
         }
 
+        // Settings Page
+        private void buttonApply_Click(object sender, EventArgs e)
+        {
+            SaveSettings();
+        }
+
+        private void buttonResetToDefault_Click(object sender, EventArgs e)
+        {
+            app.ResetSettings();
+            UpdateSettingsUI();
+        }
+
         #endregion
 
         #region Other Component Methods
         private void dropdownSortingMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (app.currentAnchor != null) app.currentAnchor.method = (SortingMethod)combobox_sortingMethod.SelectedIndex;
+            SaveAnchors();
         }
 
         private void listboxAnchors_SelectedIndexChanged(object sender, EventArgs e)
@@ -598,16 +611,12 @@ namespace AutoSortFolder
             RestartProgram();
         }
 
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         #endregion
 
-        private void buttonApply_Click(object sender, EventArgs e)
-        {
-            SaveSettings();
-        }
-
-        private void buttonResetToDefault_Click(object sender, EventArgs e)
-        {
-            app.ResetSettings();
-        }
     }
 }
