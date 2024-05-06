@@ -61,6 +61,16 @@ namespace AutoSortFolder
             UpdateUI();
         }
 
+        private void SaveSettings()
+        {
+            app.SaveSettings();
+        }
+
+        private void LoadSettings()
+        {
+            app.LoadSettings();
+        }
+
         private void StartAnchorSorting()
         {
             try
@@ -538,5 +548,8 @@ namespace AutoSortFolder
         {
             RestartProgram();
         }
+
+        #endregion
+
     }
 }
