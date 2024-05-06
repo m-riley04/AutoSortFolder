@@ -32,6 +32,7 @@ namespace AutoSortFolder
             PopulateAnchors();
             UpdateUI();
             UpdateSettingsUI();
+            UpdateMenuUI();
         }
 
         #region High-Level Functionality Methods
@@ -324,6 +325,24 @@ namespace AutoSortFolder
             UpdateSettingsUI();
         }
 
+        private void UpdateMenuUI()
+        {
+            bool isIdle = false;
+            bool isActive = false;
+            bool isSorted = false;
+
+            if (app.currentAnchor != null)
+            {
+                isIdle = app.currentAnchor.status == AnchorStatus.IDLE;
+                isActive = app.currentAnchor.status == AnchorStatus.ACTIVE;
+                isSorted = app.currentAnchor.sorted;
+            }
+
+            startToolStripMenuItem.Enabled = isIdle;
+            stopToolStripMenuItem.Enabled = isActive;
+            unsortToolStripMenuItem.Enabled = isSorted;
+        }
+
         private void UpdateCurrentAnchorUI()
         {
             if (app.currentAnchor == null) return;
@@ -408,6 +427,7 @@ namespace AutoSortFolder
         #endregion
 
         #region Button Methods
+        // Home Page
         private void buttonStart_Click(object sender, EventArgs e)
         {
             StartAnchorSorting();
