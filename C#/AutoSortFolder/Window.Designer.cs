@@ -76,6 +76,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkboxLiveSorting = new System.Windows.Forms.CheckBox();
+            this.checkboxAutoSave = new System.Windows.Forms.CheckBox();
+            this.checkboxAutorun = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -404,6 +406,7 @@
             this.menuStrip.Size = new System.Drawing.Size(930, 24);
             this.menuStrip.TabIndex = 19;
             this.menuStrip.Text = "menuStrip1";
+            this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -540,12 +543,13 @@
             // 
             this.tabControlPages.Controls.Add(this.pageHome);
             this.tabControlPages.Controls.Add(this.pageSettings);
-            this.tabControlPages.Location = new System.Drawing.Point(0, 0);
+            this.tabControlPages.Location = new System.Drawing.Point(0, 27);
             this.tabControlPages.Name = "tabControlPages";
             this.tabControlPages.SelectedIndex = 0;
             this.tabControlPages.Size = new System.Drawing.Size(931, 395);
             this.tabControlPages.TabIndex = 20;
             this.tabControlPages.TabStop = false;
+            this.tabControlPages.SelectedIndexChanged += new System.EventHandler(this.tabControlPages_SelectedIndexChanged);
             // 
             // pageHome
             // 
@@ -562,6 +566,9 @@
             // 
             // pageSettings
             // 
+            this.pageSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.pageSettings.Controls.Add(this.checkboxAutorun);
+            this.pageSettings.Controls.Add(this.checkboxAutoSave);
             this.pageSettings.Controls.Add(this.checkboxLiveSorting);
             this.pageSettings.Controls.Add(this.label8);
             this.pageSettings.Location = new System.Drawing.Point(4, 21);
@@ -570,7 +577,6 @@
             this.pageSettings.Size = new System.Drawing.Size(923, 370);
             this.pageSettings.TabIndex = 1;
             this.pageSettings.Text = "tabPage2";
-            this.pageSettings.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -618,12 +624,32 @@
             this.checkboxLiveSorting.Text = "Live Sorting";
             this.checkboxLiveSorting.UseVisualStyleBackColor = true;
             // 
+            // checkboxAutoSave
+            // 
+            this.checkboxAutoSave.AutoSize = true;
+            this.checkboxAutoSave.Location = new System.Drawing.Point(10, 74);
+            this.checkboxAutoSave.Name = "checkboxAutoSave";
+            this.checkboxAutoSave.Size = new System.Drawing.Size(101, 16);
+            this.checkboxAutoSave.TabIndex = 21;
+            this.checkboxAutoSave.Text = "Auto Saving";
+            this.checkboxAutoSave.UseVisualStyleBackColor = true;
+            // 
+            // checkboxAutorun
+            // 
+            this.checkboxAutorun.AutoSize = true;
+            this.checkboxAutorun.Location = new System.Drawing.Point(10, 96);
+            this.checkboxAutorun.Name = "checkboxAutorun";
+            this.checkboxAutorun.Size = new System.Drawing.Size(136, 16);
+            this.checkboxAutorun.TabIndex = 22;
+            this.checkboxAutorun.Text = "Auto-Run On Boot";
+            this.checkboxAutorun.UseVisualStyleBackColor = true;
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
-            this.ClientSize = new System.Drawing.Size(930, 390);
+            this.ClientSize = new System.Drawing.Size(930, 453);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.tabControlPages);
             this.Font = new System.Drawing.Font("OCR A Extended", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -705,6 +731,8 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restartToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkboxLiveSorting;
+        private System.Windows.Forms.CheckBox checkboxAutorun;
+        private System.Windows.Forms.CheckBox checkboxAutoSave;
     }
 }
 
