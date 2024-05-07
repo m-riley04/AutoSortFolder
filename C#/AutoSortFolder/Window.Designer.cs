@@ -606,10 +606,10 @@
             this.buttonApply.FlatAppearance.BorderSize = 0;
             this.buttonApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonApply.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonApply.Location = new System.Drawing.Point(844, 343);
+            this.buttonApply.Location = new System.Drawing.Point(844, 328);
             this.buttonApply.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonApply.Name = "buttonApply";
-            this.buttonApply.Size = new System.Drawing.Size(69, 21);
+            this.buttonApply.Size = new System.Drawing.Size(69, 36);
             this.buttonApply.TabIndex = 23;
             this.buttonApply.Text = "Apply";
             this.buttonApply.UseVisualStyleBackColor = false;
@@ -621,10 +621,10 @@
             this.buttonResetToDefault.FlatAppearance.BorderSize = 0;
             this.buttonResetToDefault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonResetToDefault.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonResetToDefault.Location = new System.Drawing.Point(700, 343);
+            this.buttonResetToDefault.Location = new System.Drawing.Point(700, 328);
             this.buttonResetToDefault.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonResetToDefault.Name = "buttonResetToDefault";
-            this.buttonResetToDefault.Size = new System.Drawing.Size(136, 21);
+            this.buttonResetToDefault.Size = new System.Drawing.Size(136, 36);
             this.buttonResetToDefault.TabIndex = 23;
             this.buttonResetToDefault.Text = "Reset to Default";
             this.buttonResetToDefault.UseVisualStyleBackColor = false;
@@ -699,7 +699,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
-            this.ClientSize = new System.Drawing.Size(930, 453);
+            this.ClientSize = new System.Drawing.Size(930, 415);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.tabControlPages);
             this.Font = new System.Drawing.Font("OCR A Extended", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
