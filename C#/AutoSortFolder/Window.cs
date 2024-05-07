@@ -484,6 +484,11 @@ namespace AutoSortFolder
         // Settings Page
         private void buttonApply_Click(object sender, EventArgs e)
         {
+            // Set all the states
+            app.settings.liveSorting = checkboxLiveSorting.Checked;
+            app.settings.autoSave = checkboxAutoSave.Checked;
+            app.settings.autorun = checkboxAutorun.Checked;
+
             SaveSettings();
         }
 
