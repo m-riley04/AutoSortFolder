@@ -353,6 +353,7 @@ namespace AutoSortFolder
 
             // Update Labels
             label_status.Text = app.currentAnchor.status.ToString();
+            labelSortedValue.Text = isSorted ? "Yes" : "No";
 
             // Update Buttons
             button_start.Enabled = isIdle;
