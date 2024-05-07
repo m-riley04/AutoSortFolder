@@ -72,9 +72,6 @@ namespace AutoSortFolder
             // Check if the anchor directory exists
             if (!Directory.Exists(this.directory)) throw new DirectoryNotFoundException();
 
-            // Set sorted
-            this.sorted = false;
-
             // Get current files
             this.filePaths = Directory.GetFiles(this.directory);
             this.folderPaths = Directory.GetDirectories(this.directory);
