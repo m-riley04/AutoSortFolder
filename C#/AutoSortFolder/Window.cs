@@ -489,8 +489,12 @@ namespace AutoSortFolder
 
         private void buttonResetToDefault_Click(object sender, EventArgs e)
         {
-            app.ResetSettings();
-            UpdateSettingsUI();
+            DialogResult prompt = MessageBox.Show("Are you sure you want to reset settings?", "Confirm", MessageBoxButtons.YesNo);
+            if (prompt == DialogResult.Yes)
+            {
+                app.ResetSettings();
+                UpdateSettingsUI();
+            }
         }
 
         #endregion
