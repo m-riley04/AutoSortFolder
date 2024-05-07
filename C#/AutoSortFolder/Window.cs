@@ -530,10 +530,7 @@ namespace AutoSortFolder
                 System.Threading.Thread.Sleep(1000);
             }
 
-            if (worker.CancellationPending)
-            {
-                e.Cancel = true;
-            }
+            if (worker.CancellationPending) e.Cancel = true;
         }
 
         private void sorterWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
