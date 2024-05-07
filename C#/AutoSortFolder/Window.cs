@@ -150,7 +150,7 @@ namespace AutoSortFolder
                 MessageBox.Show(err.Message, "Error");
             }
 
-            SaveAnchors();
+            if (app.settings.autoSave) SaveAnchors();
         }
 
         private void UnsortAnchor()
@@ -168,7 +168,7 @@ namespace AutoSortFolder
             PopulateCurrentAnchorTree();
             UpdateCurrentAnchorUI();
 
-            SaveAnchors();
+            if (app.settings.autoSave) SaveAnchors();
         }
 
         private void RemoveAnchor()
@@ -189,7 +189,7 @@ namespace AutoSortFolder
             PopulateAnchors();
             UpdateUI();
 
-            SaveAnchors();
+            if (app.settings.autoSave) SaveAnchors();
         }
 
         private void AddAnchor()
@@ -207,7 +207,7 @@ namespace AutoSortFolder
             }
 
             UpdateUI();
-            SaveAnchors();
+            if (app.settings.autoSave) SaveAnchors();
         }
         
         private void OpenURLInBrowser(string url)
@@ -555,6 +555,7 @@ namespace AutoSortFolder
             {
                 MessageBox.Show("Sorting is complete.");
             }
+            if (app.settings.autoSave) this.SaveAnchors();
         }
         #endregion
 
