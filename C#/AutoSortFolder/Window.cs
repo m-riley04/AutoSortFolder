@@ -518,6 +518,7 @@ namespace AutoSortFolder
         #region Background Worker Methods
         private void sorterWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            int anchorRefreshTime = 1000;
             BackgroundWorker worker = sender as BackgroundWorker;
 
             do
