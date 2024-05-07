@@ -555,6 +555,11 @@ namespace AutoSortFolder
             {
                 MessageBox.Show("Sorting is complete.");
             }
+
+            app.currentAnchor.Deactivate();
+            UpdateCurrentAnchorUI();
+            UpdateAnchorListUI();
+
             if (app.settings.autoSave) this.SaveAnchors();
         }
         #endregion
