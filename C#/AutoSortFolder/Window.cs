@@ -520,15 +520,15 @@ namespace AutoSortFolder
         {
             BackgroundWorker worker = sender as BackgroundWorker;
 
-            while (!worker.CancellationPending)
+            do
             {
                 app.currentAnchor.Sort(
                     progress =>
                     {
                         worker.ReportProgress(progress);
                     });
-                System.Threading.Thread.Sleep(1000);
-            }
+                if (app.settings.liveSorting) System.Threading.Thread.Sleep(anchorRefreshTime);
+            } while (!worker.CancellationPending && app.settings.liveSorting);
 
             if (worker.CancellationPending) e.Cancel = true;
         }
