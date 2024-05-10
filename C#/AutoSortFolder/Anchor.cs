@@ -202,6 +202,10 @@ namespace AutoSortFolder
                 progressReporter((processedFiles * 100) / totalFolders);
             }
 
+            // Get the updated directories
+            this.folderPaths = Directory.GetDirectories(this.directory);
+            this.filePaths = Directory.GetFiles(this.directory);
+
         }
     }
 }
