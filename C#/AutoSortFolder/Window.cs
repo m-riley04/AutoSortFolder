@@ -203,10 +203,10 @@ namespace AutoSortFolder
         {
             try
             {
-                Anchor newAnchor = new Anchor(listbox_anchors.Items.Count + 1, "", SortingMethod.NONE, false);
+                Anchor newAnchor = new Anchor(listbox_anchors.Items.Count + 1, "", SortingMethod.NONE, false, new List<string>());
                 app.anchors.Add(newAnchor);
                 app.currentAnchor = newAnchor;
-                listbox_anchors.Items.Add((listbox_anchors.Items.Count + 1) + ") " + newAnchor.directory);
+                listbox_anchors.Items.Add(newAnchor.id + ") " + newAnchor.directory);
             }
             catch (Exception err)
             {
