@@ -186,16 +186,16 @@ namespace AutoSortFolder
                 if (!Directory.Exists(folderPath)) throw new DirectoryNotFoundException();
 
                 // Iterate through all files within the current folder
-                foreach (string filePath in Directory.GetFiles(folderPath))
+                foreach (string path in folderFiles)
                 {
-                    string fileName = Path.GetFileName(filePath);
+                    string name = Path.GetFileName(path);
 
                     // Move the file out of the current folder to the
-                    FileSorter.MoveSafe(filePath, this.directory + "\\" + fileName);
+                    FileSorter.MoveSafe(path, this.directory + "\\" + name);
                 }
 
                 // Delete the directory
-                Directory.Delete(folderPath);
+                Directory.Delete(sortedFolderPath, true);
 
                 // Increment the number of processed folders
                 processedFiles++;
