@@ -63,7 +63,7 @@ namespace AutoSortFolder
             MoveSafe(path, sortedFolderPath + "\\" + name);
 
             // Update the blacklist
-            this.blacklist.Add(extensionCategory);
+            if (!blacklist.Contains(extensionCategory)) this.blacklist.Add(extensionCategory);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace AutoSortFolder
             MoveSafe(path, sortedFolderPath + "\\" + name);
 
             // Update the blacklist
-            this.blacklist.Add(c.ToString());
+            if (!blacklist.Contains(c.ToString())) this.blacklist.Add(c.ToString());
         }
 
         public enum DateSortCategory
@@ -177,7 +177,7 @@ namespace AutoSortFolder
             MoveSafe(path, sortedFolderPath + "\\" + name);
 
             // Update the blacklist
-            this.blacklist.Add(sortedFolderPath.ToString());
+            if (!blacklist.Contains(sortedFolderPath)) this.blacklist.Add(sortedFolderPath.ToString());
         }
 
         /// <summary>
