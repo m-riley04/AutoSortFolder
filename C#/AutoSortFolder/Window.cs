@@ -91,6 +91,8 @@ namespace AutoSortFolder
         {
             if (app.currentAnchor == null) return;
 
+            if (app.currentAnchor.sorted) UnsortAnchor(); // Unsort the folder to re-sort it
+
             try
             {
                 if (!sorterWorker.IsBusy)
@@ -355,6 +357,7 @@ namespace AutoSortFolder
             button_stop.Enabled = isActive;
             button_unsort.Enabled = isSorted;
             button_selectFolder.Enabled = isIdle;
+            button_start.Text = isSorted ? "Resort" : "Start";
             //button_select.Enabled = (listbox_anchors.SelectedIndex != -1 && listbox_anchors.SelectedIndex != app.anchors.IndexOf(app.currentAnchor));
 
             // Update dropdowns
