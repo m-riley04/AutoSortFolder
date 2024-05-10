@@ -567,7 +567,7 @@ namespace AutoSortFolder
             }
             else
             {
-                MessageBox.Show("Sorting is complete.");
+                //MessageBox.Show("Sorting is complete.");
             }
 
             app.currentAnchor.Deactivate();
