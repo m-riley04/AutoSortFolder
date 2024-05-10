@@ -365,6 +365,9 @@ namespace AutoSortFolder
             // Update tree
             PopulateCurrentAnchorTree();
 
+            // Update list
+            listBoxBlacklist.Items.Clear();
+            listBoxBlacklist.Items.AddRange(app.currentAnchor.blacklist.ToArray());
         }
 
         private void UpdateSettingsUI()
