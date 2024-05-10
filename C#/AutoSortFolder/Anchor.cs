@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
 
 namespace AutoSortFolder
 {
@@ -30,6 +32,7 @@ namespace AutoSortFolder
         public AnchorStatus status;
         public SortingMethod method;
         public bool sorted;
+        public List<string> blacklist;
 
         private string[] filePaths;
         private string[] folderPaths;
@@ -41,15 +44,42 @@ namespace AutoSortFolder
             this.status = AnchorStatus.IDLE;
             this.method = SortingMethod.NONE;
             this.sorted = false;
+            this.blacklist = new List<string>();
         }
 
-        public Anchor(int id, string directory, SortingMethod method, bool sorted)
+        public Anchor(int id, string directory, SortingMethod method, bool sorted, List<string> blacklist)
         {
             this.id = id;
             this.directory = directory;
             this.status = AnchorStatus.IDLE;
             this.method = method;
             this.sorted = sorted;
+            this.blacklist = blacklist;
+        }
+
+        public static List<string> GenerateDefaultBlacklist()
+        {
+            List<string> blacklist = new List<string>();
+
+            // Append all valid characters
+            string validCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&()_+-=[]{};',.";
+            foreach (char c in validCharacters) blacklist.Add(c.ToString());
+            
+            // Append all extensions
+            List<string> allExtensions = new List<string>();
+            foreach (KeyValuePair<string, string[]> pair in FileExtensions.Extensions) foreach (string ext in pair.Value) allExtensions.Add(ext);
+            blacklist.AddRange(allExtensions);
+
+            // Append all categories
+            List<string> allCategories = new List<string>();
+            foreach (KeyValuePair<string, string[]> pair in FileExtensions.Extensions) allCategories.Add(pair.Key);
+            blacklist.AddRange(allCategories);
+
+            // Append specific folders/files
+            blacklist.Append("other");
+
+            // Cast to array
+            return blacklist;
         }
 
         public void Activate()
