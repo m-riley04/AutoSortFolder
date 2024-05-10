@@ -13,19 +13,19 @@ namespace AutoSortFolder
         /// <summary>
         /// Sorts a file based on it's file extension. Moves it into a folder of the extension's category
         /// </summary>
-        /// <param name="filePath"></param>
+        /// <param name="path"></param>
         /// <param name="directory"></param>
-        public static void SortByExtension(string filePath, string directory)
+        public static void SortByExtension(string path, string directory)
         {
-            string fileName = Path.GetFileName(filePath);
-            string fileExtension = Path.GetExtension(filePath);
+            string name = Path.GetFileName(path);
+            string extension = Path.GetExtension(path);
             string extensionCategory = "other";
             string sortedFolderPath = directory + "\\" + extensionCategory;
 
             // Iterate through and get the category
             foreach (KeyValuePair<string, string[]> item in FileExtensions.Extensions)
             {
-                if (item.Value.Contains(fileExtension))
+                if (item.Value.Contains(extension))
                 {
                     extensionCategory = item.Key;
 
@@ -33,31 +33,30 @@ namespace AutoSortFolder
                     sortedFolderPath = directory + "\\" + extensionCategory;
                     if (!Directory.Exists(sortedFolderPath)) Directory.CreateDirectory(sortedFolderPath);
 
-                    // Break out of the loop
                     break;
                 }
             }
 
             // Move the file to the folder
-            MoveSafe(filePath, sortedFolderPath + "\\" + fileName);
+            MoveSafe(path, sortedFolderPath + "\\" + name);
         }
 
         /// <summary>
         /// Sorts a file based on the first character
         /// </summary>
-        /// <param name="filePath"></param>
+        /// <param name="path"></param>
         /// <param name="directory"></param>
-        public static void SortByAlphabet(string filePath, string directory)
+        public static void SortByAlphabet(string path, string directory)
         {
-            string fileName = Path.GetFileName(filePath);
-            char c = fileName[0];
+            string name = Path.GetFileName(path);
+            char c = name[0];
             string sortedFolderPath = directory + "\\" + c;
 
             // Check if the directory already exists
             if (!Directory.Exists(sortedFolderPath)) Directory.CreateDirectory(sortedFolderPath);
 
             // Move the file to the folder
-            MoveSafe(filePath, sortedFolderPath + "\\" + fileName);
+            MoveSafe(path, sortedFolderPath + "\\" + name);
         }
 
         public enum DateSortCategory
@@ -79,31 +78,31 @@ namespace AutoSortFolder
         /// <summary>
         /// Sorts a file based on the creation date
         /// </summary>
-        /// <param name="filePath"></param>
+        /// <param name="path"></param>
         /// <param name="directory"></param>
-        public static void SortByDate(string filePath, string directory, DateSortCategory category = DateSortCategory.CREATED, DateComponent component = DateComponent.DATE)
+        public static void SortByDate(string path, string directory, DateSortCategory category = DateSortCategory.CREATED, DateComponent component = DateComponent.DATE)
         {
-            string fileName = Path.GetFileName(filePath);
+            string fileName = Path.GetFileName(path);
 
             // Get the date based on the category
             DateTime date;
             switch (category) {
                 case DateSortCategory.CREATED:
-                    date = File.GetCreationTime(filePath);
+                    date = File.GetCreationTime(path);
                     break;
                 case DateSortCategory.MODIFIED:
-                    date = File.GetLastWriteTime(filePath);
+                    date = File.GetLastWriteTime(path);
                     break;
                 case DateSortCategory.ACCESSED:
-                    date = File.GetLastAccessTime(filePath);
+                    date = File.GetLastAccessTime(path);
                     break;
                 default:
-                    date = File.GetCreationTime(filePath);
+                    date = File.GetCreationTime(path);
                     break;
             }
 
             // Get the date component from the date
-            string folderName = "other";
+            string folderName;
             switch (component)
             {
                 case DateComponent.DATE:
@@ -132,15 +131,15 @@ namespace AutoSortFolder
             if (!Directory.Exists(sortedFolderPath)) Directory.CreateDirectory(sortedFolderPath);
 
             // Move the file to the folder
-            MoveSafe(filePath, sortedFolderPath + "\\" + fileName);
+            MoveSafe(path, sortedFolderPath + "\\" + fileName);
         }
 
         /// <summary>
         /// Safely moves a file without overwriting. If the file already exists in the directory, it tries again until it adds enough numbers to the end
         /// </summary>
-        /// <param name="sourceFilePath"></param>
-        /// <param name="destFilePath"></param>
-        public static void MoveSafe(string sourceFilePath, string destFilePath)
+        /// <param name="sourcePath"></param>
+        /// <param name="destPath"></param>
+        public static void MoveSafe(string sourcePath, string destPath)
         {
             try
             {
