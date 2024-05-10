@@ -207,15 +207,20 @@ namespace AutoSortFolder
                 string dupePath;
 
                 // Attempt to find new name
+                int timeout = 99999999;
                 while (true)
                 {
+                    // Construct new duplicate path
                     dupePath = destDirPath;
                     dupePath += name + "(" + count + ")" + extension;
 
-                    // Check if the new dupe path doesn't exist
+                    // Check if the new dupe path is unique
                     if (!File.Exists(dupePath)) break;
 
                     count++;
+
+                    // Check if timeout was reached
+                    if (count >= timeout) throw new Exception("Timeout reached when attempting to find a new name");
                 }
 
                 // Copy again
@@ -224,6 +229,7 @@ namespace AutoSortFolder
             }
             finally
             {
+                // Delete the original
                 if (isDirectory) Directory.Delete(sourcePath, true);
                 else File.Delete(sourcePath); // Delete the original
             }
