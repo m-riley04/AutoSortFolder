@@ -11,12 +11,14 @@ using System.Timers;
 using System.IO;
 using System.Drawing.Drawing2D;
 using System.Text.Json;
+using System.Diagnostics;
 
 namespace AutoSortFolder
 {
     public partial class Window : Form
     {
         public App app;
+        public string testPath = @"C:\Users\vex10\Desktop\testOriginal"; // Path for testing/verifying anchor sorting
 
         public Window()
         {
