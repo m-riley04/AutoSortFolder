@@ -674,5 +674,13 @@ namespace AutoSortFolder
             UpdateSettingsUI();
             UpdateMenuUI();
         }
+
+        private void buttonOpenDirectory_Click(object sender, EventArgs e)
+        {
+            if (app.currentAnchor == null) return;
+
+            string dir = app.currentAnchor.directory;
+            if (Directory.Exists(dir)) Process.Start(dir);
+        }
     }
 }
