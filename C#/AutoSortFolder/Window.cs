@@ -91,6 +91,8 @@ namespace AutoSortFolder
 
         private void StartAnchorSorting()
         {
+            if (app.currentAnchor == null) return;
+
             try
             {
                 if (!sorterWorker.IsBusy)
@@ -110,6 +112,8 @@ namespace AutoSortFolder
 
         private void StopAnchorSorting()
         {
+            if (app.currentAnchor == null) return;
+
             try
             {
                 if (sorterWorker.WorkerSupportsCancellation)
