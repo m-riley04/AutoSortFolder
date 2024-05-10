@@ -47,6 +47,8 @@
             this.button_remove = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.listBoxBlacklist = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.labelSortedValue = new System.Windows.Forms.Label();
             this.labelSorted = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -78,6 +80,8 @@
             this.tabControlPages = new System.Windows.Forms.TabControl();
             this.pageHome = new System.Windows.Forms.TabPage();
             this.pageSettings = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.checkboxDeepSort = new System.Windows.Forms.CheckBox();
             this.buttonApply = new System.Windows.Forms.Button();
             this.buttonResetToDefault = new System.Windows.Forms.Button();
             this.checkboxAutorun = new System.Windows.Forms.CheckBox();
@@ -90,10 +94,7 @@
             this.stopAllSortingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkboxDeepSort = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.listBoxBlacklist = new System.Windows.Forms.ListBox();
+            this.buttonOpenDirectory = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -114,7 +115,7 @@
             this.textbox_folderDirectory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textbox_folderDirectory.Name = "textbox_folderDirectory";
             this.textbox_folderDirectory.ReadOnly = true;
-            this.textbox_folderDirectory.Size = new System.Drawing.Size(308, 19);
+            this.textbox_folderDirectory.Size = new System.Drawing.Size(298, 19);
             this.textbox_folderDirectory.TabIndex = 1;
             // 
             // label1
@@ -132,10 +133,10 @@
             this.button_selectFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
             this.button_selectFolder.FlatAppearance.BorderSize = 0;
             this.button_selectFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_selectFolder.Location = new System.Drawing.Point(396, 6);
+            this.button_selectFolder.Location = new System.Drawing.Point(384, 6);
             this.button_selectFolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_selectFolder.Name = "button_selectFolder";
-            this.button_selectFolder.Size = new System.Drawing.Size(120, 21);
+            this.button_selectFolder.Size = new System.Drawing.Size(104, 21);
             this.button_selectFolder.TabIndex = 3;
             this.button_selectFolder.Text = "Select Folder";
             this.button_selectFolder.UseVisualStyleBackColor = false;
@@ -207,6 +208,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.buttonOpenDirectory);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.textbox_folderDirectory);
             this.panel2.Controls.Add(this.button_selectFolder);
@@ -323,6 +325,28 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(544, 312);
             this.panel4.TabIndex = 17;
+            // 
+            // listBoxBlacklist
+            // 
+            this.listBoxBlacklist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.listBoxBlacklist.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxBlacklist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listBoxBlacklist.FormattingEnabled = true;
+            this.listBoxBlacklist.ItemHeight = 12;
+            this.listBoxBlacklist.Location = new System.Drawing.Point(12, 140);
+            this.listBoxBlacklist.Name = "listBoxBlacklist";
+            this.listBoxBlacklist.Size = new System.Drawing.Size(157, 96);
+            this.listBoxBlacklist.TabIndex = 26;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 125);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 12);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Blacklist";
             // 
             // labelSortedValue
             // 
@@ -642,6 +666,29 @@
             this.pageSettings.TabIndex = 1;
             this.pageSettings.Text = "Settings";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("OCR A Extended", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(154, 161);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(460, 12);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "WARNING: This will delete the parent folders of all sorted files.";
+            // 
+            // checkboxDeepSort
+            // 
+            this.checkboxDeepSort.AutoSize = true;
+            this.checkboxDeepSort.Font = new System.Drawing.Font("OCR A Extended", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkboxDeepSort.Location = new System.Drawing.Point(10, 151);
+            this.checkboxDeepSort.Name = "checkboxDeepSort";
+            this.checkboxDeepSort.Size = new System.Drawing.Size(137, 27);
+            this.checkboxDeepSort.TabIndex = 24;
+            this.checkboxDeepSort.Text = "Deep Sort";
+            this.checkboxDeepSort.UseVisualStyleBackColor = true;
+            // 
             // buttonApply
             // 
             this.buttonApply.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
@@ -759,50 +806,19 @@
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
-            // checkboxDeepSort
+            // buttonOpenDirectory
             // 
-            this.checkboxDeepSort.AutoSize = true;
-            this.checkboxDeepSort.Font = new System.Drawing.Font("OCR A Extended", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkboxDeepSort.Location = new System.Drawing.Point(10, 151);
-            this.checkboxDeepSort.Name = "checkboxDeepSort";
-            this.checkboxDeepSort.Size = new System.Drawing.Size(137, 27);
-            this.checkboxDeepSort.TabIndex = 24;
-            this.checkboxDeepSort.Text = "Deep Sort";
-            this.checkboxDeepSort.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("OCR A Extended", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(154, 161);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(460, 12);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "WARNING: This will delete the parent folders of all sorted files.";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 125);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 12);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "Blacklist";
-            // 
-            // listBoxBlacklist
-            // 
-            this.listBoxBlacklist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
-            this.listBoxBlacklist.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxBlacklist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listBoxBlacklist.FormattingEnabled = true;
-            this.listBoxBlacklist.ItemHeight = 12;
-            this.listBoxBlacklist.Location = new System.Drawing.Point(12, 140);
-            this.listBoxBlacklist.Name = "listBoxBlacklist";
-            this.listBoxBlacklist.Size = new System.Drawing.Size(157, 96);
-            this.listBoxBlacklist.TabIndex = 26;
+            this.buttonOpenDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.buttonOpenDirectory.FlatAppearance.BorderSize = 0;
+            this.buttonOpenDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOpenDirectory.Location = new System.Drawing.Point(491, 6);
+            this.buttonOpenDirectory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.buttonOpenDirectory.Name = "buttonOpenDirectory";
+            this.buttonOpenDirectory.Size = new System.Drawing.Size(25, 21);
+            this.buttonOpenDirectory.TabIndex = 4;
+            this.buttonOpenDirectory.Text = "Open Directory";
+            this.buttonOpenDirectory.UseVisualStyleBackColor = false;
+            this.buttonOpenDirectory.Click += new System.EventHandler(this.buttonOpenDirectory_Click);
             // 
             // Window
             // 
@@ -909,6 +925,7 @@
         private System.Windows.Forms.CheckBox checkboxDeepSort;
         private System.Windows.Forms.ListBox listBoxBlacklist;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button buttonOpenDirectory;
     }
 }
 
