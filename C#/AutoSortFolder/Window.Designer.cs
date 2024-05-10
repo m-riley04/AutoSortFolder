@@ -92,6 +92,8 @@
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.checkboxDeepSort = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.listBoxBlacklist = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -303,6 +305,8 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(21)))), ((int)(((byte)(36)))));
+            this.panel4.Controls.Add(this.listBoxBlacklist);
+            this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.labelSortedValue);
             this.panel4.Controls.Add(this.labelSorted);
             this.panel4.Controls.Add(this.label6);
@@ -778,6 +782,28 @@
             this.label3.TabIndex = 25;
             this.label3.Text = "WARNING: This will delete the parent folders of all sorted files.";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 125);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 12);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Blacklist";
+            // 
+            // listBoxBlacklist
+            // 
+            this.listBoxBlacklist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.listBoxBlacklist.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxBlacklist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listBoxBlacklist.FormattingEnabled = true;
+            this.listBoxBlacklist.ItemHeight = 12;
+            this.listBoxBlacklist.Location = new System.Drawing.Point(12, 140);
+            this.listBoxBlacklist.Name = "listBoxBlacklist";
+            this.listBoxBlacklist.Size = new System.Drawing.Size(157, 96);
+            this.listBoxBlacklist.TabIndex = 26;
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -881,6 +907,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkboxDeepSort;
+        private System.Windows.Forms.ListBox listBoxBlacklist;
+        private System.Windows.Forms.Label label5;
     }
 }
 
