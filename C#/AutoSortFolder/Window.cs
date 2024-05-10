@@ -423,6 +423,12 @@ namespace AutoSortFolder
 
         #endregion
 
+        #region Main Window Methods
+
+        
+
+        #endregion
+
         #region Button Methods
         // Home Page
         private void buttonStart_Click(object sender, EventArgs e)
