@@ -181,9 +181,14 @@ namespace AutoSortFolder
             int processedFiles = 0;
 
             // Iterate through every folder
-            foreach (string folderPath in this.folderPaths)
+            foreach (string sortedFolderPath in this.folderPaths)
             {
-                if (!Directory.Exists(folderPath)) throw new DirectoryNotFoundException();
+                if (!Directory.Exists(sortedFolderPath)) throw new DirectoryNotFoundException();
+
+                // Get all the files and folders in the sorted folder
+                string[] folderDirectories = Directory.GetDirectories(sortedFolderPath);
+                string[] folderFiles = Directory.GetFiles(sortedFolderPath);
+
                 // Iterate through all the directories in the folder
                 foreach (string path in folderDirectories)
                 {
