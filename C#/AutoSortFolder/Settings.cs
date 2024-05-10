@@ -8,20 +8,20 @@ namespace AutoSortFolder
 {
     public class Settings
     {
-        public bool liveSorting;
+        public bool backgroundSorting;
         public bool autoSave;
         public bool autorun;
 
         public Settings()
         {
-            this.liveSorting = true;
+            this.backgroundSorting = true;
             this.autoSave = true;
             this.autorun = false;
         }
 
         public Settings(bool liveSorting, bool autoSaving, bool autorun)
         {
-            this.liveSorting = liveSorting;
+            this.backgroundSorting = liveSorting;
             this.autoSave = autoSaving;
             this.autorun = autorun;
         }
