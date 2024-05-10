@@ -663,5 +663,13 @@ namespace AutoSortFolder
         {
 
         }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            UpdateAnchorListUI();
+            UpdateCurrentAnchorUI();
+            UpdateSettingsUI();
+            UpdateMenuUI();
+        }
     }
 }
