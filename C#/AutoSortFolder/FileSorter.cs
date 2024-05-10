@@ -5,22 +5,43 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace AutoSortFolder
 {
-    public static class FileSorter
+    public class FileSorter
     {
+        public List<string> blacklist;
+
+        public FileSorter()
+        {
+            this.blacklist = new List<string>();
+        }
+
+        public FileSorter(List<string> blacklist)
+        {
+            this.blacklist = blacklist;
+        }
 
         /// <summary>
         /// Sorts a file based on it's file extension. Moves it into a folder of the extension's category
         /// </summary>
         /// <param name="path"></param>
         /// <param name="directory"></param>
-        public static void SortByExtension(string path, string directory)
+        public void SortByExtension(string path, string directory)
         {
             string name = Path.GetFileName(path);
+
+            // Check if the file is in the blacklist
+            if (this.blacklist.Contains(name))
+            {
+                Console.WriteLine($"File/directory name {0} is in blacklist.", name);
+                return;
+            }
+
             string extension = Path.GetExtension(path);
-            string extensionCategory = "other";
+            string extensionCategory = "other"; // Default folder name
             string sortedFolderPath = directory + "\\" + extensionCategory;
 
             // Iterate through and get the category
@@ -40,6 +61,9 @@ namespace AutoSortFolder
 
             // Move the file to the folder
             MoveSafe(path, sortedFolderPath + "\\" + name);
+
+            // Update the blacklist
+            this.blacklist.Add(extensionCategory);
         }
 
         /// <summary>
@@ -47,9 +71,17 @@ namespace AutoSortFolder
         /// </summary>
         /// <param name="path"></param>
         /// <param name="directory"></param>
-        public static void SortByAlphabet(string path, string directory)
+        public void SortByAlphabet(string path, string directory)
         {
             string name = Path.GetFileName(path);
+
+            // Check if the file is in the blacklist
+            if (blacklist.Contains(name))
+            {
+                Console.WriteLine($"File/directory name {0} is in blacklist.", name); 
+                return;
+            }
+
             char c = name[0];
             string sortedFolderPath = directory + "\\" + c;
 
@@ -58,6 +90,9 @@ namespace AutoSortFolder
 
             // Move the file to the folder
             MoveSafe(path, sortedFolderPath + "\\" + name);
+
+            // Update the blacklist
+            this.blacklist.Add(c.ToString());
         }
 
         public enum DateSortCategory
@@ -81,9 +116,16 @@ namespace AutoSortFolder
         /// </summary>
         /// <param name="path"></param>
         /// <param name="directory"></param>
-        public static void SortByDate(string path, string directory, DateSortCategory category = DateSortCategory.CREATED, DateComponent component = DateComponent.DATE)
+        public void SortByDate(string path, string directory, DateSortCategory category = DateSortCategory.CREATED, DateComponent component = DateComponent.DATE)
         {
-            string fileName = Path.GetFileName(path);
+            string name = Path.GetFileName(path);
+
+            // Check if the file is in the blacklist
+            if (blacklist.Contains(name))
+            {
+                Console.WriteLine($"File/directory name {0} is in blacklist.", name);
+                return;
+            }
 
             // Get the date based on the category
             DateTime date;
@@ -132,7 +174,10 @@ namespace AutoSortFolder
             if (!Directory.Exists(sortedFolderPath)) Directory.CreateDirectory(sortedFolderPath);
 
             // Move the file to the folder
-            MoveSafe(path, sortedFolderPath + "\\" + fileName);
+            MoveSafe(path, sortedFolderPath + "\\" + name);
+
+            // Update the blacklist
+            this.blacklist.Add(sortedFolderPath.ToString());
         }
 
         /// <summary>
@@ -145,6 +190,7 @@ namespace AutoSortFolder
             // Get attributes of the path and check if its a file or directory
             FileAttributes attr = File.GetAttributes(sourcePath);
             bool isDirectory = attr.HasFlag(FileAttributes.Directory);
+            Console.WriteLine($"File Path: ${0} \t isDirectory: ${1}", sourcePath, isDirectory);
 
             try
             {
