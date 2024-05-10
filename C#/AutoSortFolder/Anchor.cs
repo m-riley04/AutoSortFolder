@@ -75,13 +75,14 @@ namespace AutoSortFolder
             // Get current files
             this.filePaths = Directory.GetFiles(this.directory);
             this.folderPaths = Directory.GetDirectories(this.directory);
+            IEnumerable<string> allPaths = this.filePaths.Concat(this.folderPaths);
 
             // File progress reporter
-            int totalFiles = this.filePaths.Length;
+            int totalFiles = allPaths.Count();
             int processedFiles = 0;
 
             // Go through each file
-            foreach (string filePath in this.filePaths)
+            foreach (string path in allPaths)
             {
                 // Select the sorting method
                 switch (this.method)
@@ -90,23 +91,23 @@ namespace AutoSortFolder
                         throw new ArgumentNullException("No sorting method selected");
 
                     case SortingMethod.EXTENSION:
-                        FileSorter.SortByExtension(filePath, this.directory);
+                        FileSorter.SortByExtension(path, this.directory);
                         break;
 
                     case SortingMethod.ALPHABETICAL:
-                        FileSorter.SortByAlphabet(filePath, this.directory);
+                        FileSorter.SortByAlphabet(path, this.directory);
                         break;
 
                     case SortingMethod.DATE_CREATED:
-                        FileSorter.SortByDate(filePath, this.directory, FileSorter.DateSortCategory.CREATED);
+                        FileSorter.SortByDate(path, this.directory, FileSorter.DateSortCategory.CREATED);
                         break;
 
                     case SortingMethod.DATE_MODIFIED:
-                        FileSorter.SortByDate(filePath, this.directory, FileSorter.DateSortCategory.MODIFIED);
+                        FileSorter.SortByDate(path, this.directory, FileSorter.DateSortCategory.MODIFIED);
                         break;
 
                     case SortingMethod.DATE_ACCESSED:
-                        FileSorter.SortByDate(filePath, this.directory, FileSorter.DateSortCategory.ACCESSED);
+                        FileSorter.SortByDate(path, this.directory, FileSorter.DateSortCategory.ACCESSED);
                         break;
 
                     default:
