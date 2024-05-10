@@ -177,7 +177,7 @@ namespace AutoSortFolder
             MoveSafe(path, sortedFolderPath + "\\" + name);
 
             // Update the blacklist
-            if (!blacklist.Contains(sortedFolderPath)) this.blacklist.Add(sortedFolderPath.ToString());
+            if (!blacklist.Contains(folderName)) this.blacklist.Add(folderName.ToString());
         }
 
         /// <summary>
