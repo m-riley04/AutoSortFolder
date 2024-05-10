@@ -72,6 +72,9 @@ namespace AutoSortFolder
             // Check if the anchor directory exists
             if (!Directory.Exists(this.directory)) throw new DirectoryNotFoundException();
 
+            // Create the filesorter
+            FileSorter sorter = new FileSorter(this.blacklist);
+
             // Get current files
             this.filePaths = Directory.GetFiles(this.directory);
             this.folderPaths = Directory.GetDirectories(this.directory);
@@ -91,23 +94,23 @@ namespace AutoSortFolder
                         throw new ArgumentNullException("No sorting method selected");
 
                     case SortingMethod.EXTENSION:
-                        FileSorter.SortByExtension(path, this.directory);
+                        sorter.SortByExtension(path, this.directory);
                         break;
 
                     case SortingMethod.ALPHABETICAL:
-                        FileSorter.SortByAlphabet(path, this.directory);
+                        sorter.SortByAlphabet(path, this.directory);
                         break;
 
                     case SortingMethod.DATE_CREATED:
-                        FileSorter.SortByDate(path, this.directory, FileSorter.DateSortCategory.CREATED);
+                        sorter.SortByDate(path, this.directory, FileSorter.DateSortCategory.CREATED);
                         break;
 
                     case SortingMethod.DATE_MODIFIED:
-                        FileSorter.SortByDate(path, this.directory, FileSorter.DateSortCategory.MODIFIED);
+                        sorter.SortByDate(path, this.directory, FileSorter.DateSortCategory.MODIFIED);
                         break;
 
                     case SortingMethod.DATE_ACCESSED:
-                        FileSorter.SortByDate(path, this.directory, FileSorter.DateSortCategory.ACCESSED);
+                        sorter.SortByDate(path, this.directory, FileSorter.DateSortCategory.ACCESSED);
                         break;
 
                     default:
@@ -118,6 +121,9 @@ namespace AutoSortFolder
                 processedFiles++;
                 progressReporter((processedFiles * 100) / totalFiles);
             }
+
+            // Update the blacklist
+            this.blacklist = sorter.blacklist;
 
             // Set sorted
             this.sorted = true;
