@@ -11,7 +11,6 @@ using System.Timers;
 using System.IO;
 using System.Drawing.Drawing2D;
 using System.Text.Json;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AutoSortFolder
 {
@@ -30,7 +29,6 @@ namespace AutoSortFolder
             app = new App();
 
             PopulateAnchors();
-            UpdateUI();
             UpdateSettingsUI();
             UpdateMenuUI();
         }
@@ -60,7 +58,7 @@ namespace AutoSortFolder
             }
 
             PopulateAnchors();
-            UpdateUI();
+            UpdateAnchorListUI();
         }
 
         private void SaveSettings()
@@ -107,7 +105,8 @@ namespace AutoSortFolder
                 MessageBox.Show(err.Message, "Error");
             }
 
-            UpdateUI();
+            UpdateCurrentAnchorUI();
+            UpdateAnchorListUI();
         }
 
         private void StopAnchorSorting()
@@ -128,7 +127,8 @@ namespace AutoSortFolder
                 MessageBox.Show(err.Message, "Error");
             }
 
-            UpdateUI();
+            UpdateCurrentAnchorUI();
+            UpdateAnchorListUI();
         }
 
         private void SelectAnchorFolder()
@@ -146,7 +146,9 @@ namespace AutoSortFolder
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
                     app.currentAnchor.directory = folderBrowserDialog.SelectedPath;
-                    UpdateUI();
+                    UpdateCurrentAnchorUI();
+                    UpdateAnchorListUI();
+                    UpdateMenuUI();
                 }
             }
             catch (Exception err)
@@ -171,6 +173,7 @@ namespace AutoSortFolder
 
             PopulateCurrentAnchorTree();
             UpdateCurrentAnchorUI();
+            UpdateAnchorListUI();
 
             if (app.settings.autoSave) SaveAnchors();
         }
@@ -191,7 +194,7 @@ namespace AutoSortFolder
             }
 
             PopulateAnchors();
-            UpdateUI();
+            UpdateAnchorListUI();
 
             if (app.settings.autoSave) SaveAnchors();
         }
@@ -210,7 +213,8 @@ namespace AutoSortFolder
                 MessageBox.Show(err.Message, "Error");
             }
 
-            UpdateUI();
+            UpdateAnchorListUI();
+            UpdateCurrentAnchorUI();
             if (app.settings.autoSave) SaveAnchors();
         }
         
@@ -312,21 +316,6 @@ namespace AutoSortFolder
 
             // Return the nodes array
             return nodes.ToArray();
-        }
-
-        private void UpdateUI()
-        {
-            if (app.currentAnchor == null)
-            {
-                ResetUI();
-                return;
-            }
-
-            UpdateCurrentAnchorUI();
-            UpdateAnchorListUI();
-
-            if (app.settings == null) return;
-            UpdateSettingsUI();
         }
 
         private void UpdateMenuUI()
