@@ -160,6 +160,7 @@ namespace AutoSortFolder
 
             // Get the current folders in the directories
             this.folderPaths = Directory.GetDirectories(this.directory);
+            this.filePaths = Directory.GetFiles(this.directory);
         }
 
         /// <summary>
