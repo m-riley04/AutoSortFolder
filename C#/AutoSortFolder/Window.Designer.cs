@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.textbox_folderDirectory = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button_selectFolder = new System.Windows.Forms.Button();
@@ -45,6 +47,8 @@
             this.button_remove = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.labelSortedValue = new System.Windows.Forms.Label();
+            this.labelSorted = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.treeCurrentAnchor = new System.Windows.Forms.TreeView();
             this.progressBarSorting = new System.Windows.Forms.ProgressBar();
@@ -78,10 +82,14 @@
             this.buttonResetToDefault = new System.Windows.Forms.Button();
             this.checkboxAutorun = new System.Windows.Forms.CheckBox();
             this.checkboxAutoSave = new System.Windows.Forms.CheckBox();
-            this.checkboxLiveSorting = new System.Windows.Forms.CheckBox();
+            this.checkboxBackgroundSorting = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.labelSorted = new System.Windows.Forms.Label();
-            this.labelSortedValue = new System.Windows.Forms.Label();
+            this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.trayIconMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.startSortingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopAllSortingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -90,6 +98,7 @@
             this.tabControlPages.SuspendLayout();
             this.pageHome.SuspendLayout();
             this.pageSettings.SuspendLayout();
+            this.trayIconMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // textbox_folderDirectory
@@ -279,6 +288,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(21)))), ((int)(((byte)(36)))));
             this.panel3.Controls.Add(this.button_add);
             this.panel3.Controls.Add(this.listbox_anchors);
             this.panel3.Controls.Add(this.button_remove);
@@ -290,6 +300,7 @@
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(21)))), ((int)(((byte)(36)))));
             this.panel4.Controls.Add(this.labelSortedValue);
             this.panel4.Controls.Add(this.labelSorted);
             this.panel4.Controls.Add(this.label6);
@@ -306,6 +317,26 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(544, 312);
             this.panel4.TabIndex = 17;
+            // 
+            // labelSortedValue
+            // 
+            this.labelSortedValue.AutoSize = true;
+            this.labelSortedValue.Location = new System.Drawing.Point(67, 262);
+            this.labelSortedValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelSortedValue.Name = "labelSortedValue";
+            this.labelSortedValue.Size = new System.Drawing.Size(40, 12);
+            this.labelSortedValue.TabIndex = 24;
+            this.labelSortedValue.Text = "False";
+            // 
+            // labelSorted
+            // 
+            this.labelSorted.AutoSize = true;
+            this.labelSorted.Location = new System.Drawing.Point(10, 262);
+            this.labelSorted.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelSorted.Name = "labelSorted";
+            this.labelSorted.Size = new System.Drawing.Size(54, 12);
+            this.labelSorted.TabIndex = 23;
+            this.labelSorted.Text = "SORTED:";
             // 
             // label6
             // 
@@ -381,6 +412,7 @@
             this.menuStrip.Size = new System.Drawing.Size(930, 24);
             this.menuStrip.TabIndex = 19;
             this.menuStrip.Text = "menuStrip1";
+            this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -476,7 +508,7 @@
             this.addToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
@@ -485,7 +517,7 @@
             this.removeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.removeToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
@@ -494,14 +526,14 @@
             this.toolStripSeparator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(135, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.startToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.startToolStripMenuItem.Text = "Start sorting";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
@@ -510,7 +542,7 @@
             this.stopToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.stopToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.stopToolStripMenuItem.Text = "Stop sorting";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
@@ -519,7 +551,7 @@
             this.unsortToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.unsortToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.unsortToolStripMenuItem.Name = "unsortToolStripMenuItem";
-            this.unsortToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.unsortToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.unsortToolStripMenuItem.Text = "Unsort";
             this.unsortToolStripMenuItem.Click += new System.EventHandler(this.unsortToolStripMenuItem_Click);
             // 
@@ -570,6 +602,7 @@
             this.tabControlPages.Size = new System.Drawing.Size(931, 395);
             this.tabControlPages.TabIndex = 20;
             this.tabControlPages.TabStop = false;
+            this.tabControlPages.SelectedIndexChanged += new System.EventHandler(this.tabControlPages_SelectedIndexChanged);
             // 
             // pageHome
             // 
@@ -583,6 +616,7 @@
             this.pageHome.Size = new System.Drawing.Size(923, 370);
             this.pageHome.TabIndex = 0;
             this.pageHome.Text = "Home";
+            this.pageHome.Click += new System.EventHandler(this.pageHome_Click);
             // 
             // pageSettings
             // 
@@ -591,7 +625,7 @@
             this.pageSettings.Controls.Add(this.buttonResetToDefault);
             this.pageSettings.Controls.Add(this.checkboxAutorun);
             this.pageSettings.Controls.Add(this.checkboxAutoSave);
-            this.pageSettings.Controls.Add(this.checkboxLiveSorting);
+            this.pageSettings.Controls.Add(this.checkboxBackgroundSorting);
             this.pageSettings.Controls.Add(this.label8);
             this.pageSettings.Location = new System.Drawing.Point(4, 21);
             this.pageSettings.Name = "pageSettings";
@@ -652,16 +686,16 @@
             this.checkboxAutoSave.Text = "Auto Saving";
             this.checkboxAutoSave.UseVisualStyleBackColor = true;
             // 
-            // checkboxLiveSorting
+            // checkboxBackgroundSorting
             // 
-            this.checkboxLiveSorting.AutoSize = true;
-            this.checkboxLiveSorting.Font = new System.Drawing.Font("OCR A Extended", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkboxLiveSorting.Location = new System.Drawing.Point(10, 52);
-            this.checkboxLiveSorting.Name = "checkboxLiveSorting";
-            this.checkboxLiveSorting.Size = new System.Drawing.Size(173, 27);
-            this.checkboxLiveSorting.TabIndex = 20;
-            this.checkboxLiveSorting.Text = "Live Sorting";
-            this.checkboxLiveSorting.UseVisualStyleBackColor = true;
+            this.checkboxBackgroundSorting.AutoSize = true;
+            this.checkboxBackgroundSorting.Font = new System.Drawing.Font("OCR A Extended", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkboxBackgroundSorting.Location = new System.Drawing.Point(10, 52);
+            this.checkboxBackgroundSorting.Name = "checkboxBackgroundSorting";
+            this.checkboxBackgroundSorting.Size = new System.Drawing.Size(245, 27);
+            this.checkboxBackgroundSorting.TabIndex = 20;
+            this.checkboxBackgroundSorting.Text = "Background Sorting";
+            this.checkboxBackgroundSorting.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -674,25 +708,48 @@
             this.label8.TabIndex = 19;
             this.label8.Text = "Settings";
             // 
-            // labelSorted
+            // trayIcon
             // 
-            this.labelSorted.AutoSize = true;
-            this.labelSorted.Location = new System.Drawing.Point(10, 262);
-            this.labelSorted.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelSorted.Name = "labelSorted";
-            this.labelSorted.Size = new System.Drawing.Size(54, 12);
-            this.labelSorted.TabIndex = 23;
-            this.labelSorted.Text = "SORTED:";
+            this.trayIcon.ContextMenuStrip = this.trayIconMenuStrip;
+            this.trayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayIcon.Icon")));
+            this.trayIcon.Text = "trayIcon";
+            this.trayIcon.Visible = true;
             // 
-            // labelSortedValue
+            // trayIconMenuStrip
             // 
-            this.labelSortedValue.AutoSize = true;
-            this.labelSortedValue.Location = new System.Drawing.Point(67, 262);
-            this.labelSortedValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelSortedValue.Name = "labelSortedValue";
-            this.labelSortedValue.Size = new System.Drawing.Size(40, 12);
-            this.labelSortedValue.TabIndex = 24;
-            this.labelSortedValue.Text = "False";
+            this.trayIconMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startSortingToolStripMenuItem,
+            this.stopAllSortingToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.exitToolStripMenuItem1});
+            this.trayIconMenuStrip.Name = "trayIconMenuStrip";
+            this.trayIconMenuStrip.Size = new System.Drawing.Size(154, 76);
+            // 
+            // startSortingToolStripMenuItem
+            // 
+            this.startSortingToolStripMenuItem.Name = "startSortingToolStripMenuItem";
+            this.startSortingToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.startSortingToolStripMenuItem.Text = "Start all sorting";
+            this.startSortingToolStripMenuItem.Click += new System.EventHandler(this.startSortingToolStripMenuItem_Click);
+            // 
+            // stopAllSortingToolStripMenuItem
+            // 
+            this.stopAllSortingToolStripMenuItem.Name = "stopAllSortingToolStripMenuItem";
+            this.stopAllSortingToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.stopAllSortingToolStripMenuItem.Text = "Stop all sorting";
+            this.stopAllSortingToolStripMenuItem.Click += new System.EventHandler(this.stopAllSortingToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem1
+            // 
+            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
+            this.exitToolStripMenuItem1.Text = "Exit";
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(150, 6);
             // 
             // Window
             // 
@@ -705,12 +762,12 @@
             this.Font = new System.Drawing.Font("OCR A Extended", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "Window";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ShowIcon = false;
             this.Text = "AutoSortFolder";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
@@ -726,6 +783,7 @@
             this.pageHome.PerformLayout();
             this.pageSettings.ResumeLayout(false);
             this.pageSettings.PerformLayout();
+            this.trayIconMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -778,7 +836,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restartToolStripMenuItem;
-        private System.Windows.Forms.CheckBox checkboxLiveSorting;
+        private System.Windows.Forms.CheckBox checkboxBackgroundSorting;
         private System.Windows.Forms.CheckBox checkboxAutorun;
         private System.Windows.Forms.CheckBox checkboxAutoSave;
         private System.Windows.Forms.Button buttonApply;
@@ -787,6 +845,12 @@
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.Label labelSorted;
         private System.Windows.Forms.Label labelSortedValue;
+        private System.Windows.Forms.NotifyIcon trayIcon;
+        private System.Windows.Forms.ContextMenuStrip trayIconMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem startSortingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stopAllSortingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 
