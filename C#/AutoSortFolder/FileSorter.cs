@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -141,37 +142,89 @@ namespace AutoSortFolder
         /// <param name="destPath"></param>
         public static void MoveSafe(string sourcePath, string destPath)
         {
+            // Get attributes of the path and check if its a file or directory
+            FileAttributes attr = File.GetAttributes(sourcePath);
+            bool isDirectory = attr.HasFlag(FileAttributes.Directory);
+
             try
             {
-                File.Copy(sourceFilePath, destFilePath, false);
-            } catch (IOException ex)
+                if (isDirectory) FileSorter.CopyDirectory(sourcePath, destPath, true, false);
+                else File.Copy(sourcePath, destPath, false);
+            }
+            catch (IOException ex)
             {
                 // Add a number to the end if theres a duplicate file
                 int count = 0;
-                string fileName = Path.GetFileNameWithoutExtension(destFilePath);
-                string fileExtension = Path.GetExtension(destFilePath);
-                string destDirPath = destFilePath.Substring(0, destFilePath.Length-(fileName + fileExtension).Length);
-                string dupeFilePath;
+                string name = Path.GetFileNameWithoutExtension(destPath);
+                string extension = Path.GetExtension(destPath);
+                string destDirPath = destPath.Substring(0, destPath.Length - (name + extension).Length);
+                string dupePath;
 
                 // Attempt to find new name
                 while (true)
                 {
-                    dupeFilePath = destDirPath;
-                    dupeFilePath += fileName + "(" + count + ")" + fileExtension;
+                    dupePath = destDirPath;
+                    dupePath += name + "(" + count + ")" + extension;
 
                     // Check if the new dupe path doesn't exist
-                    if (!File.Exists(dupeFilePath)) {
-                        break;
-                    }
+                    if (!File.Exists(dupePath)) break;
 
                     count++;
                 }
 
                 // Copy again
-                File.Copy(sourceFilePath, dupeFilePath, false);
-            } finally
+                if (isDirectory) FileSorter.CopyDirectory(sourcePath, dupePath, true, false);
+                else File.Copy(sourcePath, dupePath, false);
+            }
+            finally
             {
-                File.Delete(sourceFilePath); // Delete the original
+                if (isDirectory) Directory.Delete(sourcePath, true);
+                else File.Delete(sourcePath); // Delete the original
+            }
+        }
+
+        /// <summary>
+        /// Recursively copies a directory to another destination. Originally written by Microsoft from their documentation, modified by me to add overwrite protections.
+        /// </summary>
+        /// <param name="sourceDir"></param>
+        /// <param name="destinationDir"></param>
+        /// <param name="recursive"></param>
+        /// <exception cref="DirectoryNotFoundException"></exception>
+        /// <exception cref="IOException"></exception>
+        static void CopyDirectory(string sourceDir, string destinationDir, bool recursive, bool overwrite)
+        {
+            // Get information about the source directory
+            var dir = new DirectoryInfo(sourceDir);
+
+            // Check if the source directory exists
+            if (!dir.Exists)
+                throw new DirectoryNotFoundException($"Source directory not found: {dir.FullName}");
+
+            // Cache directories before we start copying
+            DirectoryInfo[] dirs = dir.GetDirectories();
+
+            // Check for overwriting on the destination directory - my modification
+            if (!overwrite && Directory.Exists(destinationDir)) 
+                throw new IOException("Destination directory already exists.");
+
+            // Create the destination directory
+            Directory.CreateDirectory(destinationDir);
+
+            // Get the files in the source directory and copy to the destination directory
+            foreach (FileInfo file in dir.GetFiles())
+            {
+                string targetFilePath = Path.Combine(destinationDir, file.Name);
+                file.CopyTo(targetFilePath);
+            }
+
+            // If recursive and copying subdirectories, recursively call this method
+            if (recursive)
+            {
+                foreach (DirectoryInfo subDir in dirs)
+                {
+                    string newDestinationDir = Path.Combine(destinationDir, subDir.Name);
+                    CopyDirectory(subDir.FullName, newDestinationDir, true, overwrite);
+                }
             }
         }
     }
