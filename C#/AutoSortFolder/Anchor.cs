@@ -184,6 +184,15 @@ namespace AutoSortFolder
             foreach (string folderPath in this.folderPaths)
             {
                 if (!Directory.Exists(folderPath)) throw new DirectoryNotFoundException();
+                // Iterate through all the directories in the folder
+                foreach (string path in folderDirectories)
+                {
+                    // Check for if the folder is NOT in the blacklist/ie is a nested folder
+                    string name = Path.GetFileName(path);
+
+                    // Move the file out of the current folder to the
+                    FileSorter.MoveSafe(path, this.directory + "\\" + name);
+                }
 
                 // Iterate through all files within the current folder
                 foreach (string path in folderFiles)
