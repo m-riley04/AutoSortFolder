@@ -382,7 +382,7 @@ namespace AutoSortFolder
         {
             if (app.settings == null) return;
 
-            checkboxLiveSorting.Checked     = app.settings.liveSorting;
+            checkboxBackgroundSorting.Checked     = app.settings.backgroundSorting;
             checkboxAutoSave.Checked        = app.settings.autoSave;
             checkboxAutorun.Checked         = app.settings.autorun;
         }
@@ -490,7 +490,7 @@ namespace AutoSortFolder
         private void buttonApply_Click(object sender, EventArgs e)
         {
             // Set all the states
-            app.settings.liveSorting = checkboxLiveSorting.Checked;
+            app.settings.backgroundSorting = checkboxBackgroundSorting.Checked;
             app.settings.autoSave = checkboxAutoSave.Checked;
             app.settings.autorun = checkboxAutorun.Checked;
 
@@ -542,8 +542,8 @@ namespace AutoSortFolder
                     {
                         worker.ReportProgress(progress);
                     });
-                if (app.settings.liveSorting) System.Threading.Thread.Sleep(anchorRefreshTime);
-            } while (!worker.CancellationPending && app.settings.liveSorting);
+                if (app.settings.backgroundSorting) System.Threading.Thread.Sleep(anchorRefreshTime);
+            } while (!worker.CancellationPending && app.settings.backgroundSorting);
 
             if (worker.CancellationPending) e.Cancel = true;
         }
