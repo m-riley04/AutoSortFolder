@@ -190,7 +190,6 @@ namespace AutoSortFolder
             // Get attributes of the path and check if its a file or directory
             FileAttributes attr = File.GetAttributes(sourcePath);
             bool isDirectory = attr.HasFlag(FileAttributes.Directory);
-            Console.WriteLine($"File Path: ${0} \t isDirectory: ${1}", sourcePath, isDirectory);
 
             try
             {
