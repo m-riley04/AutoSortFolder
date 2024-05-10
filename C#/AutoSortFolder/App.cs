@@ -102,5 +102,10 @@ namespace AutoSortFolder
         {
             currentAnchor.Deactivate();
         }
+
+        public void EnableAutoRun()
+        {
+            
+        }
     }
 }
