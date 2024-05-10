@@ -636,5 +636,34 @@ namespace AutoSortFolder
 
         #endregion
 
+        private void startSortingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StartAnchorSorting();
+        }
+
+        private void stopAllSortingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StopAnchorSorting();
+        }
+
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ExitProgram();
+        }
+
+        private void pageHome_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControlPages_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
