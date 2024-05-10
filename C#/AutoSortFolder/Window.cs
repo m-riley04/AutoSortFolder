@@ -260,7 +260,7 @@ namespace AutoSortFolder
             // Validate the path
             if (!Directory.Exists(app.currentAnchor.directory))
             {
-                Console.WriteLine("Cannot populate current anchor tree, directory does not exist");
+                treeCurrentAnchor.Nodes.Clear();
                 return;
             }
 
@@ -294,7 +294,6 @@ namespace AutoSortFolder
             int i = 0;
             foreach (string folderPath in Directory.GetDirectories(directory))
             {
-                Console.WriteLine(folderPath);
                 string name = Path.GetFileName(folderPath);
                 if (includeRoot) nodes[0].Nodes.Add(name);
                 else nodes.Add(new TreeNode(name));
@@ -304,7 +303,6 @@ namespace AutoSortFolder
                 if (includeRoot) subnode = nodes[0].Nodes[i];
                 else subnode = nodes[i];
 
-                Console.WriteLine(folderPath);
                 // Recursively go through the sub-node
                 subnode.Nodes.AddRange(GetDirectoryNodes(folderPath, false));
                 i++;
@@ -570,6 +568,7 @@ namespace AutoSortFolder
                 //MessageBox.Show("Sorting is complete.");
             }
 
+            Console.WriteLine($"Folder Count Match: {AnchorVerifier.FoldersMatch(app.currentAnchor.directory, testPath, true)}");
             app.currentAnchor.Deactivate();
             UpdateCurrentAnchorUI();
             UpdateAnchorListUI();
