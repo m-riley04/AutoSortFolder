@@ -161,6 +161,8 @@ namespace AutoSortFolder
 
         private void UnsortAnchor()
         {
+            if (app.currentAnchor == null) return;
+
             try
             {
                 app.currentAnchor.Unsort(progress => { });
@@ -168,7 +170,7 @@ namespace AutoSortFolder
             }
             catch (Exception err)
             {
-                MessageBox.Show($"Error: {err.Message}");
+                MessageBox.Show($"Error: {err.Message}\nSource: {err.Source}\n Inner: {err.InnerException} \nMethod: {err.TargetSite} \nStack Trace: {err.StackTrace}");
             }
 
             PopulateCurrentAnchorTree();
@@ -180,6 +182,8 @@ namespace AutoSortFolder
 
         private void RemoveAnchor()
         {
+            if (app.currentAnchor == null) return;
+
             try
             {
                 int index = listbox_anchors.SelectedIndex;
