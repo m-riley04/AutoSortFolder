@@ -153,7 +153,7 @@ namespace AutoSortFolder
             switch (component)
             {
                 case DateComponent.DATE:
-                    folderName = date.Date.Date.ToString("MM-dd-yyyy").Replace("/", "-").Replace(":", "_");
+                    folderName = date.Date.Date.ToString("MM-dd-yyyy").Replace(":", "_");
                     break;
                 case DateComponent.DAY:
                     folderName = date.Day.ToString();
