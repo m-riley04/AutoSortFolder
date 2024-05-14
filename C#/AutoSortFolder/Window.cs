@@ -97,6 +97,12 @@ namespace AutoSortFolder
         {
             if (app.currentAnchor == null) return;
 
+            if (app.currentAnchor.method == SortingMethod.NONE)
+            {
+                MessageBox.Show("Please select a sorting method first!", "Sorting Method");
+                return;
+            }
+
             if (app.currentAnchor.sorted) UnsortAnchor(); // Unsort the folder to re-sort it
 
             if (!Directory.Exists(app.currentAnchor.directory))
