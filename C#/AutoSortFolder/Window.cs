@@ -412,6 +412,7 @@ namespace AutoSortFolder
             checkboxBackgroundSorting.Checked     = app.settings.backgroundSorting;
             checkboxAutoSave.Checked        = app.settings.autoSave;
             checkboxAutorun.Checked         = app.settings.autorun;
+            checkboxDebug.Checked = app.settings.debug;
         }
 
         private void UpdateAnchorListUI()
