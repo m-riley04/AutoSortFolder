@@ -232,6 +232,15 @@ namespace AutoSortFolder
             if (app.settings.autoSave) SaveAnchors();
         }
         
+        private void ResetBlacklist()
+        {
+            if (app.currentAnchor == null) return;
+
+            app.currentAnchor.blacklist.Clear();
+
+            UpdateCurrentAnchorUI();
+        }
+
         private void OpenURLInBrowser(string url)
         {
             try
