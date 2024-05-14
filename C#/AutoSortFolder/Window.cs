@@ -32,7 +32,6 @@ namespace AutoSortFolder
             // Create the app
             app = new App();
 
-
             PopulateAnchors();
             UpdateSettingsUI();
             UpdateMenuUI();
@@ -427,6 +426,7 @@ namespace AutoSortFolder
             startToolStripMenuItem.Enabled = isIdle;
             stopToolStripMenuItem.Enabled = isActive;
             startToolStripMenuItem.Text = isSorted ? "Resort" : "Start sorting";
+            unsortToolStripMenuItem.Enabled = isSorted;
 
             // Tray icon items
             startSortingToolStripMenuItem.Enabled = isIdle;
