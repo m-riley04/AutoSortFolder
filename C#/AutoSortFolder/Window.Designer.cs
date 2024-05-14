@@ -40,6 +40,7 @@
             this.button_unsort = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonOpenDirectory = new System.Windows.Forms.Button();
             this.combobox_sortingMethod = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.listbox_anchors = new System.Windows.Forms.ListBox();
@@ -80,8 +81,7 @@
             this.tabControlPages = new System.Windows.Forms.TabControl();
             this.pageHome = new System.Windows.Forms.TabPage();
             this.pageSettings = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.checkboxDeepSort = new System.Windows.Forms.CheckBox();
+            this.checkboxDebug = new System.Windows.Forms.CheckBox();
             this.buttonApply = new System.Windows.Forms.Button();
             this.buttonResetToDefault = new System.Windows.Forms.Button();
             this.checkboxAutorun = new System.Windows.Forms.CheckBox();
@@ -94,7 +94,7 @@
             this.stopAllSortingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonOpenDirectory = new System.Windows.Forms.Button();
+            this.buttonResetBlacklist = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -115,7 +115,7 @@
             this.textbox_folderDirectory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textbox_folderDirectory.Name = "textbox_folderDirectory";
             this.textbox_folderDirectory.ReadOnly = true;
-            this.textbox_folderDirectory.Size = new System.Drawing.Size(298, 19);
+            this.textbox_folderDirectory.Size = new System.Drawing.Size(334, 19);
             this.textbox_folderDirectory.TabIndex = 1;
             // 
             // label1
@@ -133,7 +133,7 @@
             this.button_selectFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
             this.button_selectFolder.FlatAppearance.BorderSize = 0;
             this.button_selectFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_selectFolder.Location = new System.Drawing.Point(384, 6);
+            this.button_selectFolder.Location = new System.Drawing.Point(422, 6);
             this.button_selectFolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_selectFolder.Name = "button_selectFolder";
             this.button_selectFolder.Size = new System.Drawing.Size(104, 21);
@@ -145,7 +145,7 @@
             // label_status
             // 
             this.label_status.AutoSize = true;
-            this.label_status.Location = new System.Drawing.Point(129, 287);
+            this.label_status.Location = new System.Drawing.Point(129, 344);
             this.label_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_status.Name = "label_status";
             this.label_status.Size = new System.Drawing.Size(33, 12);
@@ -200,7 +200,7 @@
             this.panel1.Controls.Add(this.button_start);
             this.panel1.Controls.Add(this.button_unsort);
             this.panel1.Controls.Add(this.button_stop);
-            this.panel1.Location = new System.Drawing.Point(314, 280);
+            this.panel1.Location = new System.Drawing.Point(369, 338);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(230, 29);
@@ -215,8 +215,22 @@
             this.panel2.Location = new System.Drawing.Point(9, 21);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(524, 35);
+            this.panel2.Size = new System.Drawing.Size(584, 35);
             this.panel2.TabIndex = 9;
+            // 
+            // buttonOpenDirectory
+            // 
+            this.buttonOpenDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.buttonOpenDirectory.FlatAppearance.BorderSize = 0;
+            this.buttonOpenDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOpenDirectory.Location = new System.Drawing.Point(529, 6);
+            this.buttonOpenDirectory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.buttonOpenDirectory.Name = "buttonOpenDirectory";
+            this.buttonOpenDirectory.Size = new System.Drawing.Size(51, 21);
+            this.buttonOpenDirectory.TabIndex = 4;
+            this.buttonOpenDirectory.Text = "Open Directory";
+            this.buttonOpenDirectory.UseVisualStyleBackColor = false;
+            this.buttonOpenDirectory.Click += new System.EventHandler(this.buttonOpenDirectory_Click);
             // 
             // combobox_sortingMethod
             // 
@@ -258,7 +272,7 @@
             this.listbox_anchors.Location = new System.Drawing.Point(4, 9);
             this.listbox_anchors.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.listbox_anchors.Name = "listbox_anchors";
-            this.listbox_anchors.Size = new System.Drawing.Size(221, 288);
+            this.listbox_anchors.Size = new System.Drawing.Size(221, 348);
             this.listbox_anchors.TabIndex = 12;
             this.listbox_anchors.SelectedIndexChanged += new System.EventHandler(this.listboxAnchors_SelectedIndexChanged);
             // 
@@ -301,12 +315,13 @@
             this.panel3.Location = new System.Drawing.Point(4, 44);
             this.panel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(307, 312);
+            this.panel3.Size = new System.Drawing.Size(307, 370);
             this.panel3.TabIndex = 16;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(21)))), ((int)(((byte)(36)))));
+            this.panel4.Controls.Add(this.buttonResetBlacklist);
             this.panel4.Controls.Add(this.listBoxBlacklist);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.labelSortedValue);
@@ -323,7 +338,7 @@
             this.panel4.Location = new System.Drawing.Point(371, 44);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(544, 312);
+            this.panel4.Size = new System.Drawing.Size(599, 370);
             this.panel4.TabIndex = 17;
             // 
             // listBoxBlacklist
@@ -335,7 +350,7 @@
             this.listBoxBlacklist.ItemHeight = 12;
             this.listBoxBlacklist.Location = new System.Drawing.Point(12, 140);
             this.listBoxBlacklist.Name = "listBoxBlacklist";
-            this.listBoxBlacklist.Size = new System.Drawing.Size(157, 96);
+            this.listBoxBlacklist.Size = new System.Drawing.Size(160, 168);
             this.listBoxBlacklist.TabIndex = 26;
             // 
             // label5
@@ -351,7 +366,7 @@
             // labelSortedValue
             // 
             this.labelSortedValue.AutoSize = true;
-            this.labelSortedValue.Location = new System.Drawing.Point(67, 262);
+            this.labelSortedValue.Location = new System.Drawing.Point(67, 319);
             this.labelSortedValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSortedValue.Name = "labelSortedValue";
             this.labelSortedValue.Size = new System.Drawing.Size(40, 12);
@@ -361,7 +376,7 @@
             // labelSorted
             // 
             this.labelSorted.AutoSize = true;
-            this.labelSorted.Location = new System.Drawing.Point(10, 262);
+            this.labelSorted.Location = new System.Drawing.Point(10, 319);
             this.labelSorted.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSorted.Name = "labelSorted";
             this.labelSorted.Size = new System.Drawing.Size(54, 12);
@@ -371,7 +386,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(213, 75);
+            this.label6.Location = new System.Drawing.Point(196, 75);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 12);
@@ -381,17 +396,18 @@
             // treeCurrentAnchor
             // 
             this.treeCurrentAnchor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.treeCurrentAnchor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeCurrentAnchor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.treeCurrentAnchor.Indent = 15;
-            this.treeCurrentAnchor.Location = new System.Drawing.Point(215, 90);
+            this.treeCurrentAnchor.Location = new System.Drawing.Point(198, 90);
             this.treeCurrentAnchor.Name = "treeCurrentAnchor";
-            this.treeCurrentAnchor.Size = new System.Drawing.Size(310, 184);
+            this.treeCurrentAnchor.Size = new System.Drawing.Size(391, 218);
             this.treeCurrentAnchor.TabIndex = 19;
             // 
             // progressBarSorting
             // 
             this.progressBarSorting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
-            this.progressBarSorting.Location = new System.Drawing.Point(9, 283);
+            this.progressBarSorting.Location = new System.Drawing.Point(9, 340);
             this.progressBarSorting.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.progressBarSorting.Name = "progressBarSorting";
             this.progressBarSorting.Size = new System.Drawing.Size(112, 21);
@@ -439,7 +455,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.menuStrip.Size = new System.Drawing.Size(930, 24);
+            this.menuStrip.Size = new System.Drawing.Size(982, 24);
             this.menuStrip.TabIndex = 19;
             this.menuStrip.Text = "menuStrip1";
             this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
@@ -629,7 +645,7 @@
             this.tabControlPages.Location = new System.Drawing.Point(0, 27);
             this.tabControlPages.Name = "tabControlPages";
             this.tabControlPages.SelectedIndex = 0;
-            this.tabControlPages.Size = new System.Drawing.Size(931, 395);
+            this.tabControlPages.Size = new System.Drawing.Size(982, 451);
             this.tabControlPages.TabIndex = 20;
             this.tabControlPages.TabStop = false;
             this.tabControlPages.SelectedIndexChanged += new System.EventHandler(this.tabControlPages_SelectedIndexChanged);
@@ -643,7 +659,7 @@
             this.pageHome.Location = new System.Drawing.Point(4, 21);
             this.pageHome.Name = "pageHome";
             this.pageHome.Padding = new System.Windows.Forms.Padding(3);
-            this.pageHome.Size = new System.Drawing.Size(923, 370);
+            this.pageHome.Size = new System.Drawing.Size(974, 426);
             this.pageHome.TabIndex = 0;
             this.pageHome.Text = "Home";
             this.pageHome.Click += new System.EventHandler(this.pageHome_Click);
@@ -651,8 +667,7 @@
             // pageSettings
             // 
             this.pageSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
-            this.pageSettings.Controls.Add(this.label3);
-            this.pageSettings.Controls.Add(this.checkboxDeepSort);
+            this.pageSettings.Controls.Add(this.checkboxDebug);
             this.pageSettings.Controls.Add(this.buttonApply);
             this.pageSettings.Controls.Add(this.buttonResetToDefault);
             this.pageSettings.Controls.Add(this.checkboxAutorun);
@@ -666,28 +681,16 @@
             this.pageSettings.TabIndex = 1;
             this.pageSettings.Text = "Settings";
             // 
-            // label3
+            // checkboxDebug
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("OCR A Extended", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(154, 161);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(460, 12);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "WARNING: This will delete the parent folders of all sorted files.";
-            // 
-            // checkboxDeepSort
-            // 
-            this.checkboxDeepSort.AutoSize = true;
-            this.checkboxDeepSort.Font = new System.Drawing.Font("OCR A Extended", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkboxDeepSort.Location = new System.Drawing.Point(10, 151);
-            this.checkboxDeepSort.Name = "checkboxDeepSort";
-            this.checkboxDeepSort.Size = new System.Drawing.Size(137, 27);
-            this.checkboxDeepSort.TabIndex = 24;
-            this.checkboxDeepSort.Text = "Deep Sort";
-            this.checkboxDeepSort.UseVisualStyleBackColor = true;
+            this.checkboxDebug.AutoSize = true;
+            this.checkboxDebug.Font = new System.Drawing.Font("OCR A Extended", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkboxDebug.Location = new System.Drawing.Point(10, 328);
+            this.checkboxDebug.Name = "checkboxDebug";
+            this.checkboxDebug.Size = new System.Drawing.Size(89, 27);
+            this.checkboxDebug.TabIndex = 26;
+            this.checkboxDebug.Text = "Debug";
+            this.checkboxDebug.UseVisualStyleBackColor = true;
             // 
             // buttonApply
             // 
@@ -806,26 +809,26 @@
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
-            // buttonOpenDirectory
+            // buttonResetBlacklist
             // 
-            this.buttonOpenDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
-            this.buttonOpenDirectory.FlatAppearance.BorderSize = 0;
-            this.buttonOpenDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOpenDirectory.Location = new System.Drawing.Point(491, 6);
-            this.buttonOpenDirectory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.buttonOpenDirectory.Name = "buttonOpenDirectory";
-            this.buttonOpenDirectory.Size = new System.Drawing.Size(25, 21);
-            this.buttonOpenDirectory.TabIndex = 4;
-            this.buttonOpenDirectory.Text = "Open Directory";
-            this.buttonOpenDirectory.UseVisualStyleBackColor = false;
-            this.buttonOpenDirectory.Click += new System.EventHandler(this.buttonOpenDirectory_Click);
+            this.buttonResetBlacklist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.buttonResetBlacklist.FlatAppearance.BorderSize = 0;
+            this.buttonResetBlacklist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonResetBlacklist.Location = new System.Drawing.Point(121, 140);
+            this.buttonResetBlacklist.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.buttonResetBlacklist.Name = "buttonResetBlacklist";
+            this.buttonResetBlacklist.Size = new System.Drawing.Size(51, 21);
+            this.buttonResetBlacklist.TabIndex = 8;
+            this.buttonResetBlacklist.Text = "Reset Blacklist";
+            this.buttonResetBlacklist.UseVisualStyleBackColor = false;
+            this.buttonResetBlacklist.Click += new System.EventHandler(this.buttonResetBlacklist_Click);
             // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
-            this.ClientSize = new System.Drawing.Size(930, 415);
+            this.ClientSize = new System.Drawing.Size(982, 473);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.tabControlPages);
             this.Font = new System.Drawing.Font("OCR A Extended", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -921,11 +924,11 @@
         private System.Windows.Forms.ToolStripMenuItem stopAllSortingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkboxDeepSort;
         private System.Windows.Forms.ListBox listBoxBlacklist;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button buttonOpenDirectory;
+        private System.Windows.Forms.CheckBox checkboxDebug;
+        private System.Windows.Forms.Button buttonResetBlacklist;
     }
 }
 
