@@ -25,6 +25,19 @@ namespace AutoSortFolder
         }
 
         /// <summary>
+        /// Checks if a name is in the filesorter's blacklist and prints it to the console
+        /// </summary>
+        /// <param name="name"></param>
+        private bool InBlacklist(string name)
+        {
+            bool r = blacklist.Contains(name);
+
+            if (r) Console.WriteLine($"'{name}' is in blacklist.");
+
+            return r;
+        }
+
+        /// <summary>
         /// Sorts a file based on it's file extension. Moves it into a folder of the extension's category
         /// </summary>
         /// <param name="path"></param>
@@ -32,13 +45,7 @@ namespace AutoSortFolder
         public void SortByExtension(string path, string directory)
         {
             string name = Path.GetFileName(path);
-
-            // Check if the file is in the blacklist
-            if (this.blacklist.Contains(name))
-            {
-                Console.WriteLine($"File/directory name {0} is in blacklist.", name);
-                return;
-            }
+            if (InBlacklist(name)) return; // Check if name is in blacklist
 
             string extension = Path.GetExtension(path);
             string extensionCategory = "other"; // Default folder name
@@ -74,13 +81,7 @@ namespace AutoSortFolder
         public void SortByAlphabet(string path, string directory)
         {
             string name = Path.GetFileName(path);
-
-            // Check if the file is in the blacklist
-            if (blacklist.Contains(name))
-            {
-                Console.WriteLine($"File/directory name {0} is in blacklist.", name); 
-                return;
-            }
+            if (InBlacklist(name)) return; // Check if name is in blacklist
 
             char c = name[0];
             string sortedFolderPath = directory + "\\" + c;
@@ -120,12 +121,7 @@ namespace AutoSortFolder
         {
             string name = Path.GetFileName(path);
 
-            // Check if the file is in the blacklist
-            if (blacklist.Contains(name))
-            {
-                Console.WriteLine($"File/directory name {0} is in blacklist.", name);
-                return;
-            }
+            if (InBlacklist(name)) return; // Check if name is in blacklist
 
             // Get the date based on the category
             DateTime date;
