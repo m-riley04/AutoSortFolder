@@ -840,6 +840,7 @@
             this.buttonCheckForUpdate.TabIndex = 27;
             this.buttonCheckForUpdate.Text = "Check for Updates";
             this.buttonCheckForUpdate.UseVisualStyleBackColor = false;
+            this.buttonCheckForUpdate.Click += new System.EventHandler(this.buttonCheckForUpdate_Click);
             // 
             // fileSystemWatcher
             // 
