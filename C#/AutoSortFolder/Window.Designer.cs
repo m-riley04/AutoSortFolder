@@ -677,7 +677,7 @@
             this.pageSettings.Location = new System.Drawing.Point(4, 21);
             this.pageSettings.Name = "pageSettings";
             this.pageSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.pageSettings.Size = new System.Drawing.Size(923, 370);
+            this.pageSettings.Size = new System.Drawing.Size(974, 426);
             this.pageSettings.TabIndex = 1;
             this.pageSettings.Text = "Settings";
             // 
@@ -685,7 +685,7 @@
             // 
             this.checkboxDebug.AutoSize = true;
             this.checkboxDebug.Font = new System.Drawing.Font("OCR A Extended", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkboxDebug.Location = new System.Drawing.Point(10, 328);
+            this.checkboxDebug.Location = new System.Drawing.Point(6, 384);
             this.checkboxDebug.Name = "checkboxDebug";
             this.checkboxDebug.Size = new System.Drawing.Size(89, 27);
             this.checkboxDebug.TabIndex = 26;
@@ -698,7 +698,7 @@
             this.buttonApply.FlatAppearance.BorderSize = 0;
             this.buttonApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonApply.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonApply.Location = new System.Drawing.Point(844, 328);
+            this.buttonApply.Location = new System.Drawing.Point(897, 384);
             this.buttonApply.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(69, 36);
@@ -713,7 +713,7 @@
             this.buttonResetToDefault.FlatAppearance.BorderSize = 0;
             this.buttonResetToDefault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonResetToDefault.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonResetToDefault.Location = new System.Drawing.Point(700, 328);
+            this.buttonResetToDefault.Location = new System.Drawing.Point(753, 384);
             this.buttonResetToDefault.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonResetToDefault.Name = "buttonResetToDefault";
             this.buttonResetToDefault.Size = new System.Drawing.Size(136, 36);
