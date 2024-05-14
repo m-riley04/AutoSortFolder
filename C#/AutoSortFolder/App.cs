@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,11 +11,13 @@ namespace AutoSortFolder
 {
     public class App
     {
+        
         public Anchor currentAnchor;
         public Settings settings;
         public List<Anchor> anchors = new List<Anchor>();
         public string anchorSavePath = Directory.GetCurrentDirectory() + "\\" + "anchors.json";
         public string settingsSavePath = Directory.GetCurrentDirectory() + "\\" + "app_settings.json";
+        public RegistryKey regKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
         public App()
         {
             if (!File.Exists(anchorSavePath))
