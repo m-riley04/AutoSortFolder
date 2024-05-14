@@ -20,6 +20,9 @@ namespace AutoSortFolder
     {
        
         public App app;
+        FileStream filestream;
+        StreamWriter writer;
+        TextWriter oldWriter = Console.Out;
         public string testPath = @"C:\Users\vex10\Desktop\testOriginal"; // Path for testing/verifying anchor sorting
 
         public Window()
