@@ -83,8 +83,16 @@ namespace AutoSortFolder
             string name = Path.GetFileName(path);
             if (InBlacklist(name)) return; // Check if name is in blacklist
 
+            string validCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&()_+-=[]{};',."; // Alphabet/valid characters
+
+            // Get the name and make the default folder path
             char c = name[0];
-            string sortedFolderPath = directory + "\\" + c;
+            string sortedFolderPath = directory + "\\" + "other";
+
+            // Check if the character is valid
+            bool isValid = validCharacters.Contains(c.ToString());
+            if (isValid) sortedFolderPath = directory + "\\" + c;
+            else if (!blacklist.Contains("other")) blacklist.Add("other");
 
             // Check if the directory already exists
             if (!Directory.Exists(sortedFolderPath)) Directory.CreateDirectory(sortedFolderPath);
@@ -93,7 +101,7 @@ namespace AutoSortFolder
             MoveSafe(path, sortedFolderPath + "\\" + name);
 
             // Update the blacklist
-            if (!blacklist.Contains(c.ToString())) this.blacklist.Add(c.ToString());
+            if (!blacklist.Contains(c.ToString()) && isValid) blacklist.Add(c.ToString());
         }
 
         public enum DateSortCategory
