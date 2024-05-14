@@ -78,6 +78,7 @@
     <Compile Include="Anchor.cs" />
     <Compile Include="AnchorVerifier.cs" />
     <Compile Include="App.cs" />
+    <Compile Include="UpdateHelper.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="ErrorPopup.cs">
       <SubType>Form</SubType>
