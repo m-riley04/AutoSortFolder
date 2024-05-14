@@ -302,7 +302,7 @@ namespace AutoSortFolder
             }
 
             // Automatically open the tree
-            treeCurrentAnchor.ExpandAll();
+            treeCurrentAnchor.Nodes[0].Expand();
         }
 
         private TreeNode[] GetDirectoryNodes(string directory, bool includeRoot = true)
