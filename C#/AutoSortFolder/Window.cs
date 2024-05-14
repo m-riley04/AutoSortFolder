@@ -551,7 +551,7 @@ namespace AutoSortFolder
         private void dropdownSortingMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (app.currentAnchor != null) app.currentAnchor.method = (SortingMethod)combobox_sortingMethod.SelectedIndex;
-            SaveAnchors();
+            if (app.settings.autoSave) SaveAnchors();
         }
 
         private void listboxAnchors_SelectedIndexChanged(object sender, EventArgs e)
