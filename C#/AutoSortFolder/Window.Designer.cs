@@ -48,6 +48,7 @@
             this.button_remove = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.buttonResetBlacklist = new System.Windows.Forms.Button();
             this.listBoxBlacklist = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.labelSortedValue = new System.Windows.Forms.Label();
@@ -94,7 +95,8 @@
             this.stopAllSortingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonResetBlacklist = new System.Windows.Forms.Button();
+            this.buttonCheckForUpdate = new System.Windows.Forms.Button();
+            this.fileSystemWatcher = new System.IO.FileSystemWatcher();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -104,6 +106,7 @@
             this.pageHome.SuspendLayout();
             this.pageSettings.SuspendLayout();
             this.trayIconMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).BeginInit();
             this.SuspendLayout();
             // 
             // textbox_folderDirectory
@@ -341,6 +344,20 @@
             this.panel4.Size = new System.Drawing.Size(599, 370);
             this.panel4.TabIndex = 17;
             // 
+            // buttonResetBlacklist
+            // 
+            this.buttonResetBlacklist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.buttonResetBlacklist.FlatAppearance.BorderSize = 0;
+            this.buttonResetBlacklist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonResetBlacklist.Location = new System.Drawing.Point(121, 140);
+            this.buttonResetBlacklist.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.buttonResetBlacklist.Name = "buttonResetBlacklist";
+            this.buttonResetBlacklist.Size = new System.Drawing.Size(51, 21);
+            this.buttonResetBlacklist.TabIndex = 8;
+            this.buttonResetBlacklist.Text = "Reset Blacklist";
+            this.buttonResetBlacklist.UseVisualStyleBackColor = false;
+            this.buttonResetBlacklist.Click += new System.EventHandler(this.buttonResetBlacklist_Click);
+            // 
             // listBoxBlacklist
             // 
             this.listBoxBlacklist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
@@ -554,7 +571,7 @@
             this.addToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
@@ -563,7 +580,7 @@
             this.removeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.removeToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
@@ -572,14 +589,14 @@
             this.toolStripSeparator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(135, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.startToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.startToolStripMenuItem.Text = "Start sorting";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
@@ -588,7 +605,7 @@
             this.stopToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.stopToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.stopToolStripMenuItem.Text = "Stop sorting";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
@@ -597,7 +614,7 @@
             this.unsortToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.unsortToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.unsortToolStripMenuItem.Name = "unsortToolStripMenuItem";
-            this.unsortToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.unsortToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.unsortToolStripMenuItem.Text = "Unsort";
             this.unsortToolStripMenuItem.Click += new System.EventHandler(this.unsortToolStripMenuItem_Click);
             // 
@@ -667,6 +684,7 @@
             // pageSettings
             // 
             this.pageSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.pageSettings.Controls.Add(this.buttonCheckForUpdate);
             this.pageSettings.Controls.Add(this.checkboxDebug);
             this.pageSettings.Controls.Add(this.buttonApply);
             this.pageSettings.Controls.Add(this.buttonResetToDefault);
@@ -809,19 +827,24 @@
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
-            // buttonResetBlacklist
+            // buttonCheckForUpdate
             // 
-            this.buttonResetBlacklist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
-            this.buttonResetBlacklist.FlatAppearance.BorderSize = 0;
-            this.buttonResetBlacklist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonResetBlacklist.Location = new System.Drawing.Point(121, 140);
-            this.buttonResetBlacklist.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.buttonResetBlacklist.Name = "buttonResetBlacklist";
-            this.buttonResetBlacklist.Size = new System.Drawing.Size(51, 21);
-            this.buttonResetBlacklist.TabIndex = 8;
-            this.buttonResetBlacklist.Text = "Reset Blacklist";
-            this.buttonResetBlacklist.UseVisualStyleBackColor = false;
-            this.buttonResetBlacklist.Click += new System.EventHandler(this.buttonResetBlacklist_Click);
+            this.buttonCheckForUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.buttonCheckForUpdate.FlatAppearance.BorderSize = 0;
+            this.buttonCheckForUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCheckForUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonCheckForUpdate.Location = new System.Drawing.Point(830, 10);
+            this.buttonCheckForUpdate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.buttonCheckForUpdate.Name = "buttonCheckForUpdate";
+            this.buttonCheckForUpdate.Size = new System.Drawing.Size(136, 36);
+            this.buttonCheckForUpdate.TabIndex = 27;
+            this.buttonCheckForUpdate.Text = "Check for Updates";
+            this.buttonCheckForUpdate.UseVisualStyleBackColor = false;
+            // 
+            // fileSystemWatcher
+            // 
+            this.fileSystemWatcher.EnableRaisingEvents = true;
+            this.fileSystemWatcher.SynchronizingObject = this;
             // 
             // Window
             // 
@@ -857,6 +880,7 @@
             this.pageSettings.ResumeLayout(false);
             this.pageSettings.PerformLayout();
             this.trayIconMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -929,6 +953,8 @@
         private System.Windows.Forms.Button buttonOpenDirectory;
         private System.Windows.Forms.CheckBox checkboxDebug;
         private System.Windows.Forms.Button buttonResetBlacklist;
+        private System.Windows.Forms.Button buttonCheckForUpdate;
+        private System.IO.FileSystemWatcher fileSystemWatcher;
     }
 }
 
