@@ -386,12 +386,23 @@ namespace AutoSortFolder
             // Update fields
             textbox_folderDirectory.Text = app.currentAnchor.directory;
 
-            // Update tree
-            PopulateCurrentAnchorTree();
+            // Update menu items
+            addToolStripMenuItem.Enabled = isIdle;
+            removeToolStripMenuItem.Enabled = isIdle;
+            startToolStripMenuItem.Enabled = isIdle;
+            stopToolStripMenuItem.Enabled = isActive;
+            startToolStripMenuItem.Text = isSorted ? "Resort" : "Start sorting";
+
+            // Tray icon items
+            startSortingToolStripMenuItem.Enabled = isIdle;
+            stopAllSortingToolStripMenuItem.Enabled = isActive;
 
             // Update list
             listBoxBlacklist.Items.Clear();
             listBoxBlacklist.Items.AddRange(app.currentAnchor.blacklist.ToArray());
+
+            // Update tree
+            PopulateCurrentAnchorTree();
         }
 
         private void UpdateSettingsUI()
