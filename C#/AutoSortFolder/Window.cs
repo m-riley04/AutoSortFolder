@@ -32,9 +32,11 @@ namespace AutoSortFolder
             // Create the app
             app = new App();
 
+
             PopulateAnchors();
             UpdateSettingsUI();
             UpdateMenuUI();
+            InitializeUI();
         }
 
         #region High-Level Functionality Methods
