@@ -404,6 +404,8 @@ namespace AutoSortFolder
             button_unsort.Enabled = isSorted;
             button_selectFolder.Enabled = isIdle;
             button_start.Text = isSorted ? "Resort" : "Start";
+            buttonResetBlacklist.Enabled = isIdle;
+            buttonOpenDirectory.Enabled = isIdle;
             //button_select.Enabled = (listbox_anchors.SelectedIndex != -1 && listbox_anchors.SelectedIndex != app.anchors.IndexOf(app.currentAnchor));
 
             // Update dropdowns
