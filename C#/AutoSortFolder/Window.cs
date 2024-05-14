@@ -720,5 +720,10 @@ namespace AutoSortFolder
             string dir = app.currentAnchor.directory;
             if (Directory.Exists(dir)) Process.Start(dir);
         }
+
+        private void buttonResetBlacklist_Click(object sender, EventArgs e)
+        {
+            ResetBlacklist();
+        }
     }
 }
