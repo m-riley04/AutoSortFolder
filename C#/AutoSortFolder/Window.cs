@@ -269,6 +269,31 @@ namespace AutoSortFolder
 
         #region UI Update Methods
 
+        private void InitializeUI()
+        {
+            // Update Buttons
+            button_start.Enabled = false;
+            button_stop.Enabled = false;
+            button_unsort.Enabled = false;
+            button_selectFolder.Enabled = false;
+            buttonResetBlacklist.Enabled = false;
+            buttonOpenDirectory.Enabled = false;
+            //button_select.Enabled = (listbox_anchors.SelectedIndex != -1 && listbox_anchors.SelectedIndex != app.anchors.IndexOf(app.currentAnchor));
+
+            // Update dropdowns
+            combobox_sortingMethod.Enabled = false;
+
+            // Update menu items
+            addToolStripMenuItem.Enabled = false;
+            removeToolStripMenuItem.Enabled = false;
+            startToolStripMenuItem.Enabled = false;
+            stopToolStripMenuItem.Enabled = false;
+
+            // Tray icon items
+            startSortingToolStripMenuItem.Enabled = false;
+            stopAllSortingToolStripMenuItem.Enabled = false;
+        }
+
         private void PopulateCurrentAnchorTree()
         {
             // Validate the current anchor
