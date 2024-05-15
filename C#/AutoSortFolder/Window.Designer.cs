@@ -152,7 +152,7 @@
             // label_status
             // 
             this.label_status.AutoSize = true;
-            this.label_status.Location = new System.Drawing.Point(130, 383);
+            this.label_status.Location = new System.Drawing.Point(133, 380);
             this.label_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_status.Name = "label_status";
             this.label_status.Size = new System.Drawing.Size(33, 12);
@@ -461,7 +461,7 @@
             // progressBarSorting
             // 
             this.progressBarSorting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
-            this.progressBarSorting.Location = new System.Drawing.Point(10, 379);
+            this.progressBarSorting.Location = new System.Drawing.Point(13, 377);
             this.progressBarSorting.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.progressBarSorting.Name = "progressBarSorting";
             this.progressBarSorting.Size = new System.Drawing.Size(112, 21);
