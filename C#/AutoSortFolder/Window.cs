@@ -35,10 +35,10 @@ namespace AutoSortFolder
             // Create the app
             app = new App();
 
+            InitializeUI();
             PopulateAnchors();
             UpdateSettingsUI();
             UpdateMenuUI();
-            InitializeUI();
         }
 
         #region High-Level Functionality Methods
@@ -295,7 +295,6 @@ namespace AutoSortFolder
             buttonResetBlacklist.Enabled = false;
             buttonOpenDirectory.Enabled = false;
             button_remove.Enabled = false;
-            //button_select.Enabled = (listbox_anchors.SelectedIndex != -1 && listbox_anchors.SelectedIndex != app.anchors.IndexOf(app.currentAnchor));
 
             // Update dropdowns
             combobox_sortingMethod.Enabled = false;
@@ -408,43 +407,43 @@ namespace AutoSortFolder
         {
             if (app.currentAnchor == null) return;
 
-            bool isIdle = app.currentAnchor.status == AnchorStatus.IDLE;
-            bool isActive = app.currentAnchor.status == AnchorStatus.ACTIVE;
-            bool isSorted = app.currentAnchor.sorted;
+            // Initialize states
+            bool isIdle     = app.currentAnchor.status == AnchorStatus.IDLE;
+            bool isActive   = app.currentAnchor.status == AnchorStatus.ACTIVE;
+            bool isSorted   = app.currentAnchor.sorted;
 
             // Update Labels
-            label_status.Text = app.currentAnchor.status.ToString();
-            labelSortedValue.Text = isSorted ? "Yes" : "No";
+            label_status.Text               = app.currentAnchor.status.ToString();
+            labelSortedValue.Text           = isSorted ? "Yes" : "No";
 
             // Update Buttons
-            button_start.Enabled = isIdle;
-            button_stop.Enabled = isActive;
-            button_unsort.Enabled = isSorted;
-            button_selectFolder.Enabled = isIdle;
-            button_start.Text = isSorted ? "Resort" : "Start";
-            buttonResetBlacklist.Enabled = isIdle;
-            buttonOpenDirectory.Enabled = isIdle;
-            //button_select.Enabled = (listbox_anchors.SelectedIndex != -1 && listbox_anchors.SelectedIndex != app.anchors.IndexOf(app.currentAnchor));
+            button_start.Enabled            = isIdle;
+            button_stop.Enabled             = isActive;
+            button_unsort.Enabled           = isSorted;
+            button_selectFolder.Enabled     = isIdle;
+            button_start.Text               = isSorted ? "Resort" : "Start";
+            buttonResetBlacklist.Enabled    = isIdle;
+            buttonOpenDirectory.Enabled     = isIdle;
 
             // Update dropdowns
-            combobox_sortingMethod.Enabled = isIdle;
-            combobox_sortingMethod.SelectedIndex = (int)app.currentAnchor.method;
+            combobox_sortingMethod.Enabled          = isIdle;
+            combobox_sortingMethod.SelectedIndex    = (int)app.currentAnchor.method;
 
             // Update fields
-            textbox_folderDirectory.Text = app.currentAnchor.directory;
-            textboxAnchorName.Enabled = isIdle;
+            textbox_folderDirectory.Text    = app.currentAnchor.directory;
+            textboxAnchorName.Enabled       = isIdle;
 
             // Update menu items
-            addToolStripMenuItem.Enabled = isIdle;
-            removeToolStripMenuItem.Enabled = isIdle;
-            startToolStripMenuItem.Enabled = isIdle;
-            stopToolStripMenuItem.Enabled = isActive;
-            startToolStripMenuItem.Text = isSorted ? "Resort" : "Start sorting";
-            unsortToolStripMenuItem.Enabled = isSorted;
+            addToolStripMenuItem.Enabled        = isIdle;
+            removeToolStripMenuItem.Enabled     = isIdle;
+            startToolStripMenuItem.Enabled      = isIdle;
+            stopToolStripMenuItem.Enabled       = isActive;
+            startToolStripMenuItem.Text         = isSorted ? "Resort" : "Start sorting";
+            unsortToolStripMenuItem.Enabled     = isSorted;
 
             // Tray icon items
-            startSortingToolStripMenuItem.Enabled = isIdle;
-            stopAllSortingToolStripMenuItem.Enabled = isActive;
+            startSortingToolStripMenuItem.Enabled       = isIdle;
+            stopAllSortingToolStripMenuItem.Enabled     = isActive;
 
             // Update list
             listBoxBlacklist.Items.Clear();
