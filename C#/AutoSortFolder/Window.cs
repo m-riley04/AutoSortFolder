@@ -763,5 +763,10 @@ namespace AutoSortFolder
         {
             ResetBlacklist();
         }
+
+        private async void buttonCheckForUpdate_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
