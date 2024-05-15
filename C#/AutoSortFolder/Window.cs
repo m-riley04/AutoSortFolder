@@ -276,6 +276,11 @@ namespace AutoSortFolder
             Application.Restart();
         }
 
+        private void ShowApplicationInfo()
+        {
+            MessageBox.Show($"AutoSortFolder\nVersion: {app.version}\nCreator: Riley Meyerkorth", "Application Info");
+        }
+
         #endregion
 
         #region UI Update Methods
@@ -714,7 +719,7 @@ namespace AutoSortFolder
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ShowApplicationInfo();
         }
 
         #endregion
