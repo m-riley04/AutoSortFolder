@@ -673,6 +673,8 @@ namespace AutoSortFolder
 
             // Update the UI
             UpdateCurrentAnchorUI();
+            UpdateMenuUI();
+            UpdateTrayUI();
             UpdateAnchorListUI();
 
             // Save anchor state
