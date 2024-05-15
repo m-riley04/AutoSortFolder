@@ -468,18 +468,6 @@ namespace AutoSortFolder
             textboxAnchorName.Enabled       = isIdle;
             textbox_folderDirectory.Enabled = isIdle;
 
-            // Update menu items
-            addToolStripMenuItem.Enabled        = isIdle;
-            removeToolStripMenuItem.Enabled     = isIdle;
-            startToolStripMenuItem.Enabled      = isIdle;
-            stopToolStripMenuItem.Enabled       = isActive;
-            startToolStripMenuItem.Text         = (isSorted && isIdle) ? "Resort" : "Start sorting";
-            unsortToolStripMenuItem.Enabled     = isSorted && isIdle;
-
-            // Tray icon items
-            startSortingToolStripMenuItem.Enabled       = isIdle;
-            stopAllSortingToolStripMenuItem.Enabled     = isActive;
-
             // Update list
             listBoxBlacklist.Items.Clear();
             listBoxBlacklist.Items.AddRange(app.currentAnchor.blacklist.ToArray());
@@ -566,19 +554,6 @@ namespace AutoSortFolder
             RemoveAnchor();
         }
 
-        private void buttonSelect_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (listbox_anchors.SelectedIndex != -1) app.currentAnchor = app.anchors[listbox_anchors.SelectedIndex];
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Error");
-            }
-            UpdateCurrentAnchorUI();
-        }
-
         // Settings Page
         private void buttonApply_Click(object sender, EventArgs e)
         {
@@ -603,6 +578,24 @@ namespace AutoSortFolder
                 UpdateSettingsUI();
             }
         }
+        
+        private void buttonOpenDirectory_Click(object sender, EventArgs e)
+        {
+            if (app.currentAnchor == null) return;
+
+            string dir = app.currentAnchor.directory;
+            if (Directory.Exists(dir)) Process.Start(dir);
+        }
+
+        private void buttonResetBlacklist_Click(object sender, EventArgs e)
+        {
+            ResetBlacklist();
+        }
+
+        private async void buttonCheckForUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
 
         #endregion
 
@@ -619,10 +612,21 @@ namespace AutoSortFolder
             {
                 if (listbox_anchors.SelectedIndex != -1) app.currentAnchor = app.anchors[listbox_anchors.SelectedIndex];
                 UpdateCurrentAnchorUI();
+                UpdateMenuUI();
+                UpdateTrayUI();
             } catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Error");
             }
+        }
+
+        private void textboxAnchorName_TextChanged(object sender, EventArgs e)
+        {
+            if (app.currentAnchor == null) return;
+            app.currentAnchor.name = textboxAnchorName.Text;
+
+            UpdateAnchorListUI();
+            PopulateAnchors();
         }
         #endregion
 
@@ -732,22 +736,20 @@ namespace AutoSortFolder
             ShowApplicationInfo();
         }
 
-        #endregion
-
         private void startSortingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StartAnchorSorting();
         }
-
         private void stopAllSortingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StopAnchorSorting();
         }
-
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ExitProgram();
         }
+
+        #endregion
 
         private void pageHome_Click(object sender, EventArgs e)
         {
@@ -772,31 +774,10 @@ namespace AutoSortFolder
             UpdateMenuUI();
         }
 
-        private void buttonOpenDirectory_Click(object sender, EventArgs e)
-        {
-            if (app.currentAnchor == null) return;
+        
 
-            string dir = app.currentAnchor.directory;
-            if (Directory.Exists(dir)) Process.Start(dir);
-        }
+        
 
-        private void buttonResetBlacklist_Click(object sender, EventArgs e)
-        {
-            ResetBlacklist();
-        }
-
-        private async void buttonCheckForUpdate_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void textboxAnchorName_TextChanged(object sender, EventArgs e)
-        {
-            if (app.currentAnchor == null) return;
-            app.currentAnchor.name = textboxAnchorName.Text;
-
-            UpdateAnchorListUI();
-            PopulateAnchors();
-        }
+        
     }
 }
