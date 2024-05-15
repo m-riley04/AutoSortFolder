@@ -229,7 +229,8 @@ namespace AutoSortFolder
         {
             try
             {
-                Anchor newAnchor = new Anchor(listbox_anchors.Items.Count + 1, "", SortingMethod.NONE, false, new List<string>());
+                int index = listbox_anchors.Items.Count + 1;
+                Anchor newAnchor = new Anchor(index, "New Anchor " + index, "", SortingMethod.NONE, false, new List<string>());
                 app.anchors.Add(newAnchor);
                 app.currentAnchor = newAnchor;
                 listbox_anchors.Items.Add(newAnchor.id + ") " + newAnchor.directory);
@@ -288,16 +289,20 @@ namespace AutoSortFolder
             button_selectFolder.Enabled = false;
             buttonResetBlacklist.Enabled = false;
             buttonOpenDirectory.Enabled = false;
+            button_remove.Enabled = false;
             //button_select.Enabled = (listbox_anchors.SelectedIndex != -1 && listbox_anchors.SelectedIndex != app.anchors.IndexOf(app.currentAnchor));
 
             // Update dropdowns
             combobox_sortingMethod.Enabled = false;
 
+            // Update textboxes
+            textboxAnchorName.Enabled = false;
+
             // Update menu items
-            addToolStripMenuItem.Enabled = false;
             removeToolStripMenuItem.Enabled = false;
             startToolStripMenuItem.Enabled = false;
             stopToolStripMenuItem.Enabled = false;
+            unsortToolStripMenuItem.Enabled = false;
 
             // Tray icon items
             startSortingToolStripMenuItem.Enabled = false;
@@ -422,6 +427,7 @@ namespace AutoSortFolder
 
             // Update fields
             textbox_folderDirectory.Text = app.currentAnchor.directory;
+            textboxAnchorName.Enabled = isIdle;
 
             // Update menu items
             addToolStripMenuItem.Enabled = isIdle;
@@ -491,7 +497,7 @@ namespace AutoSortFolder
             listbox_anchors.Items.Clear();
             foreach (Anchor anchor in app.anchors)
             {
-                listbox_anchors.Items.Add((listbox_anchors.Items.Count + 1) + ") " + anchor.directory);
+                listbox_anchors.Items.Add((listbox_anchors.Items.Count + 1) + ") " + anchor.name);
             }
         }
 
@@ -767,6 +773,15 @@ namespace AutoSortFolder
         private async void buttonCheckForUpdate_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void textboxAnchorName_TextChanged(object sender, EventArgs e)
+        {
+            if (app.currentAnchor == null) return;
+            app.currentAnchor.name = textboxAnchorName.Text;
+
+            UpdateAnchorListUI();
+            PopulateAnchors();
         }
     }
 }
