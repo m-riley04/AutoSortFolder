@@ -751,21 +751,6 @@ namespace AutoSortFolder
 
         #endregion
 
-        private void pageHome_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabControlPages_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
         private void Window_Activated(object sender, EventArgs e)
         {
             UpdateAnchorListUI();
@@ -773,11 +758,6 @@ namespace AutoSortFolder
             UpdateSettingsUI();
             UpdateMenuUI();
         }
-
-        
-
-        
-
         
     }
 }

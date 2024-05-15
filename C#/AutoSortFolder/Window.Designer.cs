@@ -512,7 +512,6 @@
             this.menuStrip.Size = new System.Drawing.Size(982, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
-            this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -702,7 +701,6 @@
             this.tabControlPages.Size = new System.Drawing.Size(982, 451);
             this.tabControlPages.TabIndex = 1;
             this.tabControlPages.TabStop = false;
-            this.tabControlPages.SelectedIndexChanged += new System.EventHandler(this.tabControlPages_SelectedIndexChanged);
             // 
             // pageHome
             // 
@@ -716,7 +714,6 @@
             this.pageHome.Size = new System.Drawing.Size(974, 426);
             this.pageHome.TabIndex = 0;
             this.pageHome.Text = "Home";
-            this.pageHome.Click += new System.EventHandler(this.pageHome_Click);
             // 
             // pageSettings
             // 
