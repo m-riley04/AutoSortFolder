@@ -18,6 +18,7 @@ namespace AutoSortFolder
         public string anchorSavePath = Directory.GetCurrentDirectory() + "\\" + "anchors.json";
         public string settingsSavePath = Directory.GetCurrentDirectory() + "\\" + "app_settings.json";
         public RegistryKey regKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+        public string version = "0.0.0";
         public App()
         {
             if (!File.Exists(anchorSavePath))
