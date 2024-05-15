@@ -100,6 +100,8 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fileSystemWatcher = new System.IO.FileSystemWatcher();
+            this.checkboxSortHidden = new System.Windows.Forms.CheckBox();
+            this.checkboxSortRepositories = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -718,6 +720,8 @@
             // pageSettings
             // 
             this.pageSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
+            this.pageSettings.Controls.Add(this.checkboxSortRepositories);
+            this.pageSettings.Controls.Add(this.checkboxSortHidden);
             this.pageSettings.Controls.Add(this.buttonCheckForUpdate);
             this.pageSettings.Controls.Add(this.checkboxDebug);
             this.pageSettings.Controls.Add(this.buttonApply);
@@ -752,7 +756,7 @@
             // 
             this.checkboxDebug.AutoSize = true;
             this.checkboxDebug.Font = new System.Drawing.Font("OCR A Extended", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkboxDebug.Location = new System.Drawing.Point(10, 151);
+            this.checkboxDebug.Location = new System.Drawing.Point(10, 384);
             this.checkboxDebug.Name = "checkboxDebug";
             this.checkboxDebug.Size = new System.Drawing.Size(89, 27);
             this.checkboxDebug.TabIndex = 18;
@@ -881,6 +885,28 @@
             this.fileSystemWatcher.EnableRaisingEvents = true;
             this.fileSystemWatcher.SynchronizingObject = this;
             // 
+            // checkboxSortHidden
+            // 
+            this.checkboxSortHidden.AutoSize = true;
+            this.checkboxSortHidden.Font = new System.Drawing.Font("OCR A Extended", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkboxSortHidden.Location = new System.Drawing.Point(10, 151);
+            this.checkboxSortHidden.Name = "checkboxSortHidden";
+            this.checkboxSortHidden.Size = new System.Drawing.Size(161, 27);
+            this.checkboxSortHidden.TabIndex = 22;
+            this.checkboxSortHidden.Text = "Sort Hidden";
+            this.checkboxSortHidden.UseVisualStyleBackColor = true;
+            // 
+            // checkboxSortRepositories
+            // 
+            this.checkboxSortRepositories.AutoSize = true;
+            this.checkboxSortRepositories.Font = new System.Drawing.Font("OCR A Extended", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkboxSortRepositories.Location = new System.Drawing.Point(10, 184);
+            this.checkboxSortRepositories.Name = "checkboxSortRepositories";
+            this.checkboxSortRepositories.Size = new System.Drawing.Size(233, 27);
+            this.checkboxSortRepositories.TabIndex = 23;
+            this.checkboxSortRepositories.Text = "Sort Repositories";
+            this.checkboxSortRepositories.UseVisualStyleBackColor = true;
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -995,6 +1021,8 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textboxAnchorName;
+        private System.Windows.Forms.CheckBox checkboxSortHidden;
+        private System.Windows.Forms.CheckBox checkboxSortRepositories;
     }
 }
 
