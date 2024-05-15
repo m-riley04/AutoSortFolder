@@ -190,6 +190,12 @@ namespace AutoSortFolder
         {
             if (app.currentAnchor == null) return;
 
+            if (!Directory.Exists(app.currentAnchor.directory))
+            {
+                MessageBox.Show("The anchor directory does not exist. Please choose another directory.", "Error");
+                return;
+            }
+
             try
             {
                 app.currentAnchor.Unsort(progress => { });
@@ -638,6 +644,8 @@ namespace AutoSortFolder
 
             do
             {
+                if (app.currentAnchor == null) throw new ArgumentNullException("Current anchor doesn't exist"); // Check if the current anchor doesn't exist
+                if (!Directory.Exists(app.currentAnchor.directory)) throw new DirectoryNotFoundException("Anchor directory does not exist"); // Check if the directory doesn't exist
                 app.currentAnchor.Sort(
                     progress =>
                     {
