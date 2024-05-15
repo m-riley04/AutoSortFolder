@@ -28,6 +28,7 @@ namespace AutoSortFolder
     public class Anchor
     {
         public int id;
+        public string name;
         public string directory;
         public AnchorStatus status;
         public SortingMethod method;
@@ -40,6 +41,7 @@ namespace AutoSortFolder
         public Anchor()
         {
             this.id = 0;
+            this.name = "New Anchor";
             this.directory = "";
             this.status = AnchorStatus.IDLE;
             this.method = SortingMethod.NONE;
@@ -47,9 +49,10 @@ namespace AutoSortFolder
             this.blacklist = new List<string>();
         }
 
-        public Anchor(int id, string directory, SortingMethod method, bool sorted, List<string> blacklist)
+        public Anchor(int id, string name, string directory, SortingMethod method, bool sorted, List<string> blacklist)
         {
             this.id = id;
+            this.name = name;
             this.directory = directory;
             this.status = AnchorStatus.IDLE;
             this.method = method;
