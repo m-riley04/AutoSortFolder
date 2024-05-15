@@ -48,6 +48,9 @@
             this.button_remove = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textboxAnchorName = new System.Windows.Forms.TextBox();
             this.buttonResetBlacklist = new System.Windows.Forms.Button();
             this.listBoxBlacklist = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -82,6 +85,7 @@
             this.tabControlPages = new System.Windows.Forms.TabControl();
             this.pageHome = new System.Windows.Forms.TabPage();
             this.pageSettings = new System.Windows.Forms.TabPage();
+            this.buttonCheckForUpdate = new System.Windows.Forms.Button();
             this.checkboxDebug = new System.Windows.Forms.CheckBox();
             this.buttonApply = new System.Windows.Forms.Button();
             this.buttonResetToDefault = new System.Windows.Forms.Button();
@@ -95,12 +99,12 @@
             this.stopAllSortingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonCheckForUpdate = new System.Windows.Forms.Button();
             this.fileSystemWatcher = new System.IO.FileSystemWatcher();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.tabControlPages.SuspendLayout();
             this.pageHome.SuspendLayout();
@@ -140,7 +144,7 @@
             this.button_selectFolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_selectFolder.Name = "button_selectFolder";
             this.button_selectFolder.Size = new System.Drawing.Size(104, 21);
-            this.button_selectFolder.TabIndex = 3;
+            this.button_selectFolder.TabIndex = 2;
             this.button_selectFolder.Text = "Select Folder";
             this.button_selectFolder.UseVisualStyleBackColor = false;
             this.button_selectFolder.Click += new System.EventHandler(this.buttonSelectFolder_Click);
@@ -148,7 +152,7 @@
             // label_status
             // 
             this.label_status.AutoSize = true;
-            this.label_status.Location = new System.Drawing.Point(129, 344);
+            this.label_status.Location = new System.Drawing.Point(130, 383);
             this.label_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_status.Name = "label_status";
             this.label_status.Size = new System.Drawing.Size(33, 12);
@@ -164,7 +168,7 @@
             this.button_start.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_start.Name = "button_start";
             this.button_start.Size = new System.Drawing.Size(69, 21);
-            this.button_start.TabIndex = 5;
+            this.button_start.TabIndex = 7;
             this.button_start.Text = "Start";
             this.button_start.UseVisualStyleBackColor = false;
             this.button_start.Click += new System.EventHandler(this.buttonStart_Click);
@@ -179,7 +183,7 @@
             this.button_stop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_stop.Name = "button_stop";
             this.button_stop.Size = new System.Drawing.Size(69, 21);
-            this.button_stop.TabIndex = 6;
+            this.button_stop.TabIndex = 8;
             this.button_stop.Text = "Stop";
             this.button_stop.UseVisualStyleBackColor = false;
             this.button_stop.Click += new System.EventHandler(this.buttonStop_Click);
@@ -193,7 +197,7 @@
             this.button_unsort.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_unsort.Name = "button_unsort";
             this.button_unsort.Size = new System.Drawing.Size(69, 21);
-            this.button_unsort.TabIndex = 7;
+            this.button_unsort.TabIndex = 9;
             this.button_unsort.Text = "Unsort";
             this.button_unsort.UseVisualStyleBackColor = false;
             this.button_unsort.Click += new System.EventHandler(this.buttonUnsort_Click);
@@ -203,7 +207,7 @@
             this.panel1.Controls.Add(this.button_start);
             this.panel1.Controls.Add(this.button_unsort);
             this.panel1.Controls.Add(this.button_stop);
-            this.panel1.Location = new System.Drawing.Point(369, 338);
+            this.panel1.Location = new System.Drawing.Point(370, 377);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(230, 29);
@@ -215,7 +219,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.textbox_folderDirectory);
             this.panel2.Controls.Add(this.button_selectFolder);
-            this.panel2.Location = new System.Drawing.Point(9, 21);
+            this.panel2.Location = new System.Drawing.Point(10, 60);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(584, 35);
@@ -230,7 +234,7 @@
             this.buttonOpenDirectory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonOpenDirectory.Name = "buttonOpenDirectory";
             this.buttonOpenDirectory.Size = new System.Drawing.Size(51, 21);
-            this.buttonOpenDirectory.TabIndex = 4;
+            this.buttonOpenDirectory.TabIndex = 3;
             this.buttonOpenDirectory.Text = "Open Directory";
             this.buttonOpenDirectory.UseVisualStyleBackColor = false;
             this.buttonOpenDirectory.Click += new System.EventHandler(this.buttonOpenDirectory_Click);
@@ -248,17 +252,17 @@
             "Date Created",
             "Date Modified",
             "Date Accessed"});
-            this.combobox_sortingMethod.Location = new System.Drawing.Point(12, 90);
+            this.combobox_sortingMethod.Location = new System.Drawing.Point(13, 129);
             this.combobox_sortingMethod.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.combobox_sortingMethod.Name = "combobox_sortingMethod";
             this.combobox_sortingMethod.Size = new System.Drawing.Size(160, 20);
-            this.combobox_sortingMethod.TabIndex = 10;
+            this.combobox_sortingMethod.TabIndex = 4;
             this.combobox_sortingMethod.SelectedIndexChanged += new System.EventHandler(this.dropdownSortingMethod_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 75);
+            this.label2.Location = new System.Drawing.Point(14, 114);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 12);
@@ -269,14 +273,14 @@
             // 
             this.listbox_anchors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
             this.listbox_anchors.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listbox_anchors.Font = new System.Drawing.Font("OCR A Extended", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listbox_anchors.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.listbox_anchors.FormattingEnabled = true;
-            this.listbox_anchors.ItemHeight = 12;
             this.listbox_anchors.Location = new System.Drawing.Point(4, 9);
             this.listbox_anchors.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.listbox_anchors.Name = "listbox_anchors";
-            this.listbox_anchors.Size = new System.Drawing.Size(221, 348);
-            this.listbox_anchors.TabIndex = 12;
+            this.listbox_anchors.Size = new System.Drawing.Size(221, 338);
+            this.listbox_anchors.TabIndex = 0;
             this.listbox_anchors.SelectedIndexChanged += new System.EventHandler(this.listboxAnchors_SelectedIndexChanged);
             // 
             // button_add
@@ -289,7 +293,7 @@
             this.button_add.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(69, 21);
-            this.button_add.TabIndex = 13;
+            this.button_add.TabIndex = 1;
             this.button_add.Text = "Add";
             this.button_add.UseVisualStyleBackColor = false;
             this.button_add.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -304,7 +308,7 @@
             this.button_remove.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_remove.Name = "button_remove";
             this.button_remove.Size = new System.Drawing.Size(69, 21);
-            this.button_remove.TabIndex = 14;
+            this.button_remove.TabIndex = 2;
             this.button_remove.Text = "Remove";
             this.button_remove.UseVisualStyleBackColor = false;
             this.button_remove.Click += new System.EventHandler(this.buttonRemove_Click);
@@ -319,11 +323,12 @@
             this.panel3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(307, 370);
-            this.panel3.TabIndex = 16;
+            this.panel3.TabIndex = 0;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(21)))), ((int)(((byte)(36)))));
+            this.panel4.Controls.Add(this.panel5);
             this.panel4.Controls.Add(this.buttonResetBlacklist);
             this.panel4.Controls.Add(this.listBoxBlacklist);
             this.panel4.Controls.Add(this.label5);
@@ -338,22 +343,54 @@
             this.panel4.Controls.Add(this.panel1);
             this.panel4.Controls.Add(this.panel2);
             this.panel4.Controls.Add(this.label_status);
-            this.panel4.Location = new System.Drawing.Point(371, 44);
+            this.panel4.Location = new System.Drawing.Point(371, 6);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(599, 370);
-            this.panel4.TabIndex = 17;
+            this.panel4.Size = new System.Drawing.Size(599, 408);
+            this.panel4.TabIndex = 1;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.textboxAnchorName);
+            this.panel5.Location = new System.Drawing.Point(10, 19);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(584, 35);
+            this.panel5.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(4, 10);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(33, 12);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Name";
+            // 
+            // textboxAnchorName
+            // 
+            this.textboxAnchorName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.textboxAnchorName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textboxAnchorName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.textboxAnchorName.Location = new System.Drawing.Point(80, 7);
+            this.textboxAnchorName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textboxAnchorName.Name = "textboxAnchorName";
+            this.textboxAnchorName.Size = new System.Drawing.Size(334, 19);
+            this.textboxAnchorName.TabIndex = 0;
+            this.textboxAnchorName.TextChanged += new System.EventHandler(this.textboxAnchorName_TextChanged);
             // 
             // buttonResetBlacklist
             // 
             this.buttonResetBlacklist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
             this.buttonResetBlacklist.FlatAppearance.BorderSize = 0;
             this.buttonResetBlacklist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonResetBlacklist.Location = new System.Drawing.Point(121, 140);
+            this.buttonResetBlacklist.Location = new System.Drawing.Point(122, 179);
             this.buttonResetBlacklist.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonResetBlacklist.Name = "buttonResetBlacklist";
             this.buttonResetBlacklist.Size = new System.Drawing.Size(51, 21);
-            this.buttonResetBlacklist.TabIndex = 8;
+            this.buttonResetBlacklist.TabIndex = 6;
             this.buttonResetBlacklist.Text = "Reset Blacklist";
             this.buttonResetBlacklist.UseVisualStyleBackColor = false;
             this.buttonResetBlacklist.Click += new System.EventHandler(this.buttonResetBlacklist_Click);
@@ -365,7 +402,7 @@
             this.listBoxBlacklist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.listBoxBlacklist.FormattingEnabled = true;
             this.listBoxBlacklist.ItemHeight = 12;
-            this.listBoxBlacklist.Location = new System.Drawing.Point(12, 140);
+            this.listBoxBlacklist.Location = new System.Drawing.Point(13, 179);
             this.listBoxBlacklist.Name = "listBoxBlacklist";
             this.listBoxBlacklist.Size = new System.Drawing.Size(160, 168);
             this.listBoxBlacklist.TabIndex = 26;
@@ -373,7 +410,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 125);
+            this.label5.Location = new System.Drawing.Point(14, 164);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 12);
@@ -383,7 +420,7 @@
             // labelSortedValue
             // 
             this.labelSortedValue.AutoSize = true;
-            this.labelSortedValue.Location = new System.Drawing.Point(67, 319);
+            this.labelSortedValue.Location = new System.Drawing.Point(68, 358);
             this.labelSortedValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSortedValue.Name = "labelSortedValue";
             this.labelSortedValue.Size = new System.Drawing.Size(40, 12);
@@ -393,7 +430,7 @@
             // labelSorted
             // 
             this.labelSorted.AutoSize = true;
-            this.labelSorted.Location = new System.Drawing.Point(10, 319);
+            this.labelSorted.Location = new System.Drawing.Point(11, 358);
             this.labelSorted.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSorted.Name = "labelSorted";
             this.labelSorted.Size = new System.Drawing.Size(54, 12);
@@ -403,7 +440,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(196, 75);
+            this.label6.Location = new System.Drawing.Point(197, 114);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 12);
@@ -416,15 +453,15 @@
             this.treeCurrentAnchor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeCurrentAnchor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.treeCurrentAnchor.Indent = 15;
-            this.treeCurrentAnchor.Location = new System.Drawing.Point(198, 90);
+            this.treeCurrentAnchor.Location = new System.Drawing.Point(199, 129);
             this.treeCurrentAnchor.Name = "treeCurrentAnchor";
             this.treeCurrentAnchor.Size = new System.Drawing.Size(391, 218);
-            this.treeCurrentAnchor.TabIndex = 19;
+            this.treeCurrentAnchor.TabIndex = 5;
             // 
             // progressBarSorting
             // 
             this.progressBarSorting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
-            this.progressBarSorting.Location = new System.Drawing.Point(9, 340);
+            this.progressBarSorting.Location = new System.Drawing.Point(10, 379);
             this.progressBarSorting.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.progressBarSorting.Name = "progressBarSorting";
             this.progressBarSorting.Size = new System.Drawing.Size(112, 21);
@@ -433,7 +470,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 5);
+            this.label4.Location = new System.Drawing.Point(11, 4);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(145, 12);
@@ -473,7 +510,7 @@
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.menuStrip.Size = new System.Drawing.Size(982, 24);
-            this.menuStrip.TabIndex = 19;
+            this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
             // 
@@ -571,7 +608,7 @@
             this.addToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
@@ -580,7 +617,7 @@
             this.removeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.removeToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
@@ -589,14 +626,14 @@
             this.toolStripSeparator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(135, 6);
             // 
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.startToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.startToolStripMenuItem.Text = "Start sorting";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
@@ -605,7 +642,7 @@
             this.stopToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.stopToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.stopToolStripMenuItem.Text = "Stop sorting";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
@@ -614,7 +651,7 @@
             this.unsortToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.unsortToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.unsortToolStripMenuItem.Name = "unsortToolStripMenuItem";
-            this.unsortToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.unsortToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.unsortToolStripMenuItem.Text = "Unsort";
             this.unsortToolStripMenuItem.Click += new System.EventHandler(this.unsortToolStripMenuItem_Click);
             // 
@@ -663,7 +700,7 @@
             this.tabControlPages.Name = "tabControlPages";
             this.tabControlPages.SelectedIndex = 0;
             this.tabControlPages.Size = new System.Drawing.Size(982, 451);
-            this.tabControlPages.TabIndex = 20;
+            this.tabControlPages.TabIndex = 1;
             this.tabControlPages.TabStop = false;
             this.tabControlPages.SelectedIndexChanged += new System.EventHandler(this.tabControlPages_SelectedIndexChanged);
             // 
@@ -699,14 +736,29 @@
             this.pageSettings.TabIndex = 1;
             this.pageSettings.Text = "Settings";
             // 
+            // buttonCheckForUpdate
+            // 
+            this.buttonCheckForUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.buttonCheckForUpdate.FlatAppearance.BorderSize = 0;
+            this.buttonCheckForUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCheckForUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonCheckForUpdate.Location = new System.Drawing.Point(830, 10);
+            this.buttonCheckForUpdate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.buttonCheckForUpdate.Name = "buttonCheckForUpdate";
+            this.buttonCheckForUpdate.Size = new System.Drawing.Size(136, 36);
+            this.buttonCheckForUpdate.TabIndex = 21;
+            this.buttonCheckForUpdate.Text = "Check for Updates";
+            this.buttonCheckForUpdate.UseVisualStyleBackColor = false;
+            this.buttonCheckForUpdate.Click += new System.EventHandler(this.buttonCheckForUpdate_Click);
+            // 
             // checkboxDebug
             // 
             this.checkboxDebug.AutoSize = true;
             this.checkboxDebug.Font = new System.Drawing.Font("OCR A Extended", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkboxDebug.Location = new System.Drawing.Point(6, 384);
+            this.checkboxDebug.Location = new System.Drawing.Point(10, 151);
             this.checkboxDebug.Name = "checkboxDebug";
             this.checkboxDebug.Size = new System.Drawing.Size(89, 27);
-            this.checkboxDebug.TabIndex = 26;
+            this.checkboxDebug.TabIndex = 18;
             this.checkboxDebug.Text = "Debug";
             this.checkboxDebug.UseVisualStyleBackColor = true;
             // 
@@ -720,7 +772,7 @@
             this.buttonApply.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(69, 36);
-            this.buttonApply.TabIndex = 23;
+            this.buttonApply.TabIndex = 20;
             this.buttonApply.Text = "Apply";
             this.buttonApply.UseVisualStyleBackColor = false;
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
@@ -735,7 +787,7 @@
             this.buttonResetToDefault.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonResetToDefault.Name = "buttonResetToDefault";
             this.buttonResetToDefault.Size = new System.Drawing.Size(136, 36);
-            this.buttonResetToDefault.TabIndex = 23;
+            this.buttonResetToDefault.TabIndex = 19;
             this.buttonResetToDefault.Text = "Reset to Default";
             this.buttonResetToDefault.UseVisualStyleBackColor = false;
             this.buttonResetToDefault.Click += new System.EventHandler(this.buttonResetToDefault_Click);
@@ -747,7 +799,7 @@
             this.checkboxAutorun.Location = new System.Drawing.Point(10, 118);
             this.checkboxAutorun.Name = "checkboxAutorun";
             this.checkboxAutorun.Size = new System.Drawing.Size(221, 27);
-            this.checkboxAutorun.TabIndex = 22;
+            this.checkboxAutorun.TabIndex = 17;
             this.checkboxAutorun.Text = "Auto-Run On Boot";
             this.checkboxAutorun.UseVisualStyleBackColor = true;
             // 
@@ -758,7 +810,7 @@
             this.checkboxAutoSave.Location = new System.Drawing.Point(10, 85);
             this.checkboxAutoSave.Name = "checkboxAutoSave";
             this.checkboxAutoSave.Size = new System.Drawing.Size(161, 27);
-            this.checkboxAutoSave.TabIndex = 21;
+            this.checkboxAutoSave.TabIndex = 16;
             this.checkboxAutoSave.Text = "Auto Saving";
             this.checkboxAutoSave.UseVisualStyleBackColor = true;
             // 
@@ -769,7 +821,7 @@
             this.checkboxBackgroundSorting.Location = new System.Drawing.Point(10, 52);
             this.checkboxBackgroundSorting.Name = "checkboxBackgroundSorting";
             this.checkboxBackgroundSorting.Size = new System.Drawing.Size(245, 27);
-            this.checkboxBackgroundSorting.TabIndex = 20;
+            this.checkboxBackgroundSorting.TabIndex = 15;
             this.checkboxBackgroundSorting.Text = "Background Sorting";
             this.checkboxBackgroundSorting.UseVisualStyleBackColor = true;
             // 
@@ -827,21 +879,6 @@
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
-            // buttonCheckForUpdate
-            // 
-            this.buttonCheckForUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
-            this.buttonCheckForUpdate.FlatAppearance.BorderSize = 0;
-            this.buttonCheckForUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCheckForUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCheckForUpdate.Location = new System.Drawing.Point(830, 10);
-            this.buttonCheckForUpdate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.buttonCheckForUpdate.Name = "buttonCheckForUpdate";
-            this.buttonCheckForUpdate.Size = new System.Drawing.Size(136, 36);
-            this.buttonCheckForUpdate.TabIndex = 27;
-            this.buttonCheckForUpdate.Text = "Check for Updates";
-            this.buttonCheckForUpdate.UseVisualStyleBackColor = false;
-            this.buttonCheckForUpdate.Click += new System.EventHandler(this.buttonCheckForUpdate_Click);
-            // 
             // fileSystemWatcher
             // 
             this.fileSystemWatcher.EnableRaisingEvents = true;
@@ -873,6 +910,8 @@
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.tabControlPages.ResumeLayout(false);
@@ -956,6 +995,9 @@
         private System.Windows.Forms.Button buttonResetBlacklist;
         private System.Windows.Forms.Button buttonCheckForUpdate;
         private System.IO.FileSystemWatcher fileSystemWatcher;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textboxAnchorName;
     }
 }
 
