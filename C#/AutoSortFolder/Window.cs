@@ -419,9 +419,9 @@ namespace AutoSortFolder
             // Update Buttons
             button_start.Enabled            = isIdle;
             button_stop.Enabled             = isActive;
-            button_unsort.Enabled           = isSorted;
+            button_unsort.Enabled           = isSorted && isIdle;
             button_selectFolder.Enabled     = isIdle;
-            button_start.Text               = isSorted ? "Resort" : "Start";
+            button_start.Text               = (isSorted && isIdle) ? "Resort" : "Start";
             buttonResetBlacklist.Enabled    = isIdle;
             buttonOpenDirectory.Enabled     = isIdle;
 
@@ -431,15 +431,17 @@ namespace AutoSortFolder
 
             // Update fields
             textbox_folderDirectory.Text    = app.currentAnchor.directory;
+            textboxAnchorName.Text          = app.currentAnchor.name;
             textboxAnchorName.Enabled       = isIdle;
+            textbox_folderDirectory.Enabled = isIdle;
 
             // Update menu items
             addToolStripMenuItem.Enabled        = isIdle;
             removeToolStripMenuItem.Enabled     = isIdle;
             startToolStripMenuItem.Enabled      = isIdle;
             stopToolStripMenuItem.Enabled       = isActive;
-            startToolStripMenuItem.Text         = isSorted ? "Resort" : "Start sorting";
-            unsortToolStripMenuItem.Enabled     = isSorted;
+            startToolStripMenuItem.Text         = (isSorted && isIdle) ? "Resort" : "Start sorting";
+            unsortToolStripMenuItem.Enabled     = isSorted && isIdle;
 
             // Tray icon items
             startSortingToolStripMenuItem.Enabled       = isIdle;
