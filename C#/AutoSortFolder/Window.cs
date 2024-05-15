@@ -664,24 +664,18 @@ namespace AutoSortFolder
 
         private void sorterWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (e.Cancelled == true)
-            {
-                MessageBox.Show("Sorting was canceled!");
-            }
-            else if (e.Error != null)
-            {
-                MessageBox.Show(e.Error.Message, "Sorting Error");
-            }
-            else
-            {
-                //MessageBox.Show("Sorting is complete.");
-            }
+            if (e.Cancelled) MessageBox.Show("Sorting was canceled!");
+            else if (e.Error != null) MessageBox.Show($"Sorting has stopped due to error: {e.Error.Message}", "Sorting Error");
+            else;//MessageBox.Show("Sorting is complete.");
 
-            Console.WriteLine($"Folder Count Match: {AnchorVerifier.FoldersMatch(app.currentAnchor.directory, testPath, true)}");
+            if (e.Error == null) Console.WriteLine($"Folder Count Match: {AnchorVerifier.FoldersMatch(app.currentAnchor.directory, testPath, true)}");
             app.currentAnchor.Deactivate();
+
+            // Update the UI
             UpdateCurrentAnchorUI();
             UpdateAnchorListUI();
 
+            // Save anchor state
             if (app.settings.autoSave) this.SaveAnchors();
         }
         #endregion
@@ -748,10 +742,12 @@ namespace AutoSortFolder
         {
             StartAnchorSorting();
         }
+        
         private void stopAllSortingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StopAnchorSorting();
         }
+        
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ExitProgram();
@@ -766,6 +762,5 @@ namespace AutoSortFolder
             UpdateSettingsUI();
             UpdateMenuUI();
         }
-        
     }
 }
