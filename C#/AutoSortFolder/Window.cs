@@ -39,6 +39,7 @@ namespace AutoSortFolder
             PopulateAnchors();
             UpdateSettingsUI();
             UpdateMenuUI();
+            UpdateTrayUI();
         }
 
         #region High-Level Functionality Methods
@@ -129,6 +130,8 @@ namespace AutoSortFolder
 
             UpdateCurrentAnchorUI();
             UpdateAnchorListUI();
+            UpdateMenuUI();
+            UpdateTrayUI();
         }
 
         private void StopAnchorSorting()
@@ -151,6 +154,8 @@ namespace AutoSortFolder
 
             UpdateCurrentAnchorUI();
             UpdateAnchorListUI();
+            UpdateMenuUI();
+            UpdateTrayUI();
         }
 
         private void SelectAnchorFolder()
@@ -198,6 +203,8 @@ namespace AutoSortFolder
             PopulateCurrentAnchorTree();
             UpdateCurrentAnchorUI();
             UpdateAnchorListUI();
+            UpdateMenuUI();
+            UpdateTrayUI();
 
             if (app.settings.autoSave) SaveAnchors();
         }
@@ -221,6 +228,9 @@ namespace AutoSortFolder
 
             PopulateAnchors();
             UpdateAnchorListUI();
+            UpdateCurrentAnchorUI();
+            UpdateMenuUI();
+            UpdateTrayUI();
 
             if (app.settings.autoSave) SaveAnchors();
         }
@@ -242,6 +252,9 @@ namespace AutoSortFolder
 
             UpdateAnchorListUI();
             UpdateCurrentAnchorUI();
+            UpdateMenuUI();
+            UpdateTrayUI();
+
             if (app.settings.autoSave) SaveAnchors();
         }
         
@@ -398,9 +411,29 @@ namespace AutoSortFolder
                 isSorted = app.currentAnchor.sorted;
             }
 
+            addToolStripMenuItem.Enabled = isIdle;
+            removeToolStripMenuItem.Enabled = isIdle;
             startToolStripMenuItem.Enabled = isIdle;
             stopToolStripMenuItem.Enabled = isActive;
-            unsortToolStripMenuItem.Enabled = isSorted;
+            startToolStripMenuItem.Text = (isSorted && isIdle) ? "Resort" : "Start sorting";
+            unsortToolStripMenuItem.Enabled = isSorted && isIdle;
+        }
+
+        private void UpdateTrayUI()
+        {
+            bool isIdle = false;
+            bool isActive = false;
+            bool isSorted = false;
+
+            if (app.currentAnchor != null)
+            {
+                isIdle = app.currentAnchor.status == AnchorStatus.IDLE;
+                isActive = app.currentAnchor.status == AnchorStatus.ACTIVE;
+                isSorted = app.currentAnchor.sorted;
+            }
+
+            startSortingToolStripMenuItem.Enabled = isIdle;
+            stopAllSortingToolStripMenuItem.Enabled = isActive;
         }
 
         private void UpdateCurrentAnchorUI()
