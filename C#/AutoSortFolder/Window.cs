@@ -773,13 +773,19 @@ namespace AutoSortFolder
             {
                 // Toggle menu strip
                 menuStrip.Visible = !menuStrip.Visible;
-                
 
-                if (!menuStrip.Visible) menuStrip.Select();
-                else menuStrip.Items[0].Select();
 
-                // Select "file" as first option
-                menuStrip.Items[0].Select();
+                if (menuStrip.Visible)
+                {
+                    menuStrip.Focus();
+                    menuStrip.Items[0].Select();
+                }
+                else
+                {
+                    this.Focus();
+                    this.Select();
+                }
+
                 Console.WriteLine("User opened top menu.");
             }
 
