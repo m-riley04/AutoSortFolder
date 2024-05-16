@@ -85,6 +85,8 @@
             this.tabControlPages = new System.Windows.Forms.TabControl();
             this.pageHome = new System.Windows.Forms.TabPage();
             this.pageSettings = new System.Windows.Forms.TabPage();
+            this.checkboxSortRepositories = new System.Windows.Forms.CheckBox();
+            this.checkboxSortHidden = new System.Windows.Forms.CheckBox();
             this.buttonCheckForUpdate = new System.Windows.Forms.Button();
             this.checkboxDebug = new System.Windows.Forms.CheckBox();
             this.buttonApply = new System.Windows.Forms.Button();
@@ -100,8 +102,6 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fileSystemWatcher = new System.IO.FileSystemWatcher();
-            this.checkboxSortHidden = new System.Windows.Forms.CheckBox();
-            this.checkboxSortRepositories = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -511,9 +511,11 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.menuStrip.ShowItemToolTips = true;
             this.menuStrip.Size = new System.Drawing.Size(982, 24);
             this.menuStrip.TabIndex = 0;
-            this.menuStrip.Text = "menuStrip1";
+            this.menuStrip.Text = "menuStrip";
+            this.menuStrip.Visible = false;
             // 
             // fileToolStripMenuItem
             // 
@@ -733,9 +735,31 @@
             this.pageSettings.Location = new System.Drawing.Point(4, 21);
             this.pageSettings.Name = "pageSettings";
             this.pageSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.pageSettings.Size = new System.Drawing.Size(974, 426);
+            this.pageSettings.Size = new System.Drawing.Size(974, 429);
             this.pageSettings.TabIndex = 1;
             this.pageSettings.Text = "Settings";
+            // 
+            // checkboxSortRepositories
+            // 
+            this.checkboxSortRepositories.AutoSize = true;
+            this.checkboxSortRepositories.Font = new System.Drawing.Font("OCR A Extended", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkboxSortRepositories.Location = new System.Drawing.Point(10, 184);
+            this.checkboxSortRepositories.Name = "checkboxSortRepositories";
+            this.checkboxSortRepositories.Size = new System.Drawing.Size(233, 27);
+            this.checkboxSortRepositories.TabIndex = 23;
+            this.checkboxSortRepositories.Text = "Sort Repositories";
+            this.checkboxSortRepositories.UseVisualStyleBackColor = true;
+            // 
+            // checkboxSortHidden
+            // 
+            this.checkboxSortHidden.AutoSize = true;
+            this.checkboxSortHidden.Font = new System.Drawing.Font("OCR A Extended", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkboxSortHidden.Location = new System.Drawing.Point(10, 151);
+            this.checkboxSortHidden.Name = "checkboxSortHidden";
+            this.checkboxSortHidden.Size = new System.Drawing.Size(161, 27);
+            this.checkboxSortHidden.TabIndex = 22;
+            this.checkboxSortHidden.Text = "Sort Hidden";
+            this.checkboxSortHidden.UseVisualStyleBackColor = true;
             // 
             // buttonCheckForUpdate
             // 
@@ -885,28 +909,6 @@
             this.fileSystemWatcher.EnableRaisingEvents = true;
             this.fileSystemWatcher.SynchronizingObject = this;
             // 
-            // checkboxSortHidden
-            // 
-            this.checkboxSortHidden.AutoSize = true;
-            this.checkboxSortHidden.Font = new System.Drawing.Font("OCR A Extended", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkboxSortHidden.Location = new System.Drawing.Point(10, 151);
-            this.checkboxSortHidden.Name = "checkboxSortHidden";
-            this.checkboxSortHidden.Size = new System.Drawing.Size(161, 27);
-            this.checkboxSortHidden.TabIndex = 22;
-            this.checkboxSortHidden.Text = "Sort Hidden";
-            this.checkboxSortHidden.UseVisualStyleBackColor = true;
-            // 
-            // checkboxSortRepositories
-            // 
-            this.checkboxSortRepositories.AutoSize = true;
-            this.checkboxSortRepositories.Font = new System.Drawing.Font("OCR A Extended", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkboxSortRepositories.Location = new System.Drawing.Point(10, 184);
-            this.checkboxSortRepositories.Name = "checkboxSortRepositories";
-            this.checkboxSortRepositories.Size = new System.Drawing.Size(233, 27);
-            this.checkboxSortRepositories.TabIndex = 23;
-            this.checkboxSortRepositories.Text = "Sort Repositories";
-            this.checkboxSortRepositories.UseVisualStyleBackColor = true;
-            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -919,6 +921,7 @@
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
@@ -927,6 +930,7 @@
             this.Text = "AutoSortFolder";
             this.Activated += new System.EventHandler(this.Window_Activated);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Window_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
