@@ -773,7 +773,7 @@ namespace AutoSortFolder
             {
                 // Toggle menu strip
                 menuStrip.Visible = !menuStrip.Visible;
-                this.Menu
+                
 
                 if (!menuStrip.Visible) menuStrip.Select();
                 else menuStrip.Items[0].Select();
