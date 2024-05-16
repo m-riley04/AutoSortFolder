@@ -790,5 +790,20 @@ namespace AutoSortFolder
             }
 
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void buttonHome_Click(object sender, EventArgs e)
+        {
+            tabControlPages.SelectedIndex = 0;
+        }
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            tabControlPages.SelectedIndex = 1;
+        }
     }
 }
