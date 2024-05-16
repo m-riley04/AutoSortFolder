@@ -13,6 +13,7 @@ using System.Drawing.Drawing2D;
 using System.Text.Json;
 using System.Diagnostics;
 using Microsoft.Win32;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace AutoSortFolder
 {
@@ -763,6 +764,25 @@ namespace AutoSortFolder
             UpdateCurrentAnchorUI();
             UpdateSettingsUI();
             UpdateMenuUI();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+            if (e.Alt) 
+            {
+                // Toggle menu strip
+                menuStrip.Visible = !menuStrip.Visible;
+                this.Menu
+
+                if (!menuStrip.Visible) menuStrip.Select();
+                else menuStrip.Items[0].Select();
+
+                // Select "file" as first option
+                menuStrip.Items[0].Select();
+                Console.WriteLine("User opened top menu.");
+            }
+
         }
     }
 }
