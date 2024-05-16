@@ -611,7 +611,7 @@
             this.addToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
@@ -620,7 +620,7 @@
             this.removeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.removeToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeToolStripMenuItem.Text = "Remove";
             this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
@@ -629,14 +629,14 @@
             this.toolStripSeparator1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.toolStripSeparator1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(135, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.startToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.startToolStripMenuItem.Text = "Start sorting";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
@@ -645,7 +645,7 @@
             this.stopToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.stopToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.stopToolStripMenuItem.Text = "Stop sorting";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
@@ -654,7 +654,7 @@
             this.unsortToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.unsortToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.unsortToolStripMenuItem.Name = "unsortToolStripMenuItem";
-            this.unsortToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.unsortToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.unsortToolStripMenuItem.Text = "Unsort";
             this.unsortToolStripMenuItem.Click += new System.EventHandler(this.unsortToolStripMenuItem_Click);
             // 
@@ -674,7 +674,7 @@
             this.aboutToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.aboutToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -683,7 +683,7 @@
             this.gitHubRepositoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.gitHubRepositoryToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gitHubRepositoryToolStripMenuItem.Name = "gitHubRepositoryToolStripMenuItem";
-            this.gitHubRepositoryToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.gitHubRepositoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gitHubRepositoryToolStripMenuItem.Text = "GitHub Repository";
             this.gitHubRepositoryToolStripMenuItem.Click += new System.EventHandler(this.gitHubRepositoryToolStripMenuItem_Click);
             // 
@@ -692,17 +692,22 @@
             this.checkForUpdateToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
             this.checkForUpdateToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.checkForUpdateToolStripMenuItem.Name = "checkForUpdateToolStripMenuItem";
-            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.checkForUpdateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.checkForUpdateToolStripMenuItem.Text = "Check for update";
             // 
             // tabControlPages
             // 
+            this.tabControlPages.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControlPages.Controls.Add(this.pageHome);
             this.tabControlPages.Controls.Add(this.pageSettings);
-            this.tabControlPages.Location = new System.Drawing.Point(0, 27);
+            this.tabControlPages.ItemSize = new System.Drawing.Size(0, 1);
+            this.tabControlPages.Location = new System.Drawing.Point(-3, 66);
+            this.tabControlPages.Multiline = true;
             this.tabControlPages.Name = "tabControlPages";
+            this.tabControlPages.Padding = new System.Drawing.Point(0, 0);
             this.tabControlPages.SelectedIndex = 0;
-            this.tabControlPages.Size = new System.Drawing.Size(982, 451);
+            this.tabControlPages.Size = new System.Drawing.Size(987, 448);
+            this.tabControlPages.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControlPages.TabIndex = 1;
             this.tabControlPages.TabStop = false;
             // 
@@ -712,10 +717,10 @@
             this.pageHome.Controls.Add(this.panel3);
             this.pageHome.Controls.Add(this.label7);
             this.pageHome.Controls.Add(this.panel4);
-            this.pageHome.Location = new System.Drawing.Point(4, 21);
+            this.pageHome.Location = new System.Drawing.Point(4, 5);
             this.pageHome.Name = "pageHome";
             this.pageHome.Padding = new System.Windows.Forms.Padding(3);
-            this.pageHome.Size = new System.Drawing.Size(974, 426);
+            this.pageHome.Size = new System.Drawing.Size(979, 439);
             this.pageHome.TabIndex = 0;
             this.pageHome.Text = "Home";
             // 
@@ -732,10 +737,10 @@
             this.pageSettings.Controls.Add(this.checkboxAutoSave);
             this.pageSettings.Controls.Add(this.checkboxBackgroundSorting);
             this.pageSettings.Controls.Add(this.label8);
-            this.pageSettings.Location = new System.Drawing.Point(4, 21);
+            this.pageSettings.Location = new System.Drawing.Point(4, 5);
             this.pageSettings.Name = "pageSettings";
             this.pageSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.pageSettings.Size = new System.Drawing.Size(974, 429);
+            this.pageSettings.Size = new System.Drawing.Size(979, 439);
             this.pageSettings.TabIndex = 1;
             this.pageSettings.Text = "Settings";
             // 
@@ -914,7 +919,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(26)))));
-            this.ClientSize = new System.Drawing.Size(982, 473);
+            this.ClientSize = new System.Drawing.Size(982, 509);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.tabControlPages);
             this.Font = new System.Drawing.Font("OCR A Extended", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -926,7 +931,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "Window";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "AutoSortFolder";
             this.Activated += new System.EventHandler(this.Window_Activated);
             this.Load += new System.EventHandler(this.Form1_Load);
