@@ -9,7 +9,7 @@
   <Identity
     Name="26e47484-4820-4c28-afe8-f2a6d7901780"
     Publisher="CN=Riley Meyerkorth"
-    Version="1.0.0.0" />
+    Version="0.1.0.0" />
 
   <Properties>
     <DisplayName>AutoSortFolder</DisplayName>
