@@ -13,6 +13,7 @@ using System.Drawing.Drawing2D;
 using System.Text.Json;
 using System.Diagnostics;
 using Microsoft.Win32;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace AutoSortFolder
 {
@@ -35,10 +36,11 @@ namespace AutoSortFolder
             // Create the app
             app = new App();
 
+            InitializeUI();
             PopulateAnchors();
             UpdateSettingsUI();
             UpdateMenuUI();
-            InitializeUI();
+            UpdateTrayUI();
         }
 
         #region High-Level Functionality Methods
@@ -105,13 +107,13 @@ namespace AutoSortFolder
                 return;
             }
 
-            if (app.currentAnchor.sorted) UnsortAnchor(); // Unsort the folder to re-sort it
-
             if (!Directory.Exists(app.currentAnchor.directory))
             {
                 MessageBox.Show("The anchor directory does not exist. Please choose another directory.", "Error");
                 return;
             }
+
+            if (app.currentAnchor.sorted) UnsortAnchor(); // Unsort the folder to re-sort it
 
             try
             {
@@ -129,6 +131,8 @@ namespace AutoSortFolder
 
             UpdateCurrentAnchorUI();
             UpdateAnchorListUI();
+            UpdateMenuUI();
+            UpdateTrayUI();
         }
 
         private void StopAnchorSorting()
@@ -151,6 +155,8 @@ namespace AutoSortFolder
 
             UpdateCurrentAnchorUI();
             UpdateAnchorListUI();
+            UpdateMenuUI();
+            UpdateTrayUI();
         }
 
         private void SelectAnchorFolder()
@@ -185,6 +191,12 @@ namespace AutoSortFolder
         {
             if (app.currentAnchor == null) return;
 
+            if (!Directory.Exists(app.currentAnchor.directory))
+            {
+                MessageBox.Show("The anchor directory does not exist. Please choose another directory.", "Error");
+                return;
+            }
+
             try
             {
                 app.currentAnchor.Unsort(progress => { });
@@ -198,6 +210,8 @@ namespace AutoSortFolder
             PopulateCurrentAnchorTree();
             UpdateCurrentAnchorUI();
             UpdateAnchorListUI();
+            UpdateMenuUI();
+            UpdateTrayUI();
 
             if (app.settings.autoSave) SaveAnchors();
         }
@@ -221,6 +235,9 @@ namespace AutoSortFolder
 
             PopulateAnchors();
             UpdateAnchorListUI();
+            UpdateCurrentAnchorUI();
+            UpdateMenuUI();
+            UpdateTrayUI();
 
             if (app.settings.autoSave) SaveAnchors();
         }
@@ -229,7 +246,8 @@ namespace AutoSortFolder
         {
             try
             {
-                Anchor newAnchor = new Anchor(listbox_anchors.Items.Count + 1, "", SortingMethod.NONE, false, new List<string>());
+                int index = listbox_anchors.Items.Count + 1;
+                Anchor newAnchor = new Anchor(index, "New Anchor " + index, "", SortingMethod.NONE, false, new List<string>());
                 app.anchors.Add(newAnchor);
                 app.currentAnchor = newAnchor;
                 listbox_anchors.Items.Add(newAnchor.id + ") " + newAnchor.directory);
@@ -241,6 +259,9 @@ namespace AutoSortFolder
 
             UpdateAnchorListUI();
             UpdateCurrentAnchorUI();
+            UpdateMenuUI();
+            UpdateTrayUI();
+
             if (app.settings.autoSave) SaveAnchors();
         }
         
@@ -275,6 +296,11 @@ namespace AutoSortFolder
             Application.Restart();
         }
 
+        private void ShowApplicationInfo()
+        {
+            MessageBox.Show($"AutoSortFolder\nVersion: {app.version}\nCreator: Riley Meyerkorth", "Application Info");
+        }
+
         #endregion
 
         #region UI Update Methods
@@ -288,16 +314,19 @@ namespace AutoSortFolder
             button_selectFolder.Enabled = false;
             buttonResetBlacklist.Enabled = false;
             buttonOpenDirectory.Enabled = false;
-            //button_select.Enabled = (listbox_anchors.SelectedIndex != -1 && listbox_anchors.SelectedIndex != app.anchors.IndexOf(app.currentAnchor));
+            button_remove.Enabled = false;
 
             // Update dropdowns
             combobox_sortingMethod.Enabled = false;
 
+            // Update textboxes
+            textboxAnchorName.Enabled = false;
+
             // Update menu items
-            addToolStripMenuItem.Enabled = false;
             removeToolStripMenuItem.Enabled = false;
             startToolStripMenuItem.Enabled = false;
             stopToolStripMenuItem.Enabled = false;
+            unsortToolStripMenuItem.Enabled = false;
 
             // Tray icon items
             startSortingToolStripMenuItem.Enabled = false;
@@ -389,51 +418,62 @@ namespace AutoSortFolder
                 isSorted = app.currentAnchor.sorted;
             }
 
+            addToolStripMenuItem.Enabled = isIdle;
+            removeToolStripMenuItem.Enabled = isIdle;
             startToolStripMenuItem.Enabled = isIdle;
             stopToolStripMenuItem.Enabled = isActive;
-            unsortToolStripMenuItem.Enabled = isSorted;
+            startToolStripMenuItem.Text = (isSorted && isIdle) ? "Resort" : "Start sorting";
+            unsortToolStripMenuItem.Enabled = isSorted && isIdle;
+        }
+
+        private void UpdateTrayUI()
+        {
+            bool isIdle = false;
+            bool isActive = false;
+            bool isSorted = false;
+
+            if (app.currentAnchor != null)
+            {
+                isIdle = app.currentAnchor.status == AnchorStatus.IDLE;
+                isActive = app.currentAnchor.status == AnchorStatus.ACTIVE;
+                isSorted = app.currentAnchor.sorted;
+            }
+
+            startSortingToolStripMenuItem.Enabled = isIdle;
+            stopAllSortingToolStripMenuItem.Enabled = isActive;
         }
 
         private void UpdateCurrentAnchorUI()
         {
             if (app.currentAnchor == null) return;
 
-            bool isIdle = app.currentAnchor.status == AnchorStatus.IDLE;
-            bool isActive = app.currentAnchor.status == AnchorStatus.ACTIVE;
-            bool isSorted = app.currentAnchor.sorted;
+            // Initialize states
+            bool isIdle     = app.currentAnchor.status == AnchorStatus.IDLE;
+            bool isActive   = app.currentAnchor.status == AnchorStatus.ACTIVE;
+            bool isSorted   = app.currentAnchor.sorted;
 
             // Update Labels
-            label_status.Text = app.currentAnchor.status.ToString();
-            labelSortedValue.Text = isSorted ? "Yes" : "No";
+            label_status.Text               = app.currentAnchor.status.ToString();
+            labelSortedValue.Text           = isSorted ? "Yes" : "No";
 
             // Update Buttons
-            button_start.Enabled = isIdle;
-            button_stop.Enabled = isActive;
-            button_unsort.Enabled = isSorted;
-            button_selectFolder.Enabled = isIdle;
-            button_start.Text = isSorted ? "Resort" : "Start";
-            buttonResetBlacklist.Enabled = isIdle;
-            buttonOpenDirectory.Enabled = isIdle;
-            //button_select.Enabled = (listbox_anchors.SelectedIndex != -1 && listbox_anchors.SelectedIndex != app.anchors.IndexOf(app.currentAnchor));
+            button_start.Enabled            = isIdle;
+            button_stop.Enabled             = isActive;
+            button_unsort.Enabled           = isSorted && isIdle;
+            button_selectFolder.Enabled     = isIdle;
+            button_start.Text               = (isSorted && isIdle) ? "Resort" : "Start";
+            buttonResetBlacklist.Enabled    = isIdle;
+            buttonOpenDirectory.Enabled     = isIdle;
 
             // Update dropdowns
-            combobox_sortingMethod.Enabled = isIdle;
-            combobox_sortingMethod.SelectedIndex = (int)app.currentAnchor.method;
+            combobox_sortingMethod.Enabled          = isIdle;
+            combobox_sortingMethod.SelectedIndex    = (int)app.currentAnchor.method;
 
             // Update fields
-            textbox_folderDirectory.Text = app.currentAnchor.directory;
-
-            // Update menu items
-            addToolStripMenuItem.Enabled = isIdle;
-            removeToolStripMenuItem.Enabled = isIdle;
-            startToolStripMenuItem.Enabled = isIdle;
-            stopToolStripMenuItem.Enabled = isActive;
-            startToolStripMenuItem.Text = isSorted ? "Resort" : "Start sorting";
-            unsortToolStripMenuItem.Enabled = isSorted;
-
-            // Tray icon items
-            startSortingToolStripMenuItem.Enabled = isIdle;
-            stopAllSortingToolStripMenuItem.Enabled = isActive;
+            textbox_folderDirectory.Text    = app.currentAnchor.directory;
+            textboxAnchorName.Text          = app.currentAnchor.name;
+            textboxAnchorName.Enabled       = isIdle;
+            textbox_folderDirectory.Enabled = isIdle;
 
             // Update list
             listBoxBlacklist.Items.Clear();
@@ -458,32 +498,8 @@ namespace AutoSortFolder
             if (app.currentAnchor == null) return;
             bool isIdle = app.currentAnchor.status == AnchorStatus.IDLE;
             listbox_anchors.Enabled = isIdle;
-        }
-
-        private void ResetUI()
-        {
-            // Update Labels
-            label_status.Text = "NONE";
-
-            // Update Buttons
-            button_start.Enabled = false;
-            button_stop.Enabled = false;
-            button_unsort.Enabled = false;
-            button_selectFolder.Enabled = false;
-
-            // Update dropdowns
-            combobox_sortingMethod.Enabled = false;
-            combobox_sortingMethod.SelectedIndex = 0;
-
-            // Update fields
-            textbox_folderDirectory.Text = "";
-
-            // List
-            listbox_anchors.Items.Clear();
-            foreach (Anchor anchor in app.anchors)
-            {
-                if (anchor != null) listbox_anchors.Items.Add((listbox_anchors.Items.Count + 1) + ") " + anchor.directory);
-            }
+            button_add.Enabled = isIdle;
+            button_remove.Enabled = isIdle;
         }
 
         private void PopulateAnchors()
@@ -491,7 +507,7 @@ namespace AutoSortFolder
             listbox_anchors.Items.Clear();
             foreach (Anchor anchor in app.anchors)
             {
-                listbox_anchors.Items.Add((listbox_anchors.Items.Count + 1) + ") " + anchor.directory);
+                listbox_anchors.Items.Add((listbox_anchors.Items.Count + 1) + ") " + anchor.name);
             }
         }
 
@@ -545,19 +561,6 @@ namespace AutoSortFolder
             RemoveAnchor();
         }
 
-        private void buttonSelect_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (listbox_anchors.SelectedIndex != -1) app.currentAnchor = app.anchors[listbox_anchors.SelectedIndex];
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Error");
-            }
-            UpdateCurrentAnchorUI();
-        }
-
         // Settings Page
         private void buttonApply_Click(object sender, EventArgs e)
         {
@@ -582,6 +585,24 @@ namespace AutoSortFolder
                 UpdateSettingsUI();
             }
         }
+        
+        private void buttonOpenDirectory_Click(object sender, EventArgs e)
+        {
+            if (app.currentAnchor == null) return;
+
+            string dir = app.currentAnchor.directory;
+            if (Directory.Exists(dir)) Process.Start(dir);
+        }
+
+        private void buttonResetBlacklist_Click(object sender, EventArgs e)
+        {
+            ResetBlacklist();
+        }
+
+        private async void buttonCheckForUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
 
         #endregion
 
@@ -598,10 +619,21 @@ namespace AutoSortFolder
             {
                 if (listbox_anchors.SelectedIndex != -1) app.currentAnchor = app.anchors[listbox_anchors.SelectedIndex];
                 UpdateCurrentAnchorUI();
+                UpdateMenuUI();
+                UpdateTrayUI();
             } catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Error");
             }
+        }
+
+        private void textboxAnchorName_TextChanged(object sender, EventArgs e)
+        {
+            if (app.currentAnchor == null) return;
+            app.currentAnchor.name = textboxAnchorName.Text;
+
+            UpdateAnchorListUI();
+            PopulateAnchors();
         }
         #endregion
 
@@ -613,6 +645,8 @@ namespace AutoSortFolder
 
             do
             {
+                if (app.currentAnchor == null) throw new ArgumentNullException("Current anchor doesn't exist"); // Check if the current anchor doesn't exist
+                if (!Directory.Exists(app.currentAnchor.directory)) throw new DirectoryNotFoundException("Anchor directory does not exist"); // Check if the directory doesn't exist
                 app.currentAnchor.Sort(
                     progress =>
                     {
@@ -631,24 +665,20 @@ namespace AutoSortFolder
 
         private void sorterWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (e.Cancelled == true)
-            {
-                MessageBox.Show("Sorting was canceled!");
-            }
-            else if (e.Error != null)
-            {
-                MessageBox.Show(e.Error.Message, "Sorting Error");
-            }
-            else
-            {
-                //MessageBox.Show("Sorting is complete.");
-            }
+            if (e.Cancelled) MessageBox.Show("Sorting was canceled!");
+            else if (e.Error != null) MessageBox.Show($"Sorting has stopped due to error: {e.Error.Message}", "Sorting Error");
+            else;//MessageBox.Show("Sorting is complete.");
 
-            Console.WriteLine($"Folder Count Match: {AnchorVerifier.FoldersMatch(app.currentAnchor.directory, testPath, true)}");
+            if (e.Error == null) Console.WriteLine($"Folder Count Match: {AnchorVerifier.FoldersMatch(app.currentAnchor.directory, testPath, true)}");
             app.currentAnchor.Deactivate();
+
+            // Update the UI
             UpdateCurrentAnchorUI();
+            UpdateMenuUI();
+            UpdateTrayUI();
             UpdateAnchorListUI();
 
+            // Save anchor state
             if (app.settings.autoSave) this.SaveAnchors();
         }
         #endregion
@@ -708,40 +738,25 @@ namespace AutoSortFolder
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ShowApplicationInfo();
         }
-
-        #endregion
 
         private void startSortingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StartAnchorSorting();
         }
-
+        
         private void stopAllSortingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StopAnchorSorting();
         }
-
+        
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ExitProgram();
         }
 
-        private void pageHome_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabControlPages_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
+        #endregion
 
         private void Window_Activated(object sender, EventArgs e)
         {
@@ -751,17 +766,44 @@ namespace AutoSortFolder
             UpdateMenuUI();
         }
 
-        private void buttonOpenDirectory_Click(object sender, EventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (app.currentAnchor == null) return;
+            
+            if (e.Alt) 
+            {
+                // Toggle menu strip
+                menuStrip.Visible = !menuStrip.Visible;
 
-            string dir = app.currentAnchor.directory;
-            if (Directory.Exists(dir)) Process.Start(dir);
+
+                if (menuStrip.Visible)
+                {
+                    menuStrip.Focus();
+                    menuStrip.Items[0].Select();
+                }
+                else
+                {
+                    this.Focus();
+                    this.Select();
+                }
+
+                Console.WriteLine("User opened top menu.");
+            }
+
         }
 
-        private void buttonResetBlacklist_Click(object sender, EventArgs e)
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-            ResetBlacklist();
+
+        }
+
+        private void buttonHome_Click(object sender, EventArgs e)
+        {
+            tabControlPages.SelectedIndex = 0;
+        }
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            tabControlPages.SelectedIndex = 1;
         }
     }
 }
