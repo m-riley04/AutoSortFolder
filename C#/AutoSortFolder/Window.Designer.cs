@@ -256,7 +256,7 @@
             this.button_add.Location = new System.Drawing.Point(295, 3);
             this.button_add.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_add.Name = "button_add";
-            this.button_add.Size = new System.Drawing.Size(70, 66);
+            this.button_add.Size = new System.Drawing.Size(70, 29);
             this.button_add.TabIndex = 1;
             this.button_add.Text = "Add";
             this.button_add.UseVisualStyleBackColor = false;
@@ -269,10 +269,10 @@
             this.button_remove.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
             this.button_remove.FlatAppearance.BorderSize = 0;
             this.button_remove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_remove.Location = new System.Drawing.Point(295, 75);
+            this.button_remove.Location = new System.Drawing.Point(295, 38);
             this.button_remove.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_remove.Name = "button_remove";
-            this.button_remove.Size = new System.Drawing.Size(70, 72);
+            this.button_remove.Size = new System.Drawing.Size(70, 29);
             this.button_remove.TabIndex = 2;
             this.button_remove.Text = "Remove";
             this.button_remove.UseVisualStyleBackColor = false;
@@ -743,9 +743,9 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.10126F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.89874F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 290F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.953828F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.953828F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.09235F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(369, 441);
             this.tableLayoutPanel2.TabIndex = 19;
             // 
@@ -1008,7 +1008,6 @@
             this.Controls.Add(this.menuStrip);
             this.Font = new System.Drawing.Font("OCR A Extended", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
