@@ -82,12 +82,19 @@
             this.pageHome = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pageSettings = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.checkboxSortRepositories = new System.Windows.Forms.CheckBox();
             this.checkboxSortHidden = new System.Windows.Forms.CheckBox();
-            this.checkboxDebug = new System.Windows.Forms.CheckBox();
-            this.checkboxAutorun = new System.Windows.Forms.CheckBox();
-            this.checkboxAutoSave = new System.Windows.Forms.CheckBox();
             this.checkboxBackgroundSorting = new System.Windows.Forms.CheckBox();
+            this.checkboxAutoSave = new System.Windows.Forms.CheckBox();
+            this.checkboxAutorun = new System.Windows.Forms.CheckBox();
+            this.checkboxDebug = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonApply = new System.Windows.Forms.Button();
+            this.buttonCheckForUpdate = new System.Windows.Forms.Button();
+            this.buttonResetToDefault = new System.Windows.Forms.Button();
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.trayIconMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.startSortingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,13 +102,6 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fileSystemWatcher = new System.IO.FileSystemWatcher();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonResetToDefault = new System.Windows.Forms.Button();
-            this.buttonCheckForUpdate = new System.Windows.Forms.Button();
-            this.buttonApply = new System.Windows.Forms.Button();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -111,10 +111,10 @@
             this.pageHome.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.pageSettings.SuspendLayout();
-            this.trayIconMenuStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            this.trayIconMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).BeginInit();
             this.SuspendLayout();
             // 
             // textbox_folderDirectory
@@ -212,7 +212,7 @@
             "Date Created",
             "Date Modified",
             "Date Accessed"});
-            this.combobox_sortingMethod.Location = new System.Drawing.Point(4, 95);
+            this.combobox_sortingMethod.Location = new System.Drawing.Point(4, 96);
             this.combobox_sortingMethod.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.combobox_sortingMethod.Name = "combobox_sortingMethod";
             this.combobox_sortingMethod.Size = new System.Drawing.Size(128, 20);
@@ -406,7 +406,7 @@
             this.textboxAnchorName.Name = "textboxAnchorName";
             this.textboxAnchorName.Size = new System.Drawing.Size(455, 19);
             this.textboxAnchorName.TabIndex = 0;
-            this.textboxAnchorName.TextChanged += new System.EventHandler(this.textboxAnchorName_TextChanged);
+            this.textboxAnchorName.Leave += new System.EventHandler(this.textboxAnchorName_Leave);
             // 
             // listBoxBlacklist
             // 
@@ -761,6 +761,58 @@
             this.pageSettings.TabIndex = 1;
             this.pageSettings.Text = "Settings";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.70788F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.89232F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.Controls.Add(this.label7, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.checkboxSortRepositories, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.checkboxSortHidden, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.checkboxBackgroundSorting, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.checkboxAutoSave, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.checkboxAutorun, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.checkboxDebug, 0, 3);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1003, 323);
+            this.tableLayoutPanel1.TabIndex = 24;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("OCR A Extended", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(311, 8);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(354, 29);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Sorting";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("OCR A Extended", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 8);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(302, 29);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Application";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // checkboxSortRepositories
             // 
             this.checkboxSortRepositories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -785,29 +837,17 @@
             this.checkboxSortHidden.Text = "Sort Hidden";
             this.checkboxSortHidden.UseVisualStyleBackColor = true;
             // 
-            // checkboxDebug
+            // checkboxBackgroundSorting
             // 
-            this.checkboxDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkboxDebug.AutoSize = true;
-            this.checkboxDebug.Font = new System.Drawing.Font("OCR A Extended", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkboxDebug.Location = new System.Drawing.Point(3, 149);
-            this.checkboxDebug.Name = "checkboxDebug";
-            this.checkboxDebug.Size = new System.Drawing.Size(302, 24);
-            this.checkboxDebug.TabIndex = 18;
-            this.checkboxDebug.Text = "Debug";
-            this.checkboxDebug.UseVisualStyleBackColor = true;
-            // 
-            // checkboxAutorun
-            // 
-            this.checkboxAutorun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkboxAutorun.AutoSize = true;
-            this.checkboxAutorun.Font = new System.Drawing.Font("OCR A Extended", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkboxAutorun.Location = new System.Drawing.Point(3, 103);
-            this.checkboxAutorun.Name = "checkboxAutorun";
-            this.checkboxAutorun.Size = new System.Drawing.Size(302, 24);
-            this.checkboxAutorun.TabIndex = 17;
-            this.checkboxAutorun.Text = "Auto-Run On Boot";
-            this.checkboxAutorun.UseVisualStyleBackColor = true;
+            this.checkboxBackgroundSorting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkboxBackgroundSorting.AutoSize = true;
+            this.checkboxBackgroundSorting.Font = new System.Drawing.Font("OCR A Extended", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkboxBackgroundSorting.Location = new System.Drawing.Point(311, 57);
+            this.checkboxBackgroundSorting.Name = "checkboxBackgroundSorting";
+            this.checkboxBackgroundSorting.Size = new System.Drawing.Size(354, 24);
+            this.checkboxBackgroundSorting.TabIndex = 15;
+            this.checkboxBackgroundSorting.Text = "Background Sorting";
+            this.checkboxBackgroundSorting.UseVisualStyleBackColor = true;
             // 
             // checkboxAutoSave
             // 
@@ -821,17 +861,94 @@
             this.checkboxAutoSave.Text = "Auto Saving";
             this.checkboxAutoSave.UseVisualStyleBackColor = true;
             // 
-            // checkboxBackgroundSorting
+            // checkboxAutorun
             // 
-            this.checkboxBackgroundSorting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkboxBackgroundSorting.AutoSize = true;
-            this.checkboxBackgroundSorting.Font = new System.Drawing.Font("OCR A Extended", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkboxBackgroundSorting.Location = new System.Drawing.Point(311, 57);
-            this.checkboxBackgroundSorting.Name = "checkboxBackgroundSorting";
-            this.checkboxBackgroundSorting.Size = new System.Drawing.Size(354, 24);
-            this.checkboxBackgroundSorting.TabIndex = 15;
-            this.checkboxBackgroundSorting.Text = "Background Sorting";
-            this.checkboxBackgroundSorting.UseVisualStyleBackColor = true;
+            this.checkboxAutorun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkboxAutorun.AutoSize = true;
+            this.checkboxAutorun.Font = new System.Drawing.Font("OCR A Extended", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkboxAutorun.Location = new System.Drawing.Point(3, 103);
+            this.checkboxAutorun.Name = "checkboxAutorun";
+            this.checkboxAutorun.Size = new System.Drawing.Size(302, 24);
+            this.checkboxAutorun.TabIndex = 17;
+            this.checkboxAutorun.Text = "Auto-Run On Boot";
+            this.checkboxAutorun.UseVisualStyleBackColor = true;
+            // 
+            // checkboxDebug
+            // 
+            this.checkboxDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkboxDebug.AutoSize = true;
+            this.checkboxDebug.Font = new System.Drawing.Font("OCR A Extended", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkboxDebug.Location = new System.Drawing.Point(3, 149);
+            this.checkboxDebug.Name = "checkboxDebug";
+            this.checkboxDebug.Size = new System.Drawing.Size(302, 24);
+            this.checkboxDebug.TabIndex = 18;
+            this.checkboxDebug.Text = "Debug";
+            this.checkboxDebug.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel5.Controls.Add(this.buttonApply, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.buttonCheckForUpdate, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.buttonResetToDefault, 1, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(643, 398);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(362, 41);
+            this.tableLayoutPanel5.TabIndex = 25;
+            // 
+            // buttonApply
+            // 
+            this.buttonApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonApply.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.buttonApply.FlatAppearance.BorderSize = 0;
+            this.buttonApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonApply.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonApply.Location = new System.Drawing.Point(244, 3);
+            this.buttonApply.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.buttonApply.Name = "buttonApply";
+            this.buttonApply.Size = new System.Drawing.Size(114, 35);
+            this.buttonApply.TabIndex = 20;
+            this.buttonApply.Text = "Apply";
+            this.buttonApply.UseVisualStyleBackColor = false;
+            this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
+            // 
+            // buttonCheckForUpdate
+            // 
+            this.buttonCheckForUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCheckForUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.buttonCheckForUpdate.FlatAppearance.BorderSize = 0;
+            this.buttonCheckForUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCheckForUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonCheckForUpdate.Location = new System.Drawing.Point(4, 3);
+            this.buttonCheckForUpdate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.buttonCheckForUpdate.Name = "buttonCheckForUpdate";
+            this.buttonCheckForUpdate.Size = new System.Drawing.Size(112, 35);
+            this.buttonCheckForUpdate.TabIndex = 21;
+            this.buttonCheckForUpdate.Text = "Check for Updates";
+            this.buttonCheckForUpdate.UseVisualStyleBackColor = false;
+            this.buttonCheckForUpdate.Click += new System.EventHandler(this.buttonCheckForUpdate_Click);
+            // 
+            // buttonResetToDefault
+            // 
+            this.buttonResetToDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonResetToDefault.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
+            this.buttonResetToDefault.FlatAppearance.BorderSize = 0;
+            this.buttonResetToDefault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonResetToDefault.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonResetToDefault.Location = new System.Drawing.Point(124, 3);
+            this.buttonResetToDefault.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.buttonResetToDefault.Name = "buttonResetToDefault";
+            this.buttonResetToDefault.Size = new System.Drawing.Size(112, 35);
+            this.buttonResetToDefault.TabIndex = 19;
+            this.buttonResetToDefault.Text = "Reset to Default";
+            this.buttonResetToDefault.UseVisualStyleBackColor = false;
+            this.buttonResetToDefault.Click += new System.EventHandler(this.buttonResetToDefault_Click);
             // 
             // trayIcon
             // 
@@ -881,123 +998,6 @@
             this.fileSystemWatcher.EnableRaisingEvents = true;
             this.fileSystemWatcher.SynchronizingObject = this;
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.70788F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.89232F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Controls.Add(this.label7, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.checkboxSortRepositories, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.checkboxSortHidden, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.checkboxBackgroundSorting, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.checkboxAutoSave, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.checkboxAutorun, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.checkboxDebug, 0, 3);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1003, 323);
-            this.tableLayoutPanel1.TabIndex = 24;
-            // 
-            // buttonResetToDefault
-            // 
-            this.buttonResetToDefault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonResetToDefault.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
-            this.buttonResetToDefault.FlatAppearance.BorderSize = 0;
-            this.buttonResetToDefault.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonResetToDefault.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonResetToDefault.Location = new System.Drawing.Point(124, 3);
-            this.buttonResetToDefault.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.buttonResetToDefault.Name = "buttonResetToDefault";
-            this.buttonResetToDefault.Size = new System.Drawing.Size(112, 35);
-            this.buttonResetToDefault.TabIndex = 19;
-            this.buttonResetToDefault.Text = "Reset to Default";
-            this.buttonResetToDefault.UseVisualStyleBackColor = false;
-            this.buttonResetToDefault.Click += new System.EventHandler(this.buttonResetToDefault_Click);
-            // 
-            // buttonCheckForUpdate
-            // 
-            this.buttonCheckForUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCheckForUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
-            this.buttonCheckForUpdate.FlatAppearance.BorderSize = 0;
-            this.buttonCheckForUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCheckForUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCheckForUpdate.Location = new System.Drawing.Point(4, 3);
-            this.buttonCheckForUpdate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.buttonCheckForUpdate.Name = "buttonCheckForUpdate";
-            this.buttonCheckForUpdate.Size = new System.Drawing.Size(112, 35);
-            this.buttonCheckForUpdate.TabIndex = 21;
-            this.buttonCheckForUpdate.Text = "Check for Updates";
-            this.buttonCheckForUpdate.UseVisualStyleBackColor = false;
-            this.buttonCheckForUpdate.Click += new System.EventHandler(this.buttonCheckForUpdate_Click);
-            // 
-            // buttonApply
-            // 
-            this.buttonApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonApply.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
-            this.buttonApply.FlatAppearance.BorderSize = 0;
-            this.buttonApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonApply.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonApply.Location = new System.Drawing.Point(244, 3);
-            this.buttonApply.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.buttonApply.Name = "buttonApply";
-            this.buttonApply.Size = new System.Drawing.Size(114, 35);
-            this.buttonApply.TabIndex = 20;
-            this.buttonApply.Text = "Apply";
-            this.buttonApply.UseVisualStyleBackColor = false;
-            this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel5.ColumnCount = 3;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel5.Controls.Add(this.buttonApply, 2, 0);
-            this.tableLayoutPanel5.Controls.Add(this.buttonCheckForUpdate, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.buttonResetToDefault, 1, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(643, 398);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 1;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(362, 41);
-            this.tableLayoutPanel5.TabIndex = 25;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("OCR A Extended", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 8);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(302, 29);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "Application";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("OCR A Extended", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(311, 8);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(354, 29);
-            this.label7.TabIndex = 25;
-            this.label7.Text = "Sorting";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -1030,11 +1030,11 @@
             this.pageHome.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.pageSettings.ResumeLayout(false);
-            this.trayIconMenuStrip.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
+            this.trayIconMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
