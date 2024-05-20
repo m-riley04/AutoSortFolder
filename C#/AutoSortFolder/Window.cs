@@ -285,6 +285,23 @@ namespace AutoSortFolder
             MessageBox.Show($"AutoSortFolder\nVersion: {this.ProductVersion}\nCreator: Riley Meyerkorth", "Application Info");
         }
 
+        private void ApplyAnchorName()
+        {
+            try
+            {
+                if (app.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
+                app.currentAnchor.name = textboxAnchorName.Text;
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
+
+            PopulateAnchors();
+            UpdateAnchorListUI();
+        }
+
         #endregion
 
         #region UI Update Methods
@@ -611,14 +628,11 @@ namespace AutoSortFolder
             }
         }
 
-        private void textboxAnchorName_TextChanged(object sender, EventArgs e)
+        private void textboxAnchorName_Leave(object sender, EventArgs e)
         {
-            if (app.currentAnchor == null) return;
-            app.currentAnchor.name = textboxAnchorName.Text;
-
-            UpdateAnchorListUI();
-            PopulateAnchors();
+            ApplyAnchorName();
         }
+
         #endregion
 
         #region Background Worker Methods
@@ -790,5 +804,6 @@ namespace AutoSortFolder
             tabControlPages.SelectedIndex = 1;
         }
 
+        
     }
 }
