@@ -44,7 +44,6 @@ namespace AutoSortFolder
 
             string extension = Path.GetExtension(path);
             string extensionCategory = "other"; // Default folder name
-            string sortedFolderPath = directory + "\\" + extensionCategory;
 
             // Iterate through and get the category
             foreach (KeyValuePair<string, string[]> item in FileExtensions.Extensions)
@@ -57,7 +56,7 @@ namespace AutoSortFolder
             }
 
             // Check if the category folder isn't created
-            sortedFolderPath = directory + "\\" + extensionCategory;
+            string sortedFolderPath = directory + "\\" + extensionCategory;
             if (!Directory.Exists(sortedFolderPath)) Directory.CreateDirectory(sortedFolderPath);
 
             // Move the file to the folder
