@@ -59,6 +59,7 @@ namespace AutoSortFolder
 
             PopulateAnchors();
             UpdateAnchorListUI();
+            UpdateCurrentAnchorUI();
         }
 
         private void SaveSettings()
@@ -89,24 +90,18 @@ namespace AutoSortFolder
 
         private void StartAnchorSorting()
         {
-            if (app.currentAnchor == null) return;
+            if (app.settings.autoSave) SaveAnchors();
 
-            if (app.currentAnchor.method == SortingMethod.NONE)
-            {
-                MessageBox.Show("Please select a sorting method first!", "Sorting Method");
-                return;
-            }
-
-            if (!Directory.Exists(app.currentAnchor.directory))
-            {
-                MessageBox.Show("The anchor directory does not exist. Please choose another directory.", "Error");
-                return;
-            }
-
-            if (app.currentAnchor.sorted) UnsortAnchor(); // Unsort the folder to re-sort it
-
+            // Functionality
             try
             {
+                // Checking for nullities
+                if (app.currentAnchor == null) return;
+                if (app.currentAnchor.method == SortingMethod.NONE) throw new Exception("No sorting method selected");
+                if (!Directory.Exists(app.currentAnchor.directory)) throw new DirectoryNotFoundException("The anchor directory does not exist. Please choose another directory.");
+
+                if (app.currentAnchor.sorted) UnsortAnchor(); // Unsort the folder to re-sort it
+
                 if (!sorterWorker.IsBusy)
                 {
                     // Start the asynchronous operation.
@@ -119,6 +114,7 @@ namespace AutoSortFolder
                 MessageBox.Show(err.Message, "Error");
             }
 
+            // Update UI
             UpdateCurrentAnchorUI();
             UpdateAnchorListUI();
             UpdateMenuUI();
@@ -127,10 +123,10 @@ namespace AutoSortFolder
 
         private void StopAnchorSorting()
         {
-            if (app.currentAnchor == null) return;
-
             try
             {
+                if (app.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
+
                 if (sorterWorker.WorkerSupportsCancellation)
                 {
                     // Cancel the asynchronous operation.
@@ -143,6 +139,8 @@ namespace AutoSortFolder
                 MessageBox.Show(err.Message, "Error");
             }
 
+            if (app.settings.autoSave) SaveAnchors();
+
             UpdateCurrentAnchorUI();
             UpdateAnchorListUI();
             UpdateMenuUI();
@@ -154,10 +152,7 @@ namespace AutoSortFolder
             try
             {
                 // Check if the anchor is set
-                if (app.currentAnchor == null)
-                {
-                    app.currentAnchor = app.anchors[0];
-                }
+                if (app.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
 
                 if (app.currentAnchor.status != AnchorStatus.IDLE) throw new Exception("Cannot change anchor point folder while sorting is in progress");
 
@@ -179,22 +174,17 @@ namespace AutoSortFolder
 
         private void UnsortAnchor()
         {
-            if (app.currentAnchor == null) return;
-
-            if (!Directory.Exists(app.currentAnchor.directory))
-            {
-                MessageBox.Show("The anchor directory does not exist. Please choose another directory.", "Error");
-                return;
-            }
-
             try
             {
+                if (app.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
+                if (!Directory.Exists(app.currentAnchor.directory)) throw new DirectoryNotFoundException("The anchor directory does not exist. Please choose another directory.");
+
                 app.currentAnchor.Unsort(progress => { });
                 app.currentAnchor.sorted = false;
             }
             catch (Exception err)
             {
-                MessageBox.Show($"Error: {err.Message}\nSource: {err.Source}\n Inner: {err.InnerException} \nMethod: {err.TargetSite} \nStack Trace: {err.StackTrace}");
+                MessageBox.Show($"{err.Message}", "Error");
             }
 
             PopulateCurrentAnchorTree();
@@ -208,15 +198,11 @@ namespace AutoSortFolder
 
         private void RemoveAnchor()
         {
-            if (app.currentAnchor == null) return;
-
             try
             {
+                if (app.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
                 int index = listbox_anchors.SelectedIndex;
-                if (index != -1)
-                {
-                    app.anchors.RemoveAt(index);
-                }
+                if (index != -1) app.anchors.RemoveAt(index);
             }
             catch (Exception err)
             {
@@ -257,9 +243,17 @@ namespace AutoSortFolder
         
         private void ResetBlacklist()
         {
-            if (app.currentAnchor == null) return;
+            try
+            {
+                if (app.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
 
-            app.currentAnchor.blacklist.Clear();
+                app.currentAnchor.blacklist.Clear();
+            } 
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Error");
+            }
+            
 
             UpdateCurrentAnchorUI();
         }
@@ -272,7 +266,7 @@ namespace AutoSortFolder
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                MessageBox.Show($"Error: {ex.Message}", "Error");
             }
         }
 
@@ -795,5 +789,6 @@ namespace AutoSortFolder
         {
             tabControlPages.SelectedIndex = 1;
         }
+
     }
 }
