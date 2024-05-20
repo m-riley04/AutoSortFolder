@@ -298,7 +298,7 @@ namespace AutoSortFolder
 
         private void ShowApplicationInfo()
         {
-            MessageBox.Show($"AutoSortFolder\nVersion: {app.version}\nCreator: Riley Meyerkorth", "Application Info");
+            MessageBox.Show($"AutoSortFolder\nVersion: {this.ProductVersion}\nCreator: Riley Meyerkorth", "Application Info");
         }
 
         #endregion
