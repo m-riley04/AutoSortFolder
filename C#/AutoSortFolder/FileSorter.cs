@@ -57,14 +57,13 @@ namespace AutoSortFolder
                 if (item.Value.Contains(extension))
                 {
                     extensionCategory = item.Key;
-
-                    // Check if the category folder isn't created
-                    sortedFolderPath = directory + "\\" + extensionCategory;
-                    if (!Directory.Exists(sortedFolderPath)) Directory.CreateDirectory(sortedFolderPath);
-
                     break;
                 }
             }
+
+            // Check if the category folder isn't created
+            sortedFolderPath = directory + "\\" + extensionCategory;
+            if (!Directory.Exists(sortedFolderPath)) Directory.CreateDirectory(sortedFolderPath);
 
             // Move the file to the folder
             MoveSafe(path, sortedFolderPath + "\\" + name);
