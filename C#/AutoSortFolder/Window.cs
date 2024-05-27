@@ -571,7 +571,7 @@ namespace AutoSortFolder
             app.settings.autorun = checkboxAutorun.Checked;
 
             // Change registry value
-            if (app.settings.autorun) app.regKey.SetValue("AutoSortFolder", Application.ExecutablePath);
+            if (app.settings.autorun) app.regKey.SetValue("AutoSortFolder", Application.ExecutablePath.ToString());
             else app.regKey.DeleteValue("AutoSortFolder", false);
 
             SaveSettings();
