@@ -519,7 +519,7 @@
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.menuStrip.ShowItemToolTips = true;
-            this.menuStrip.Size = new System.Drawing.Size(982, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1017, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
             this.menuStrip.Visible = false;
