@@ -804,6 +804,25 @@ namespace AutoSortFolder
             tabControlPages.SelectedIndex = 1;
         }
 
-        
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            if (app.currentAnchor != null && app.currentAnchor.status == AnchorStatus.ACTIVE)
+            {
+                switch (MessageBox.Show(this, "Are you sure you want to close?", "Closing", MessageBoxButtons.YesNo))
+                {
+                    case DialogResult.No:
+                        e.Cancel = true;
+                        break;
+                    default:
+                        // Check for any current running threads
+                        if (sorterWorker.IsBusy) StopAnchorSorting();
+                        break;
+                }
+            }
+        }
+
+
     }
 }
