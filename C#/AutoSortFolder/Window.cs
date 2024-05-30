@@ -562,8 +562,7 @@ namespace AutoSortFolder
             RemoveAnchor();
         }
 
-        // Settings Page
-        private void buttonApply_Click(object sender, EventArgs e)
+        private void ApplySettings()
         {
             // Set all the states
             app.settings.backgroundSorting = checkboxBackgroundSorting.Checked;
@@ -577,14 +576,22 @@ namespace AutoSortFolder
             SaveSettings();
         }
 
+        private void ResetSettings()
+        {
+            app.ResetSettings();
+            UpdateSettingsUI();
+        }
+
+        // Settings Page
+        private void buttonApply_Click(object sender, EventArgs e)
+        {
+            ApplySettings();
+        }
+
         private void buttonResetToDefault_Click(object sender, EventArgs e)
         {
             DialogResult prompt = MessageBox.Show("Are you sure you want to reset settings?", "Confirm", MessageBoxButtons.YesNo);
-            if (prompt == DialogResult.Yes)
-            {
-                app.ResetSettings();
-                UpdateSettingsUI();
-            }
+            if (prompt == DialogResult.Yes) ResetSettings();
         }
         
         private void buttonOpenDirectory_Click(object sender, EventArgs e)
