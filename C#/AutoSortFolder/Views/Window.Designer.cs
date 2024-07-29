@@ -123,11 +123,11 @@
             this.textbox_folderDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
             this.textbox_folderDirectory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textbox_folderDirectory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textbox_folderDirectory.Location = new System.Drawing.Point(140, 43);
+            this.textbox_folderDirectory.Location = new System.Drawing.Point(141, 43);
             this.textbox_folderDirectory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textbox_folderDirectory.Name = "textbox_folderDirectory";
             this.textbox_folderDirectory.ReadOnly = true;
-            this.textbox_folderDirectory.Size = new System.Drawing.Size(264, 19);
+            this.textbox_folderDirectory.Size = new System.Drawing.Size(266, 19);
             this.textbox_folderDirectory.TabIndex = 1;
             // 
             // label1
@@ -137,7 +137,7 @@
             this.label1.Location = new System.Drawing.Point(4, 46);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 12);
+            this.label1.Size = new System.Drawing.Size(129, 12);
             this.label1.TabIndex = 2;
             this.label1.Text = "Directory";
             // 
@@ -215,7 +215,7 @@
             this.combobox_sortingMethod.Location = new System.Drawing.Point(4, 96);
             this.combobox_sortingMethod.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.combobox_sortingMethod.Name = "combobox_sortingMethod";
-            this.combobox_sortingMethod.Size = new System.Drawing.Size(128, 20);
+            this.combobox_sortingMethod.Size = new System.Drawing.Size(129, 20);
             this.combobox_sortingMethod.TabIndex = 4;
             this.combobox_sortingMethod.SelectedIndexChanged += new System.EventHandler(this.dropdownSortingMethod_SelectedIndexChanged);
             // 
@@ -226,7 +226,7 @@
             this.label2.Location = new System.Drawing.Point(4, 74);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 12);
+            this.label2.Size = new System.Drawing.Size(129, 12);
             this.label2.TabIndex = 4;
             this.label2.Text = "Sorting Method";
             // 
@@ -286,10 +286,10 @@
             this.panel4.Controls.Add(this.tableLayoutPanel3);
             this.panel4.Controls.Add(this.buttonResetBlacklist);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(407, 3);
+            this.panel4.Location = new System.Drawing.Point(402, 3);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(599, 441);
+            this.panel4.Size = new System.Drawing.Size(604, 441);
             this.panel4.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -340,7 +340,7 @@
             this.tableLayoutPanel4.Controls.Add(this.button_unsort, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.button_stop, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.button_start, 0, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(370, 406);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(375, 406);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -376,7 +376,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.041096F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.027397F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.54795F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(599, 365);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(604, 365);
             this.tableLayoutPanel3.TabIndex = 20;
             // 
             // buttonOpenDirectory
@@ -385,7 +385,7 @@
             this.buttonOpenDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
             this.buttonOpenDirectory.FlatAppearance.BorderSize = 0;
             this.buttonOpenDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOpenDirectory.Location = new System.Drawing.Point(530, 41);
+            this.buttonOpenDirectory.Location = new System.Drawing.Point(534, 41);
             this.buttonOpenDirectory.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonOpenDirectory.Name = "buttonOpenDirectory";
             this.buttonOpenDirectory.Size = new System.Drawing.Size(60, 23);
@@ -401,10 +401,10 @@
             this.textboxAnchorName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableLayoutPanel3.SetColumnSpan(this.textboxAnchorName, 3);
             this.textboxAnchorName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textboxAnchorName.Location = new System.Drawing.Point(140, 8);
+            this.textboxAnchorName.Location = new System.Drawing.Point(141, 8);
             this.textboxAnchorName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textboxAnchorName.Name = "textboxAnchorName";
-            this.textboxAnchorName.Size = new System.Drawing.Size(455, 19);
+            this.textboxAnchorName.Size = new System.Drawing.Size(459, 19);
             this.textboxAnchorName.TabIndex = 0;
             this.textboxAnchorName.Leave += new System.EventHandler(this.textboxAnchorName_Leave);
             // 
@@ -418,7 +418,7 @@
             this.listBoxBlacklist.ItemHeight = 12;
             this.listBoxBlacklist.Location = new System.Drawing.Point(3, 146);
             this.listBoxBlacklist.Name = "listBoxBlacklist";
-            this.listBoxBlacklist.Size = new System.Drawing.Size(130, 216);
+            this.listBoxBlacklist.Size = new System.Drawing.Size(131, 216);
             this.listBoxBlacklist.TabIndex = 26;
             // 
             // button_selectFolder
@@ -427,7 +427,7 @@
             this.button_selectFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(50)))), ((int)(((byte)(66)))));
             this.button_selectFolder.FlatAppearance.BorderSize = 0;
             this.button_selectFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_selectFolder.Location = new System.Drawing.Point(412, 41);
+            this.button_selectFolder.Location = new System.Drawing.Point(415, 41);
             this.button_selectFolder.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_selectFolder.Name = "button_selectFolder";
             this.button_selectFolder.Size = new System.Drawing.Size(106, 23);
@@ -443,7 +443,7 @@
             this.label5.Location = new System.Drawing.Point(4, 126);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 12);
+            this.label5.Size = new System.Drawing.Size(129, 12);
             this.label5.TabIndex = 25;
             this.label5.Text = "Blacklist";
             // 
@@ -454,7 +454,7 @@
             this.label3.Location = new System.Drawing.Point(4, 11);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(128, 12);
+            this.label3.Size = new System.Drawing.Size(129, 12);
             this.label3.TabIndex = 2;
             this.label3.Text = "Name";
             // 
@@ -466,20 +466,20 @@
             this.treeCurrentAnchor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeCurrentAnchor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.treeCurrentAnchor.Indent = 15;
-            this.treeCurrentAnchor.Location = new System.Drawing.Point(139, 93);
+            this.treeCurrentAnchor.Location = new System.Drawing.Point(140, 93);
             this.treeCurrentAnchor.Name = "treeCurrentAnchor";
             this.tableLayoutPanel3.SetRowSpan(this.treeCurrentAnchor, 3);
-            this.treeCurrentAnchor.Size = new System.Drawing.Size(457, 269);
+            this.treeCurrentAnchor.Size = new System.Drawing.Size(461, 269);
             this.treeCurrentAnchor.TabIndex = 5;
             // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(140, 74);
+            this.label6.Location = new System.Drawing.Point(141, 74);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(264, 12);
+            this.label6.Size = new System.Drawing.Size(266, 12);
             this.label6.TabIndex = 22;
             this.label6.Text = "Anchor Preview";
             // 
@@ -1007,7 +1007,7 @@
             this.Controls.Add(this.tabControlPages);
             this.Controls.Add(this.menuStrip);
             this.Font = new System.Drawing.Font("OCR A Extended", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;

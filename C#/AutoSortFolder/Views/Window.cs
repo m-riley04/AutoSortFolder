@@ -10,11 +10,11 @@ namespace AutoSortFolder
     public partial class Window : Form
     {
        
-        public App app;
+        public Controller controller;
         FileStream filestream;
         StreamWriter writer;
         TextWriter oldWriter = Console.Out;
-        public string testPath = @"C:\Users\vex10\Desktop\testOriginal"; // Path for testing/verifying anchor sorting
+        public readonly string testPath = @"C:\Users\vex10\Desktop\testOriginal"; // Path for testing/verifying anchor sorting
 
         public Window()
         {
@@ -23,8 +23,8 @@ namespace AutoSortFolder
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Create the app
-            app = new App();
+            // Create the controller
+            controller = new Controller();
 
             InitializeUI();
             PopulateAnchors();
@@ -38,7 +38,7 @@ namespace AutoSortFolder
         {
             try
             {
-                app.SaveAnchors();
+                controller.SaveAnchors();
             }
             catch (Exception err)
             {
@@ -50,7 +50,7 @@ namespace AutoSortFolder
         {
             try
             {
-                app.LoadAnchors();
+                controller.LoadAnchors();
             }
             catch (Exception err)
             {
@@ -66,7 +66,7 @@ namespace AutoSortFolder
         {
             try
             {
-                app.SaveSettings();
+                controller.SaveSettings();
             }
             catch (Exception err)
             {
@@ -78,7 +78,7 @@ namespace AutoSortFolder
         {
             try
             {
-                app.LoadSettings();
+                controller.LoadSettings();
             }
             catch (Exception err)
             {
@@ -90,23 +90,23 @@ namespace AutoSortFolder
 
         private void StartAnchorSorting()
         {
-            if (app.settings.autoSave) SaveAnchors();
+            if (controller.settings.autoSave) SaveAnchors();
 
             // Functionality
             try
             {
                 // Checking for nullities
-                if (app.currentAnchor == null) return;
-                if (app.currentAnchor.method == SortingMethod.NONE) throw new Exception("No sorting method selected");
-                if (!Directory.Exists(app.currentAnchor.directory)) throw new DirectoryNotFoundException("The anchor directory does not exist. Please choose another directory.");
+                if (controller.currentAnchor == null) return;
+                if (controller.currentAnchor.method == SortingMethod.NONE) throw new Exception("No sorting method selected");
+                if (!Directory.Exists(controller.currentAnchor.directory)) throw new DirectoryNotFoundException("The anchor directory does not exist. Please choose another directory.");
 
-                if (app.currentAnchor.sorted) UnsortAnchor(); // Unsort the folder to re-sort it
+                if (controller.currentAnchor.sorted) UnsortAnchor(); // Unsort the folder to re-sort it
 
                 if (!sorterWorker.IsBusy)
                 {
                     // Start the asynchronous operation.
                     sorterWorker.RunWorkerAsync();
-                    app.ActivateCurrentAnchor();
+                    controller.ActivateCurrentAnchor();
                 }
             }
             catch (Exception err)
@@ -125,13 +125,13 @@ namespace AutoSortFolder
         {
             try
             {
-                if (app.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
+                if (controller.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
 
                 if (sorterWorker.WorkerSupportsCancellation)
                 {
                     // Cancel the asynchronous operation.
                     sorterWorker.CancelAsync();
-                    app.DeactivateCurrentAnchor();
+                    controller.DeactivateCurrentAnchor();
                 }
             }
             catch (Exception err)
@@ -139,7 +139,7 @@ namespace AutoSortFolder
                 MessageBox.Show(err.Message, "Error");
             }
 
-            if (app.settings.autoSave) SaveAnchors();
+            if (controller.settings.autoSave) SaveAnchors();
 
             UpdateCurrentAnchorUI();
             UpdateAnchorListUI();
@@ -152,13 +152,13 @@ namespace AutoSortFolder
             try
             {
                 // Check if the anchor is set
-                if (app.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
+                if (controller.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
 
-                if (app.currentAnchor.status != AnchorStatus.IDLE) throw new Exception("Cannot change anchor point folder while sorting is in progress");
+                if (controller.currentAnchor.status != AnchorStatus.IDLE) throw new Exception("Cannot change anchor point folder while sorting is in progress");
 
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
-                    app.currentAnchor.directory = folderBrowserDialog.SelectedPath;
+                    controller.currentAnchor.directory = folderBrowserDialog.SelectedPath;
                     UpdateCurrentAnchorUI();
                     UpdateAnchorListUI();
                     UpdateMenuUI();
@@ -169,18 +169,18 @@ namespace AutoSortFolder
                 MessageBox.Show(err.Message, "Error");
             }
 
-            if (app.settings.autoSave) SaveAnchors();
+            if (controller.settings.autoSave) SaveAnchors();
         }
 
         private void UnsortAnchor()
         {
             try
             {
-                if (app.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
-                if (!Directory.Exists(app.currentAnchor.directory)) throw new DirectoryNotFoundException("The anchor directory does not exist. Please choose another directory.");
+                if (controller.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
+                if (!Directory.Exists(controller.currentAnchor.directory)) throw new DirectoryNotFoundException("The anchor directory does not exist. Please choose another directory.");
 
-                app.currentAnchor.Unsort(progress => { });
-                app.currentAnchor.sorted = false;
+                controller.currentAnchor.Unsort(progress => { });
+                controller.currentAnchor.sorted = false;
             }
             catch (Exception err)
             {
@@ -193,16 +193,16 @@ namespace AutoSortFolder
             UpdateMenuUI();
             UpdateTrayUI();
 
-            if (app.settings.autoSave) SaveAnchors();
+            if (controller.settings.autoSave) SaveAnchors();
         }
 
         private void RemoveAnchor()
         {
             try
             {
-                if (app.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
+                if (controller.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
                 int index = listbox_anchors.SelectedIndex;
-                if (index != -1) app.anchors.RemoveAt(index);
+                if (index != -1) controller.anchors.RemoveAt(index);
             }
             catch (Exception err)
             {
@@ -215,7 +215,7 @@ namespace AutoSortFolder
             UpdateMenuUI();
             UpdateTrayUI();
 
-            if (app.settings.autoSave) SaveAnchors();
+            if (controller.settings.autoSave) SaveAnchors();
         }
 
         private void AddAnchor()
@@ -224,8 +224,8 @@ namespace AutoSortFolder
             {
                 int index = listbox_anchors.Items.Count + 1;
                 Anchor newAnchor = new Anchor(index, "New Anchor " + index, "", SortingMethod.NONE, false, new List<string>());
-                app.anchors.Add(newAnchor);
-                app.currentAnchor = newAnchor;
+                controller.anchors.Add(newAnchor);
+                controller.currentAnchor = newAnchor;
                 listbox_anchors.Items.Add(newAnchor.id + ") " + newAnchor.directory);
             }
             catch (Exception err)
@@ -238,16 +238,16 @@ namespace AutoSortFolder
             UpdateMenuUI();
             UpdateTrayUI();
 
-            if (app.settings.autoSave) SaveAnchors();
+            if (controller.settings.autoSave) SaveAnchors();
         }
         
         private void ResetBlacklist()
         {
             try
             {
-                if (app.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
+                if (controller.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
 
-                app.currentAnchor.blacklist.Clear();
+                controller.currentAnchor.blacklist.Clear();
             } 
             catch (Exception err)
             {
@@ -289,8 +289,8 @@ namespace AutoSortFolder
         {
             try
             {
-                if (app.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
-                app.currentAnchor.name = textboxAnchorName.Text;
+                if (controller.currentAnchor == null) throw new NullReferenceException("No anchor is currently selected.");
+                controller.currentAnchor.name = textboxAnchorName.Text;
 
             }
             catch (Exception err)
@@ -337,14 +337,14 @@ namespace AutoSortFolder
         private void PopulateCurrentAnchorTree()
         {
             // Validate the current anchor
-            if (app.currentAnchor == null)
+            if (controller.currentAnchor == null)
             {
                 Console.WriteLine("Cannot populate current anchor tree: current anchor is null");
                 return;
             }
 
             // Validate the path
-            if (!Directory.Exists(app.currentAnchor.directory))
+            if (!Directory.Exists(controller.currentAnchor.directory))
             {
                 treeCurrentAnchor.Nodes.Clear();
                 return;
@@ -357,7 +357,7 @@ namespace AutoSortFolder
             try
             {
                 treeCurrentAnchor.BeginUpdate();
-                treeCurrentAnchor.Nodes.AddRange(GetDirectoryNodes(app.currentAnchor.directory));
+                treeCurrentAnchor.Nodes.AddRange(GetDirectoryNodes(controller.currentAnchor.directory));
             } catch (Exception ex)
             {
                 Console.WriteLine("Error occurred during populating current anchor's directory tree: " + ex.Message);
@@ -412,11 +412,11 @@ namespace AutoSortFolder
             bool isActive = false;
             bool isSorted = false;
 
-            if (app.currentAnchor != null)
+            if (controller.currentAnchor != null)
             {
-                isIdle = app.currentAnchor.status == AnchorStatus.IDLE;
-                isActive = app.currentAnchor.status == AnchorStatus.ACTIVE;
-                isSorted = app.currentAnchor.sorted;
+                isIdle = controller.currentAnchor.status == AnchorStatus.IDLE;
+                isActive = controller.currentAnchor.status == AnchorStatus.ACTIVE;
+                isSorted = controller.currentAnchor.sorted;
             }
 
             addToolStripMenuItem.Enabled = isIdle;
@@ -433,11 +433,11 @@ namespace AutoSortFolder
             bool isActive = false;
             bool isSorted = false;
 
-            if (app.currentAnchor != null)
+            if (controller.currentAnchor != null)
             {
-                isIdle = app.currentAnchor.status == AnchorStatus.IDLE;
-                isActive = app.currentAnchor.status == AnchorStatus.ACTIVE;
-                isSorted = app.currentAnchor.sorted;
+                isIdle = controller.currentAnchor.status == AnchorStatus.IDLE;
+                isActive = controller.currentAnchor.status == AnchorStatus.ACTIVE;
+                isSorted = controller.currentAnchor.sorted;
             }
 
             startSortingToolStripMenuItem.Enabled = isIdle;
@@ -446,15 +446,15 @@ namespace AutoSortFolder
 
         private void UpdateCurrentAnchorUI()
         {
-            if (app.currentAnchor == null) return;
+            if (controller.currentAnchor == null) return;
 
             // Initialize states
-            bool isIdle     = app.currentAnchor.status == AnchorStatus.IDLE;
-            bool isActive   = app.currentAnchor.status == AnchorStatus.ACTIVE;
-            bool isSorted   = app.currentAnchor.sorted;
+            bool isIdle     = controller.currentAnchor.status == AnchorStatus.IDLE;
+            bool isActive   = controller.currentAnchor.status == AnchorStatus.ACTIVE;
+            bool isSorted   = controller.currentAnchor.sorted;
 
             // Update Labels
-            label_status.Text               = app.currentAnchor.status.ToString();
+            label_status.Text               = controller.currentAnchor.status.ToString();
             labelSorted.Text                = isSorted ? "SORTED" : "NOT SORTED";
 
             // Update Buttons
@@ -468,17 +468,17 @@ namespace AutoSortFolder
 
             // Update dropdowns
             combobox_sortingMethod.Enabled          = isIdle;
-            combobox_sortingMethod.SelectedIndex    = (int)app.currentAnchor.method;
+            combobox_sortingMethod.SelectedIndex    = (int)controller.currentAnchor.method;
 
             // Update fields
-            textbox_folderDirectory.Text    = app.currentAnchor.directory;
-            textboxAnchorName.Text          = app.currentAnchor.name;
+            textbox_folderDirectory.Text    = controller.currentAnchor.directory;
+            textboxAnchorName.Text          = controller.currentAnchor.name;
             textboxAnchorName.Enabled       = isIdle;
             textbox_folderDirectory.Enabled = isIdle;
 
             // Update list
             listBoxBlacklist.Items.Clear();
-            listBoxBlacklist.Items.AddRange(app.currentAnchor.blacklist.ToArray());
+            listBoxBlacklist.Items.AddRange(controller.currentAnchor.blacklist.ToArray());
 
             // Update tree
             PopulateCurrentAnchorTree();
@@ -486,18 +486,18 @@ namespace AutoSortFolder
 
         private void UpdateSettingsUI()
         {
-            if (app.settings == null) return;
+            if (controller.settings == null) return;
 
-            checkboxBackgroundSorting.Checked     = app.settings.backgroundSorting;
-            checkboxAutoSave.Checked        = app.settings.autoSave;
-            checkboxAutorun.Checked         = app.settings.autorun;
-            checkboxDebug.Checked = app.settings.debug;
+            checkboxBackgroundSorting.Checked     = controller.settings.backgroundSorting;
+            checkboxAutoSave.Checked        = controller.settings.autoSave;
+            checkboxAutorun.Checked         = controller.settings.autorun;
+            checkboxDebug.Checked = controller.settings.debug;
         }
 
         private void UpdateAnchorListUI()
         {
-            if (app.currentAnchor == null) return;
-            bool isIdle = app.currentAnchor.status == AnchorStatus.IDLE;
+            if (controller.currentAnchor == null) return;
+            bool isIdle = controller.currentAnchor.status == AnchorStatus.IDLE;
             listbox_anchors.Enabled = isIdle;
             button_add.Enabled = isIdle;
             button_remove.Enabled = isIdle;
@@ -506,7 +506,7 @@ namespace AutoSortFolder
         private void PopulateAnchors()
         {
             listbox_anchors.Items.Clear();
-            foreach (Anchor anchor in app.anchors)
+            foreach (Anchor anchor in controller.anchors)
             {
                 listbox_anchors.Items.Add((listbox_anchors.Items.Count + 1) + ") " + anchor.name);
             }
@@ -565,20 +565,20 @@ namespace AutoSortFolder
         private void ApplySettings()
         {
             // Set all the states
-            app.settings.backgroundSorting = checkboxBackgroundSorting.Checked;
-            app.settings.autoSave = checkboxAutoSave.Checked;
-            app.settings.autorun = checkboxAutorun.Checked;
+            controller.settings.backgroundSorting = checkboxBackgroundSorting.Checked;
+            controller.settings.autoSave = checkboxAutoSave.Checked;
+            controller.settings.autorun = checkboxAutorun.Checked;
 
             // Change registry value
-            if (app.settings.autorun) app.regKey.SetValue("AutoSortFolder", Application.ExecutablePath.ToString());
-            else app.regKey.DeleteValue("AutoSortFolder", false);
+            if (controller.settings.autorun) controller.regKey.SetValue("AutoSortFolder", Application.ExecutablePath.ToString());
+            else controller.regKey.DeleteValue("AutoSortFolder", false);
 
             SaveSettings();
         }
 
         private void ResetSettings()
         {
-            app.ResetSettings();
+            controller.ResetSettings();
             UpdateSettingsUI();
         }
 
@@ -596,9 +596,9 @@ namespace AutoSortFolder
         
         private void buttonOpenDirectory_Click(object sender, EventArgs e)
         {
-            if (app.currentAnchor == null) return;
+            if (controller.currentAnchor == null) return;
 
-            string dir = app.currentAnchor.directory;
+            string dir = controller.currentAnchor.directory;
             if (Directory.Exists(dir)) Process.Start(dir);
         }
 
@@ -617,15 +617,15 @@ namespace AutoSortFolder
         #region Other Component Methods
         private void dropdownSortingMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (app.currentAnchor != null) app.currentAnchor.method = (SortingMethod)combobox_sortingMethod.SelectedIndex;
-            if (app.settings.autoSave) SaveAnchors();
+            if (controller.currentAnchor != null) controller.currentAnchor.method = (SortingMethod)combobox_sortingMethod.SelectedIndex;
+            if (controller.settings.autoSave) SaveAnchors();
         }
 
         private void listboxAnchors_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                if (listbox_anchors.SelectedIndex != -1) app.currentAnchor = app.anchors[listbox_anchors.SelectedIndex];
+                if (listbox_anchors.SelectedIndex != -1) controller.currentAnchor = controller.anchors[listbox_anchors.SelectedIndex];
                 UpdateCurrentAnchorUI();
                 UpdateMenuUI();
                 UpdateTrayUI();
@@ -650,15 +650,15 @@ namespace AutoSortFolder
 
             do
             {
-                if (app.currentAnchor == null) throw new ArgumentNullException("Current anchor doesn't exist"); // Check if the current anchor doesn't exist
-                if (!Directory.Exists(app.currentAnchor.directory)) throw new DirectoryNotFoundException("Anchor directory does not exist"); // Check if the directory doesn't exist
-                app.currentAnchor.Sort(
+                if (controller.currentAnchor == null) throw new ArgumentNullException("Current anchor doesn't exist"); // Check if the current anchor doesn't exist
+                if (!Directory.Exists(controller.currentAnchor.directory)) throw new DirectoryNotFoundException("Anchor directory does not exist"); // Check if the directory doesn't exist
+                controller.currentAnchor.Sort(
                     progress =>
                     {
                         worker.ReportProgress(progress);
                     });
-                if (app.settings.backgroundSorting) System.Threading.Thread.Sleep(anchorRefreshTime);
-            } while (!worker.CancellationPending && app.settings.backgroundSorting);
+                if (controller.settings.backgroundSorting) System.Threading.Thread.Sleep(anchorRefreshTime);
+            } while (!worker.CancellationPending && controller.settings.backgroundSorting);
 
             if (worker.CancellationPending) e.Cancel = true;
         }
@@ -674,8 +674,8 @@ namespace AutoSortFolder
             else if (e.Error != null) MessageBox.Show($"Sorting has stopped due to error: {e.Error.Message}", "Sorting Error");
             else;//MessageBox.Show("Sorting is complete.");
 
-            if (e.Error == null) Console.WriteLine($"Folder Count Match: {AnchorVerifier.FoldersMatch(app.currentAnchor.directory, testPath, true)}");
-            app.currentAnchor.Deactivate();
+            if (e.Error == null) Console.WriteLine($"Folder Count Match: {AnchorVerifier.FoldersMatch(controller.currentAnchor.directory, testPath, true)}");
+            controller.currentAnchor.Deactivate();
 
             // Update the UI
             UpdateCurrentAnchorUI();
@@ -684,7 +684,7 @@ namespace AutoSortFolder
             UpdateAnchorListUI();
 
             // Save anchor state
-            if (app.settings.autoSave) this.SaveAnchors();
+            if (controller.settings.autoSave) this.SaveAnchors();
         }
         #endregion
 
@@ -726,7 +726,7 @@ namespace AutoSortFolder
 
         private void gitHubRepositoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Open the GitHub repo for the app
+            // Open the GitHub repo for the controller
             string githubRepoURL = "https://github.com/m-riley04/AutoSortFolder";
             OpenURLInBrowser(githubRepoURL);
         }
@@ -815,7 +815,7 @@ namespace AutoSortFolder
         {
             base.OnFormClosing(e);
 
-            if (app.currentAnchor != null && app.currentAnchor.status == AnchorStatus.ACTIVE)
+            if (controller.currentAnchor != null && controller.currentAnchor.status == AnchorStatus.ACTIVE)
             {
                 switch (MessageBox.Show(this, "Are you sure you want to close?", "Closing", MessageBoxButtons.YesNo))
                 {

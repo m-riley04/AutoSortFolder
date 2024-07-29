@@ -5,16 +5,17 @@ using System.Text.Json;
 
 namespace AutoSortFolder
 {
-    public class App
+    public class Controller
     {
-        
+        public readonly string anchorSavePath = Directory.GetCurrentDirectory() + "\\" + "anchors.json";
+        public readonly string settingsSavePath = Directory.GetCurrentDirectory() + "\\" + "app_settings.json";
+        public readonly RegistryKey regKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
         public Anchor currentAnchor;
         public Settings settings;
         public List<Anchor> anchors = new List<Anchor>();
-        public string anchorSavePath = Directory.GetCurrentDirectory() + "\\" + "anchors.json";
-        public string settingsSavePath = Directory.GetCurrentDirectory() + "\\" + "app_settings.json";
-        public RegistryKey regKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-        public App()
+        
+        public Controller()
         {
             if (!File.Exists(anchorSavePath))
             {

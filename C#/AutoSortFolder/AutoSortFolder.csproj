@@ -117,31 +117,31 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Anchor.cs" />
-    <Compile Include="AnchorVerifier.cs" />
-    <Compile Include="App.cs" />
-    <Compile Include="UpdateHelper.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="ErrorPopup.cs">
+    <Compile Include="Models\Anchor.cs" />
+    <Compile Include="Services\AnchorVerifier.cs" />
+    <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="Services\UpdateHelper.cs" />
+    <Compile Include="Models\Settings.cs" />
+    <Compile Include="Views\ErrorPopup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ErrorPopup.Designer.cs">
+    <Compile Include="Views\ErrorPopup.Designer.cs">
       <DependentUpon>ErrorPopup.cs</DependentUpon>
     </Compile>
-    <Compile Include="FileExtensions.cs" />
-    <Compile Include="FileSorter.cs" />
-    <Compile Include="Window.cs">
+    <Compile Include="Helpers\FileExtensions.cs" />
+    <Compile Include="Services\FileSorter.cs" />
+    <Compile Include="Views\Window.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Window.Designer.cs">
+    <Compile Include="Views\Window.Designer.cs">
       <DependentUpon>Window.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ErrorPopup.resx">
+    <EmbeddedResource Include="Views\ErrorPopup.resx">
       <DependentUpon>ErrorPopup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Window.resx">
+    <EmbeddedResource Include="Views\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -183,6 +183,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="autosortfolder_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enums\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
